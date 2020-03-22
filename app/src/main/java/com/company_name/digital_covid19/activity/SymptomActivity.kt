@@ -51,15 +51,15 @@ class SymptomActivity: AppCompatActivity() {
 	
 	private fun onNoPressed() {
 	
-		this.startSymptomsSecondActivity(false)
+		this.startSymptomsSecondActivity()
 	}
 	
 	private fun onYesPressed() {
 	
 	}
 	
-	private fun startSymptomsSecondActivity(abroaded:Boolean) {
+	private fun startSymptomsSecondActivity() {
 	
-		this.startActivity(SymptomsSecondActivity.newIntent(this,abroaded))
+		this.startActivity(SymptomsSecondActivity.newIntent(this))
 	}
 }
