@@ -86,6 +86,6 @@ class SignInActivity: AppCompatActivity() {
 	
 	private fun startHomeActivity() {
 	
-		this.startActivity(HomeActivity.newIntent(this))
+		this.startActivity(MapsActivity.newIntent(this))
 	}
 }

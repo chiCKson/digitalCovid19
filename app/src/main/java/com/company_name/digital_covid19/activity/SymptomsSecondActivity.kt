@@ -41,34 +41,34 @@ class SymptomsSecondActivity: AppCompatActivity() {
 	private fun init() {
 	
 		// Configure addSymptoms component
-		binding.addsymptomsButton.setOnClickListener({ view ->
+		binding.addsymptomsButton.setOnClickListener { view ->
 			this.onAddSymptomsPressed()
-		})
-		
+		}
+
 		// Configure breathingDifficultiesSwitch component
-		binding.breathingdifficultiesswitchSwitch.setOnClickListener({ view ->
+		binding.breathingdifficultiesswitchSwitch.setOnClickListener { view ->
 			this.onGroup334ValueChanged()
-		})
-		
+		}
+
 		// Configure HeadacheSwitch component
-		binding.headacheswitchSwitch.setOnClickListener({ view ->
+		binding.headacheswitchSwitch.setOnClickListener { view ->
 			this.onGroup335ValueChanged()
-		})
-		
+		}
+
 		// Configure CoughSwitch component
-		binding.coughswitchSwitch.setOnClickListener({ view ->
+		binding.coughswitchSwitch.setOnClickListener { view ->
 			this.onGroup336ValueChanged()
-		})
-		
+		}
+
 		// Configure soreThroatSwitch component
-		binding.sorethroatswitchSwitch.setOnClickListener({ view ->
+		binding.sorethroatswitchSwitch.setOnClickListener { view ->
 			this.onRectangle1475ValueChanged()
-		})
-		
+		}
+
 		// Configure FeverSwitch component
-		binding.feverswitchSwitch.setOnClickListener({ view ->
+		binding.feverswitchSwitch.setOnClickListener { view ->
 			this.onRectangle566ValueChanged()
-		})
+		}
 	}
 	
 	fun onAddSymptomsPressed() {
@@ -98,6 +98,6 @@ class SymptomsSecondActivity: AppCompatActivity() {
 	
 	private fun startHomeActivity() {
 	
-		this.startActivity(HomeActivity.newIntent(this))
+		this.startActivity(MapsActivity.newIntent(this))
 	}
 }

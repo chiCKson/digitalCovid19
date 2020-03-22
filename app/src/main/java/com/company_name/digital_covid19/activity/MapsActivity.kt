@@ -1,5 +1,7 @@
 package com.company_name.digital_covid19.activity
 
+import android.content.Context
+import android.content.Intent
 import android.content.res.Resources
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -15,7 +17,14 @@ import kotlinx.android.synthetic.main.activity_maps.*
 
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
+    companion object {
 
+        fun newIntent(context: Context): Intent {
+
+            // Fill the created intent with the data you want to be passed to this Activity when it's opened.
+            return Intent(context, MapsActivity::class.java)
+        }
+    }
     private lateinit var mMap: GoogleMap
 
     override fun onCreate(savedInstanceState: Bundle?) {

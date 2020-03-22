@@ -33,11 +33,7 @@
             android:theme="@style/HomeActivityTheme"
             android:label="@string/title_activity_maps">
 
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER" />
 
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
         </activity>
 
         <uses-library android:name="com.google.android.maps" />
@@ -46,7 +42,11 @@
             android:name=".activity.WelcomeActivity"
             android:label=""
             android:theme="@style/WelcomeActivityTheme">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
 
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".activity.AddLocationActivity"
