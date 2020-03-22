@@ -29,8 +29,6 @@ class WelcomeActivity: AppCompatActivity() {
 	companion object {
 		
 		fun newIntent(context: Context): Intent {
-		
-			// Fill the created intent with the data you want to be passed to this Activity when it's opened.
 			return Intent(context, WelcomeActivity::class.java)
 		}
 	}
@@ -73,20 +71,20 @@ class WelcomeActivity: AppCompatActivity() {
 		}
 	}
 	
-	fun onRegisterPressed() {
-	
+	private fun onRegisterPressed() {
+		this.startRegisterActivity()
 	}
 	
-	fun onLoginPressed() {
+	private fun onLoginPressed() {
 	
 		this.startSignInActivity()
 	}
 	
-	fun onGPressed() {
+	private fun onGPressed() {
 	
 	}
 	
-	fun onFacebookPressed() {
+	private fun onFacebookPressed() {
 	
 	}
 	
@@ -94,11 +92,15 @@ class WelcomeActivity: AppCompatActivity() {
 	
 		this.startActivity(SignInActivity.newIntent(this))
 	}
+	private fun startRegisterActivity() {
+
+		this.startActivity(RegisterActivity.newIntent(this))
+	}
 	private fun startHomeActivity() {
 
 		this.startActivity(MapsActivity.newIntent(this))
 	}
-	fun startAnimationOne() {
+	private fun startAnimationOne() {
 	
 		val animator1 = ObjectAnimator.ofPropertyValuesHolder(binding.registerButton, PropertyValuesHolder.ofKeyframe(View.SCALE_X, Keyframe.ofFloat(0f, 0.3f), Keyframe.ofFloat(0.2f, 1.1f), Keyframe.ofFloat(0.4f, 0.9f), Keyframe.ofFloat(0.6f, 1.03f), Keyframe.ofFloat(0.8f, 0.97f), Keyframe.ofFloat(1f, 1f)), PropertyValuesHolder.ofKeyframe(View.SCALE_Y, Keyframe.ofFloat(0f, 0.3f), Keyframe.ofFloat(0.2f, 1.1f), Keyframe.ofFloat(0.4f, 0.9f), Keyframe.ofFloat(0.6f, 1.03f), Keyframe.ofFloat(0.8f, 0.97f), Keyframe.ofFloat(1f, 1f)))
 		animator1.duration = 1000

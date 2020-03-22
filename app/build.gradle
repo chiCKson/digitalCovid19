@@ -54,9 +54,13 @@ dependencies {
 
     // Unit tests dependencies
     implementation 'com.google.firebase:firebase-auth:19.2.0'
+    implementation 'com.google.firebase:firebase-database:19.2.1'
     testImplementation 'junit:junit:4.12'
 
     // Integration tests dependencies
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
+
+    //custom Toast
+    implementation 'com.sdsmdg.tastytoast:tastytoast:0.1.1'
 }

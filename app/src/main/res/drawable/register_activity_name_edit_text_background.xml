@@ -3,7 +3,10 @@
 	<stroke
 		android:color="@color/register_activity_name_edit_text_border_color"
 		android:width="@dimen/register_activity_name_edit_text_border_size"/>
-
+	<padding android:bottom="10dp"
+		android:left="10dp"
+		android:right="10dp"
+		android:top="10dp"/>
 	<corners android:radius="@dimen/register_activity_name_edit_text_radius"/>
 
 	<solid android:color="#FFFFFF"/>

@@ -22,9 +22,7 @@ class SymptomsSecondActivity: AppCompatActivity() {
 
 	companion object {
 		
-		fun newIntent(context: Context): Intent {
-		
-			// Fill the created intent with the data you want to be passed to this Activity when it's opened.
+		fun newIntent(context: Context,abroaded:Boolean): Intent {
 			return Intent(context, SymptomsSecondActivity::class.java)
 		}
 	}
@@ -41,58 +39,58 @@ class SymptomsSecondActivity: AppCompatActivity() {
 	private fun init() {
 	
 		// Configure addSymptoms component
-		binding.addsymptomsButton.setOnClickListener { view ->
+		binding.addsymptomsButton.setOnClickListener {
 			this.onAddSymptomsPressed()
 		}
 
 		// Configure breathingDifficultiesSwitch component
-		binding.breathingdifficultiesswitchSwitch.setOnClickListener { view ->
-			this.onGroup334ValueChanged()
+		binding.breathingdifficultiesswitchSwitch.setOnClickListener {
+			this.breathingdifficultiesswitchValueChanged()
 		}
 
 		// Configure HeadacheSwitch component
-		binding.headacheswitchSwitch.setOnClickListener { view ->
-			this.onGroup335ValueChanged()
+		binding.headacheswitchSwitch.setOnClickListener {
+			this.headacheswitchValueChanged()
 		}
 
 		// Configure CoughSwitch component
-		binding.coughswitchSwitch.setOnClickListener { view ->
-			this.onGroup336ValueChanged()
+		binding.coughswitchSwitch.setOnClickListener {
+			this.oncoughswitchValueChanged()
 		}
 
 		// Configure soreThroatSwitch component
-		binding.sorethroatswitchSwitch.setOnClickListener { view ->
-			this.onRectangle1475ValueChanged()
+		binding.sorethroatswitchSwitch.setOnClickListener {
+			this.onsorethroatswitchValueChanged()
 		}
 
 		// Configure FeverSwitch component
-		binding.feverswitchSwitch.setOnClickListener { view ->
-			this.onRectangle566ValueChanged()
+		binding.feverswitchSwitch.setOnClickListener {
+			this.onfeverswitchValueChanged()
 		}
 	}
 	
-	fun onAddSymptomsPressed() {
+	private fun onAddSymptomsPressed() {
 	
 		this.startHomeActivity()
 	}
 	
-	fun onGroup334ValueChanged() {
+	private fun breathingdifficultiesswitchValueChanged() {
 	
 	}
 	
-	fun onGroup335ValueChanged() {
+	private fun headacheswitchValueChanged() {
 	
 	}
 	
-	fun onGroup336ValueChanged() {
+	private fun oncoughswitchValueChanged() {
 	
 	}
 	
-	fun onRectangle1475ValueChanged() {
+	private fun onsorethroatswitchValueChanged() {
 	
 	}
 	
-	fun onRectangle566ValueChanged() {
+	private fun onfeverswitchValueChanged() {
 	
 	}
 	

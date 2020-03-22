@@ -23,8 +23,6 @@ class SymptomActivity: AppCompatActivity() {
 	companion object {
 		
 		fun newIntent(context: Context): Intent {
-		
-			// Fill the created intent with the data you want to be passed to this Activity when it's opened.
 			return Intent(context, SymptomActivity::class.java)
 		}
 	}
@@ -41,27 +39,27 @@ class SymptomActivity: AppCompatActivity() {
 	private fun init() {
 	
 		// Configure No component
-		binding.noButton.setOnClickListener({ view ->
+		binding.noButton.setOnClickListener {
 			this.onNoPressed()
-		})
-		
+		}
+
 		// Configure Yes component
-		binding.yesButton.setOnClickListener({ view ->
+		binding.yesButton.setOnClickListener {
 			this.onYesPressed()
-		})
+		}
 	}
 	
-	fun onNoPressed() {
+	private fun onNoPressed() {
 	
-		this.startSymptomsSecondActivity()
+		this.startSymptomsSecondActivity(false)
 	}
 	
-	fun onYesPressed() {
+	private fun onYesPressed() {
 	
 	}
 	
-	private fun startSymptomsSecondActivity() {
+	private fun startSymptomsSecondActivity(abroaded:Boolean) {
 	
-		this.startActivity(SymptomsSecondActivity.newIntent(this))
+		this.startActivity(SymptomsSecondActivity.newIntent(this,abroaded))
 	}
 }

@@ -19,6 +19,7 @@ import androidx.fragment.app.FragmentActivity
 import com.company_name.digital_covid19.R
 import com.company_name.digital_covid19.databinding.SignInActivityBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.sdsmdg.tastytoast.TastyToast
 
 
 class SignInActivity: AppCompatActivity() {
@@ -72,6 +73,19 @@ class SignInActivity: AppCompatActivity() {
 	
 	private fun onLoginPressed() {
 
+		if (this.validateForm())
+			this.signin()
+
+	}
+	
+	private fun onGPressed() {
+	
+	}
+	
+	private fun onFacebookPressed() {
+	
+	}
+	private fun signin(){
 		val email=binding.emailEditText.text.toString()
 		val password=binding.passwordEditText.text.toString()
 		mAuth.signInWithEmailAndPassword(email, password)
@@ -84,22 +98,22 @@ class SignInActivity: AppCompatActivity() {
 					} else {
 						// If sign in fails, display a message to the user.
 
-						Toast.makeText(this@SignInActivity, "Authentication failed.",
-								Toast.LENGTH_SHORT).show()
+						TastyToast.makeText(applicationContext, "Authentication failed.${task.exception}", TastyToast.LENGTH_LONG, TastyToast.ERROR)
 
 					}
 
-					// ...
-				}
 
+				}
 	}
-	
-	fun onGPressed() {
-	
-	}
-	
-	fun onFacebookPressed() {
-	
+	private fun validateForm():Boolean{
+		if (binding.emailEditText.text.toString()=="")
+			return false
+		if (binding.passwordEditText.text.toString()=="")
+			return false
+		if (binding.passwordEditText.text.length<8)
+			return false
+		return true
+
 	}
 	
 	private fun startRegisterActivity() {
