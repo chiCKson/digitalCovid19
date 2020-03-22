@@ -20,6 +20,7 @@ import android.util.TypedValue
 import android.view.View
 import com.company_name.digital_covid19.R
 import com.company_name.digital_covid19.databinding.WelcomeActivityBinding
+import com.google.firebase.auth.FirebaseAuth
 import io.supernova.uitoolkit.animation.ViewBackgroundProperties
 
 
@@ -35,37 +36,41 @@ class WelcomeActivity: AppCompatActivity() {
 	}
 	
 	private lateinit var binding: WelcomeActivityBinding
-	
+	private lateinit var mAuth: FirebaseAuth
 	override fun onCreate(savedInstanceState: Bundle?) {
 	
 		super.onCreate(savedInstanceState)
+		mAuth = FirebaseAuth.getInstance()
 		binding = DataBindingUtil.setContentView(this, R.layout.welcome_activity)
+		this.startAnimationOne()
 		this.init()
 		
-		this.startAnimationOne()
+
 	}
 	
 	private fun init() {
-	
+		if (mAuth.currentUser!=null){
+			this.startHomeActivity()
+		}
 		// Configure Register component
-		binding.registerButton.setOnClickListener({ view ->
+		binding.registerButton.setOnClickListener {
 			this.onRegisterPressed()
-		})
-		
+		}
+
 		// Configure Login component
-		binding.loginButton.setOnClickListener({ view ->
+		binding.loginButton.setOnClickListener {
 			this.onLoginPressed()
-		})
-		
+		}
+
 		// Configure g+ component
-		binding.gButton.setOnClickListener({ view ->
+		binding.gButton.setOnClickListener {
 			this.onGPressed()
-		})
-		
+		}
+
 		// Configure facebook component
-		binding.facebookButton.setOnClickListener({ view ->
+		binding.facebookButton.setOnClickListener {
 			this.onFacebookPressed()
-		})
+		}
 	}
 	
 	fun onRegisterPressed() {
@@ -89,7 +94,10 @@ class WelcomeActivity: AppCompatActivity() {
 	
 		this.startActivity(SignInActivity.newIntent(this))
 	}
-	
+	private fun startHomeActivity() {
+
+		this.startActivity(MapsActivity.newIntent(this))
+	}
 	fun startAnimationOne() {
 	
 		val animator1 = ObjectAnimator.ofPropertyValuesHolder(binding.registerButton, PropertyValuesHolder.ofKeyframe(View.SCALE_X, Keyframe.ofFloat(0f, 0.3f), Keyframe.ofFloat(0.2f, 1.1f), Keyframe.ofFloat(0.4f, 0.9f), Keyframe.ofFloat(0.6f, 1.03f), Keyframe.ofFloat(0.8f, 0.97f), Keyframe.ofFloat(1f, 1f)), PropertyValuesHolder.ofKeyframe(View.SCALE_Y, Keyframe.ofFloat(0f, 0.3f), Keyframe.ofFloat(0.2f, 1.1f), Keyframe.ofFloat(0.4f, 0.9f), Keyframe.ofFloat(0.6f, 1.03f), Keyframe.ofFloat(0.8f, 0.97f), Keyframe.ofFloat(1f, 1f)))

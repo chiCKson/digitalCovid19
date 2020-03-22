@@ -8,14 +8,18 @@
 
 package com.company_name.digital_covid19.activity
 
+import android.R.attr.password
 import android.content.Context
 import android.content.Intent
-import androidx.databinding.DataBindingUtil
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import android.view.View
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentActivity
 import com.company_name.digital_covid19.R
 import com.company_name.digital_covid19.databinding.RegisterActivityBinding
+import com.google.firebase.auth.FirebaseAuth
 
 
 class RegisterActivity: AppCompatActivity() {
@@ -30,25 +34,38 @@ class RegisterActivity: AppCompatActivity() {
 	}
 	
 	private lateinit var binding: RegisterActivityBinding
-	
+	private lateinit var mAuth: FirebaseAuth
 	override fun onCreate(savedInstanceState: Bundle?) {
 	
 		super.onCreate(savedInstanceState)
+		mAuth = FirebaseAuth.getInstance()
 		binding = DataBindingUtil.setContentView(this, R.layout.register_activity)
 		this.init()
 	}
 	
 	private fun init() {
-	
+
 		// Configure Register component
-		binding.registerButton.setOnClickListener({ view ->
+		binding.registerButton.setOnClickListener {
 			this.onRegisterPressed()
-		})
+		}
 	}
 	
-	fun onRegisterPressed() {
-	
-		this.startSymptomActivity()
+	private fun onRegisterPressed() {
+		val email=binding.emailEditText.text.toString()
+		val password=binding.passwordEditText.text.toString()
+		mAuth.createUserWithEmailAndPassword(email, password)
+				.addOnCompleteListener(this) { task ->
+					if (task.isSuccessful) {
+						val user = mAuth.currentUser
+						this.startSymptomActivity()
+					} else {
+						Toast.makeText(this@RegisterActivity, "Authentication failed.${task.exception}",Toast.LENGTH_SHORT).show()
+					}
+
+
+				}
+
 	}
 	
 	private fun startSymptomActivity() {

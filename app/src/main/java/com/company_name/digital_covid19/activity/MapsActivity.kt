@@ -13,6 +13,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_maps.*
 
 
@@ -26,13 +27,18 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
     private lateinit var mMap: GoogleMap
-
+    private lateinit var mAuth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
+        mAuth = FirebaseAuth.getInstance()
         round_btn_pressed_li_button.setOnClickListener {
             this.onRoundBtnPressedLiPressed()
         }
+        profile_image_view.setOnClickListener {
+            this.signOut()
+        }
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
                 .findFragmentById(R.id.map) as SupportMapFragment
@@ -77,6 +83,17 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun startActivityModelActivity() {
 
         this.startActivity(ActivityModelActivity.newIntent(this))
+    }
+    private fun startWelcomeActivity() {
+
+        this.startActivity(WelcomeActivity.newIntent(this))
+    }
+    private fun signOut(){
+        if (mAuth.currentUser!=null) {
+            mAuth.signOut()
+            this.startWelcomeActivity()
+            finish()
+        }
     }
 
 }
