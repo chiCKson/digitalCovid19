@@ -56,8 +56,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         // Add a marker in Sydney and move the camera
         val colomco = LatLng(6.927079, 79.861244)
         mMap.addMarker(MarkerOptions().position(colomco).title("Marker in Colombo"))
-        mMap.animateCamera( CameraUpdateFactory.zoomTo( 17.0f ) )
+
         mMap.moveCamera(CameraUpdateFactory.newLatLng(colomco))
+        mMap.animateCamera( CameraUpdateFactory.zoomTo( 12.0f ) )
     }
     private fun onRoundBtnPressedLiPressed() {
 
