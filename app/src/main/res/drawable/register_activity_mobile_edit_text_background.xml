@@ -1,0 +1,10 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<stroke
+		android:color="@color/register_activity_mobile_edit_text_border_color"
+		android:width="@dimen/register_activity_mobile_edit_text_border_size"/>
+
+	<corners android:radius="@dimen/register_activity_mobile_edit_text_radius"/>
+
+	<solid android:color="#FFFFFF"/>
+</shape>

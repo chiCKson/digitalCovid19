@@ -1,0 +1,6 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<stroke
+		android:color="@color/symptoms_second_activity_sorethroatswitch_switch_border_color"
+		android:width="@dimen/symptoms_second_activity_sorethroatswitch_switch_border_size"/>
+</shape>

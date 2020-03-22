@@ -1,0 +1,10 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<stroke
+		android:color="@color/add_location_activity_datepicklocation_button_border_color"
+		android:width="@dimen/add_location_activity_datepicklocation_button_border_size"/>
+
+	<corners android:radius="@dimen/add_location_activity_datepicklocation_button_radius"/>
+
+	<solid android:color="#FFFFFF"/>
+</shape>

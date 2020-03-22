@@ -1,0 +1,108 @@
+<layout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+
+	<data/>
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:id="@+id/constraint_layout_constraint_layout"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@color/activity_model_activity_constraint_layout_constraint_layout_background_color">
+	
+		<TextView
+			android:id="@+id/my_transports_text_view"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/activity_model_activity_my_transports_text_view_margin_top"
+			android:fontFamily="@font/font_nunito_regular"
+			android:gravity="start"
+			android:text="@string/activity_model_activity_my_transports_text_view_text"
+			android:textColor="#4FAB5E"
+			android:textSize="@dimen/activity_model_activity_my_transports_text_view_text_size"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toRightOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			tools:layout_editor_absoluteX="94dp"
+			tools:layout_editor_absoluteY="44dp"/>
+	
+		<View
+			android:id="@+id/line17_constraint_layout"
+			android:layout_width="0dp"
+			android:layout_height="@dimen/activity_model_activity_line17_constraint_layout_height"
+			android:layout_marginEnd="@dimen/activity_model_activity_line17_constraint_layout_margin_end"
+			android:layout_marginTop="@dimen/activity_model_activity_line17_constraint_layout_margin_top"
+			android:background="#A14FAB5E"
+			app:layout_constraintHorizontal_weight="1"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toRightOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/my_transports_text_view"
+			tools:layout_editor_absoluteX="0dp"
+			tools:layout_editor_absoluteY="100dp"/>
+	
+		<ImageButton
+			android:id="@+id/close_button"
+			android:layout_width="@dimen/activity_model_activity_close_button_width"
+			android:layout_height="@dimen/activity_model_activity_close_button_height"
+			android:layout_marginEnd="@dimen/activity_model_activity_close_button_margin_end"
+			android:layout_marginTop="@dimen/activity_model_activity_close_button_margin_top"
+			android:background="?attr/selectableItemBackground"
+			android:src="@drawable/close"
+			app:layout_constraintRight_toRightOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			tools:layout_editor_absoluteX="319dp"
+			tools:layout_editor_absoluteY="20dp"/>
+	
+		<Button
+			android:id="@+id/location_button"
+			android:layout_width="@dimen/activity_model_activity_location_button_width"
+			android:layout_height="@dimen/activity_model_activity_location_button_height"
+			android:layout_marginTop="@dimen/activity_model_activity_location_button_margin_top"
+			android:background="@drawable/activity_model_activity_location_button_ripple"
+			android:fontFamily="@font/font_nunito_regular"
+			android:gravity="center"
+			android:text="@string/activity_model_activity_location_button_text"
+			android:textColor="#FFFFFF"
+			android:textSize="@dimen/activity_model_activity_location_button_text_size"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toRightOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/line17_constraint_layout"
+			tools:layout_editor_absoluteX="130dp"
+			tools:layout_editor_absoluteY="116dp"/>
+	
+		<Button
+			android:id="@+id/event_button"
+			android:layout_width="@dimen/activity_model_activity_event_button_width"
+			android:layout_height="@dimen/activity_model_activity_event_button_height"
+			android:layout_marginTop="@dimen/activity_model_activity_event_button_margin_top"
+			android:background="@drawable/activity_model_activity_event_button_ripple"
+			android:fontFamily="@font/font_nunito_regular"
+			android:gravity="center"
+			android:text="@string/activity_model_activity_event_button_text"
+			android:textColor="#FFFFFF"
+			android:textSize="@dimen/activity_model_activity_event_button_text_size"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toRightOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			tools:layout_editor_absoluteX="117dp"
+			tools:layout_editor_absoluteY="233dp"/>
+	
+		<Button
+			android:id="@+id/transport_button"
+			android:layout_width="@dimen/activity_model_activity_transport_button_width"
+			android:layout_height="@dimen/activity_model_activity_transport_button_height"
+			android:layout_marginBottom="@dimen/activity_model_activity_transport_button_margin_bottom"
+			android:background="@drawable/activity_model_activity_transport_button_ripple"
+			android:fontFamily="@font/font_nunito_regular"
+			android:gravity="center"
+			android:text="@string/activity_model_activity_transport_button_text"
+			android:textColor="#FFFFFF"
+			android:textSize="@dimen/activity_model_activity_transport_button_text_size"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toRightOf="parent"
+			tools:layout_editor_absoluteX="130dp"
+			tools:layout_editor_absoluteY="353dp"/>
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

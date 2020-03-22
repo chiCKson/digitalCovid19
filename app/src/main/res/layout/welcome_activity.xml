@@ -1,0 +1,155 @@
+<layout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+
+	<data/>
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:id="@+id/constraint_layout_constraint_layout"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@color/welcome_activity_constraint_layout_constraint_layout_background_color">
+	
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:id="@+id/component81_constraint_layout"
+			android:layout_width="0dp"
+			android:layout_height="@dimen/welcome_activity_component81_constraint_layout_height"
+			android:layout_marginEnd="@dimen/welcome_activity_component81_constraint_layout_margin_end"
+			android:background="#4FAB5E"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintHorizontal_weight="1"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toRightOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			tools:layout_editor_absoluteX="0dp"
+			tools:layout_editor_absoluteY="-60dp">
+		
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/group1_constraint_layout"
+				android:layout_width="@dimen/welcome_activity_group1_constraint_layout_width"
+				android:layout_height="@dimen/welcome_activity_group1_constraint_layout_height"
+				android:layout_marginTop="@dimen/welcome_activity_group1_constraint_layout_margin_top"
+				app:layout_constraintLeft_toLeftOf="parent"
+				app:layout_constraintRight_toRightOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				tools:layout_editor_absoluteX="82dp"
+				tools:layout_editor_absoluteY="299dp">
+			
+				<TextView
+					android:id="@+id/digital_covid19_text_view"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:gravity="center"
+					android:text="@string/welcome_activity_digital_covid19_text_view_text"
+					android:textColor="#FFFFFF"
+					android:textSize="@dimen/welcome_activity_digital_covid19_text_view_text_size"
+					app:layout_constraintHorizontal_weight="1"
+					app:layout_constraintLeft_toLeftOf="parent"
+					app:layout_constraintRight_toRightOf="parent"
+					app:layout_constraintTop_toTopOf="parent"
+					tools:layout_editor_absoluteX="0dp"
+					tools:layout_editor_absoluteY="0dp"/>
+			
+				<TextView
+					android:id="@+id/keeping_you_safer_text_view"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="@dimen/welcome_activity_keeping_you_safer_text_view_margin_start"
+					android:gravity="center"
+					android:text="@string/welcome_activity_keeping_you_safer_text_view_text"
+					android:textColor="#FFFFFF"
+					android:textSize="@dimen/welcome_activity_keeping_you_safer_text_view_text_size"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintLeft_toLeftOf="parent"
+					tools:layout_editor_absoluteX="17dp"
+					tools:layout_editor_absoluteY="29dp"/>
+			</androidx.constraintlayout.widget.ConstraintLayout>
+		
+			<Button
+				android:id="@+id/register_button"
+				android:layout_width="@dimen/welcome_activity_register_button_width"
+				android:layout_height="@dimen/welcome_activity_register_button_height"
+				android:layout_marginTop="@dimen/welcome_activity_register_button_margin_top"
+				android:background="@drawable/welcome_activity_register_button_ripple"
+				android:fontFamily="@font/font_nunito_regular"
+				android:gravity="center"
+				android:text="@string/welcome_activity_register_button_text"
+				android:textColor="@color/welcome_activity_register_button_text_color_selector"
+				android:textSize="@dimen/welcome_activity_register_button_text_size"
+				app:layout_constraintLeft_toLeftOf="parent"
+				app:layout_constraintRight_toRightOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				tools:layout_editor_absoluteX="91dp"
+				tools:layout_editor_absoluteY="405dp"/>
+		
+			<Button
+				android:id="@+id/login_button"
+				android:layout_width="@dimen/welcome_activity_login_button_width"
+				android:layout_height="@dimen/welcome_activity_login_button_height"
+				android:layout_marginTop="@dimen/welcome_activity_login_button_margin_top"
+				android:background="@drawable/welcome_activity_login_button_ripple"
+				android:fontFamily="@font/font_nunito_regular"
+				android:gravity="center"
+				android:text="@string/welcome_activity_login_button_text"
+				android:textColor="#FFFFFF"
+				android:textSize="@dimen/welcome_activity_login_button_text_size"
+				app:layout_constraintLeft_toLeftOf="parent"
+				app:layout_constraintRight_toRightOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				tools:layout_editor_absoluteX="62dp"
+				tools:layout_editor_absoluteY="454dp"/>
+		
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/social_constraint_layout"
+				android:layout_width="@dimen/welcome_activity_social_constraint_layout_width"
+				android:layout_height="@dimen/welcome_activity_social_constraint_layout_height"
+				android:layout_marginTop="@dimen/welcome_activity_social_constraint_layout_margin_top"
+				app:layout_constraintLeft_toLeftOf="parent"
+				app:layout_constraintRight_toRightOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				tools:layout_editor_absoluteX="69dp"
+				tools:layout_editor_absoluteY="543dp">
+			
+				<ImageButton
+					android:id="@+id/g_button"
+					android:layout_width="@dimen/welcome_activity_g_button_width"
+					android:layout_height="@dimen/welcome_activity_g_button_height"
+					android:layout_marginEnd="@dimen/welcome_activity_g_button_margin_end"
+					android:background="@drawable/welcome_activity_g_button_ripple"
+					android:src="@drawable/g"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintRight_toRightOf="parent"
+					app:layout_constraintTop_toTopOf="parent"
+					tools:layout_editor_absoluteX="103dp"
+					tools:layout_editor_absoluteY="0dp"/>
+			
+				<ImageButton
+					android:id="@+id/facebook_button"
+					android:layout_width="@dimen/welcome_activity_facebook_button_width"
+					android:layout_height="@dimen/welcome_activity_facebook_button_height"
+					android:layout_marginStart="@dimen/welcome_activity_facebook_button_margin_start"
+					android:background="@drawable/welcome_activity_facebook_button_ripple"
+					android:src="@drawable/symbol_3__3"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintLeft_toLeftOf="parent"
+					app:layout_constraintTop_toTopOf="parent"
+					tools:layout_editor_absoluteX="34dp"
+					tools:layout_editor_absoluteY="0dp"/>
+			</androidx.constraintlayout.widget.ConstraintLayout>
+		</androidx.constraintlayout.widget.ConstraintLayout>
+	
+		<ImageView
+			android:id="@+id/dicov2_image_view"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginEnd="@dimen/welcome_activity_dicov2_image_view_margin_end"
+			android:layout_marginTop="@dimen/welcome_activity_dicov2_image_view_margin_top"
+			android:scaleType="centerCrop"
+			android:src="@drawable/dicov2"
+			app:layout_constraintRight_toRightOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			tools:layout_editor_absoluteX="81dp"
+			tools:layout_editor_absoluteY="34dp"/>
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

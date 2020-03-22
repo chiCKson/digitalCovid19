@@ -1,0 +1,98 @@
+<resources>
+	
+	<!-- Project level resources -->
+	<color name="color_primary">#000000</color>
+	<color name="color_click_overlay">#555555</color>
+	<color name="color_primary_dark">#000000</color>
+	<color name="material_bottom_sheet_title">#0000008A</color>
+	<color name="material_bottom_sheet_item">#000000DE</color>
+	<color name="color_hint_text">#D0D1D5</color>
+	<color name="color_accent">#000000</color>
+	
+	<!-- Resources for RegisterActivity -->
+	<color name="register_activity_nic_number_text_view_text_color">#309D58</color>
+	<color name="register_activity_please_let_us_know_ytext_view_text_color">#309D58</color>
+	<color name="register_activity_password_edit_text_border_color">#9151AD5F</color>
+	<color name="register_activity_mobile_edit_text_border_color">#9151AD5F</color>
+	<color name="register_activity_name_edit_text_border_color">#9151AD5F</color>
+	<color name="register_activity_constraint_layout_constraint_layout_background_color">#FFFFFF</color>
+	<color name="register_activity_email_edit_text_border_color">#9151AD5F</color>
+	<color name="register_activity_name_text_view_text_color">#309D58</color>
+	<color name="register_activity_mobile_text_view_text_color">#309D58</color>
+	<color name="register_activity_divider_two_constraint_layout_background_color">#7051AD5F</color>
+	<color name="register_activity_email_text_view_text_color">#309D58</color>
+	<color name="register_activity_password_text_view_text_color">#309D58</color>
+	<color name="register_activity_divider_constraint_layout_background_color">#7051AD5F</color>
+	<color name="register_activity_nic_edit_text_border_color">#9151AD5F</color>
+	
+	<!-- Resources for AddEventModalActivity -->
+	<color name="add_event_modal_activity_eventname_edit_text_border_color">#4FAB5E</color>
+	<color name="add_event_modal_activity_login_two_button_border_color">#4FAB5E</color>
+	<color name="add_event_modal_activity_close_button_text_color">#000000</color>
+	<color name="add_event_modal_activity_constraint_layout_constraint_layout_background_color">#FFFFFF</color>
+	<color name="add_event_modal_activity_location_edit_text_border_color">#4FAB5E</color>
+	
+	<!-- Resources for SymptomActivity -->
+	<color name="symptom_activity_no_button_background_color">#00FFFFFF</color>
+	<color name="symptom_activity_yes_button_background_color">#00FFFFFF</color>
+	<color name="symptom_activity_yes_button_border_color">#FFFFFF</color>
+	<color name="symptom_activity_no_button_border_color">#FFFFFF</color>
+	
+	<!-- Resources for WelcomeActivity -->
+	<color name="welcome_activity_g_button_border_color">#FFFFFF</color>
+	<color name="welcome_activity_register_button_border_color">#FFFFFF</color>
+	<color name="welcome_activity_g_button_text_color">#000000</color>
+	<color name="welcome_activity_facebook_button_border_color">#FFFFFF</color>
+	<color name="welcome_activity_login_button_border_color">#FFFFFF</color>
+	<color name="welcome_activity_register_button_text_color">#349F59</color>
+	<color name="welcome_activity_constraint_layout_constraint_layout_background_color">#FFFFFF</color>
+	<color name="welcome_activity_facebook_button_text_color">#000000</color>
+	
+	<!-- Resources for HomeActivity -->
+	<color name="home_activity_profilesectionbackground_constraint_layout_border_color">#4FAB5E</color>
+	<color name="home_activity_round_btn_pressed_li_button_text_color">#000000</color>
+	<color name="home_activity_constraint_layout_constraint_layout_background_color">#FFFFFF</color>
+	<color name="home_activity_profile_image_view_border_color">#FFFFFF</color>
+	
+	<!-- Resources for AddTransportModalActivity -->
+	<color name="add_transport_modal_activity_date_button_border_color">#4FAB5E</color>
+	<color name="add_transport_modal_activity_constraint_layout_constraint_layout_background_color">#FFFFFF</color>
+	<color name="add_transport_modal_activity_route_edit_text_border_color">#4FAB5E</color>
+	<color name="add_transport_modal_activity_busnumber_edit_text_border_color">#4FAB5E</color>
+	
+	<!-- Resources for SignInActivity -->
+	<color name="sign_in_activity_login_button_text_color">#349F59</color>
+	<color name="sign_in_activity_email_edit_text_border_color">#FFFFFF</color>
+	<color name="sign_in_activity_password_edit_text_border_color">#FFFFFF</color>
+	<color name="sign_in_activity_password_edit_text_background_color">#00000000</color>
+	<color name="sign_in_activity_g_button_border_color">#FFFFFF</color>
+	<color name="sign_in_activity_email_edit_text_background_color">#00000000</color>
+	<color name="sign_in_activity_register_button_background_color">#00FFFFFF</color>
+	<color name="sign_in_activity_register_button_border_color">#FFFFFF</color>
+	<color name="sign_in_activity_facebook_button_text_color">#000000</color>
+	<color name="sign_in_activity_login_button_border_color">#FFFFFF</color>
+	<color name="sign_in_activity_facebook_button_border_color">#FFFFFF</color>
+	<color name="sign_in_activity_g_button_text_color">#000000</color>
+	
+	<!-- Resources for ActivityModelActivity -->
+	<color name="activity_model_activity_transport_button_border_color">#4FAB5E</color>
+	<color name="activity_model_activity_event_button_border_color">#4FAB5E</color>
+	<color name="activity_model_activity_close_button_text_color">#000000</color>
+	<color name="activity_model_activity_constraint_layout_constraint_layout_background_color">#FFFFFF</color>
+	
+	<!-- Resources for AddLocationActivity -->
+	<color name="add_location_activity_constraint_layout_constraint_layout_background_color">#FFFFFF</color>
+	<color name="add_location_activity_datepicklocation_button_border_color">#4FAB5E</color>
+	<color name="add_location_activity_location_edit_text_border_color">#4FAB5E</color>
+	<color name="add_location_activity_close_button_text_color">#000000</color>
+	
+	<!-- Resources for SymptomsSecondActivity -->
+	<color name="symptoms_second_activity_feverswitch_switch_thumb_tint_color">#FFFFFF</color>
+	<color name="symptoms_second_activity_coughswitch_switch_thumb_tint_color">#FFFFFF</color>
+	<color name="symptoms_second_activity_constraint_layout_constraint_layout_background_color">#FFFFFF</color>
+	<color name="symptoms_second_activity_feverswitch_switch_border_color">#004FAB5E</color>
+	<color name="symptoms_second_activity_sorethroatswitch_switch_border_color">#004FAB5E</color>
+	<color name="symptoms_second_activity_headacheswitch_switch_thumb_tint_color">#FFFFFF</color>
+	<color name="symptoms_second_activity_breathingdifficultiesswitch_switch_thumb_tint_color">#FFFFFF</color>
+	<color name="symptoms_second_activity_sorethroatswitch_switch_thumb_tint_color">#FFFFFF</color>
+</resources>

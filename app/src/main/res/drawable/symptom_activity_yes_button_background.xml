@@ -1,0 +1,10 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<stroke
+		android:color="@color/symptom_activity_yes_button_border_color"
+		android:width="@dimen/symptom_activity_yes_button_border_size"/>
+
+	<corners android:radius="@dimen/symptom_activity_yes_button_radius"/>
+
+	<solid android:color="@color/symptom_activity_yes_button_background_color"/>
+</shape>

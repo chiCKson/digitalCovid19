@@ -1,0 +1,6 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<corners android:radius="@dimen/symptoms_second_activity_addsymptoms_button_radius"/>
+
+	<solid android:color="#4FAB5E"/>
+</shape>

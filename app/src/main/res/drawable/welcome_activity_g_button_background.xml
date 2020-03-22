@@ -1,0 +1,8 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<stroke
+		android:color="@color/welcome_activity_g_button_border_color"
+		android:width="@dimen/welcome_activity_g_button_border_size"/>
+
+	<corners android:radius="@dimen/welcome_activity_g_button_radius"/>
+</shape>

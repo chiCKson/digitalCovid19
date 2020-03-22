@@ -1,0 +1,10 @@
+<ripple
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:color="@color/color_click_overlay">
+
+	<item
+		android:id="@android:id/mask"
+		android:drawable="@drawable/home_activity_round_btn_pressed_li_button_background"/>
+
+	<item android:drawable="@drawable/home_activity_round_btn_pressed_li_button_background"/>
+</ripple>

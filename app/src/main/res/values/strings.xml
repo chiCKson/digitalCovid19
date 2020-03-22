@@ -1,0 +1,137 @@
+<resources>
+
+    <!-- Project level resources -->
+    <string name="app_name">digitalCovid19</string>
+    <string name="add_location_activity_menu_item_title">Item</string>
+    <string name="symptom_activity_menu_item_title">Item</string>
+
+    <!-- Resources for SymptomActivity -->
+    <string name="symptom_activity_yes_button_hint">Yes</string>
+    <string name="symptom_activity_are_you_been_abroad_text_view_text">Are you\n been abroad\nin last few\nweeks?</string>
+    <string name="symptom_activity_no_button_hint">No</string>
+    <string name="symptom_activity_no_button_text">No</string>
+    <string name="symptom_activity_are_you_been_abroad_text_view_hint">Are you\n been abroad\nin last few\nweeks?</string>
+    <string name="symptom_activity_yes_button_text">Yes</string>
+
+    <!-- Resources for SymptomsSecondActivity -->
+    <string name="symptoms_second_activity_cough_text_view_text">Cough</string>
+    <string name="symptoms_second_activity_addsymptoms_button_hint">Add symptoms</string>
+    <string name="symptoms_second_activity_addsymptoms_button_text">Add symptoms</string>
+    <string name="symptoms_second_activity_breathing_difficulti_text_view_text">Breathing difficulties</string>
+    <string name="symptoms_second_activity_fever_text_view_hint">Fever</string>
+    <string name="symptoms_second_activity_sore_throat_text_view_hint">Sore throat</string>
+    <string name="symptoms_second_activity_my_symptoms_text_view_hint">My symptoms</string>
+    <string name="symptoms_second_activity_my_symptoms_text_view_text">My symptoms</string>
+    <string name="symptoms_second_activity_breathing_difficulti_text_view_hint">Breathing difficulties</string>
+    <string name="symptoms_second_activity_sore_throat_text_view_text">Sore throat</string>
+    <string name="symptoms_second_activity_headache_text_view_text">Headache</string>
+    <string name="symptoms_second_activity_cough_text_view_hint">Cough</string>
+    <string name="symptoms_second_activity_fever_text_view_text">Fever</string>
+    <string name="symptoms_second_activity_headache_text_view_hint">Headache</string>
+
+    <!-- Resources for AddEventModalActivity -->
+    <string name="add_event_modal_activity_location_edit_text_hint">Start entering the location</string>
+    <string name="add_event_modal_activity_login_two_button_text">Pick a date</string>
+    <string name="add_event_modal_activity_eventname_edit_text_hint">Live in Concert</string>
+    <string name="add_event_modal_activity_date_text_view_text">Date</string>
+    <string name="add_event_modal_activity_login_button_text">Add event</string>
+    <string name="add_event_modal_activity_attending_an_event_text_view_hint">Attending an event</string>
+    <string name="add_event_modal_activity_location_text_view_text">Location</string>
+    <string name="add_event_modal_activity_location_text_view_hint">Location</string>
+    <string name="add_event_modal_activity_login_button_hint">Add event</string>
+    <string name="add_event_modal_activity_attending_an_event_text_view_text">Attending an event</string>
+    <string name="add_event_modal_activity_event_name_text_view_text">Event Name</string>
+    <string name="add_event_modal_activity_event_name_text_view_hint">Event Name</string>
+    <string name="add_event_modal_activity_date_text_view_hint">Date</string>
+    <string name="add_event_modal_activity_login_two_button_hint">Pick a date</string>
+
+    <!-- Resources for WelcomeActivity -->
+    <string name="welcome_activity_digital_covid19_text_view_text">Digital COVID-19</string>
+    <string name="welcome_activity_digital_covid19_text_view_hint">Digital COVID-19</string>
+    <string name="welcome_activity_keeping_you_safer_text_view_text">Keeping You Safer</string>
+    <string name="welcome_activity_login_button_text">Login</string>
+    <string name="welcome_activity_register_button_text">Register</string>
+    <string name="welcome_activity_keeping_you_safer_text_view_hint">Keeping You Safer</string>
+    <string name="welcome_activity_register_button_hint">Register</string>
+    <string name="welcome_activity_login_button_hint">Login</string>
+
+    <!-- Resources for AddTransportModalActivity -->
+    <string name="add_transport_modal_activity_my_transports_text_view_hint">My transports</string>
+    <string name="add_transport_modal_activity_busnumber_edit_text_hint">if you have</string>
+    <string name="add_transport_modal_activity_bus_number_text_view_text">Bus number</string>
+    <string name="add_transport_modal_activity_route_text_view_text">Route</string>
+    <string name="add_transport_modal_activity_addtransport_button_text">Add transport</string>
+    <string name="add_transport_modal_activity_route_edit_text_hint">route number</string>
+    <string name="add_transport_modal_activity_date_button_text">pick a date</string>
+    <string name="add_transport_modal_activity_date_text_view_text">Date</string>
+    <string name="add_transport_modal_activity_date_button_hint">pick a date</string>
+    <string name="add_transport_modal_activity_bus_number_text_view_hint">Bus number</string>
+    <string name="add_transport_modal_activity_date_text_view_hint">Date</string>
+    <string name="add_transport_modal_activity_route_text_view_hint">Route</string>
+    <string name="add_transport_modal_activity_my_transports_text_view_text">My transports</string>
+    <string name="add_transport_modal_activity_addtransport_button_hint">Add transport</string>
+
+    <!-- Resources for HomeActivity -->
+    <string name="home_activity_john_smith_text_view_hint">John Smith</string>
+    <string name="home_activity_safe_text_view_text">Safe</string>
+    <string name="home_activity_safe_text_view_hint">Safe</string>
+    <string name="home_activity_john_smith_text_view_text">John Smith</string>
+
+    <!-- Resources for ActivityModelActivity -->
+    <string name="activity_model_activity_transport_button_text">Transport</string>
+    <string name="activity_model_activity_transport_button_hint">Transport</string>
+    <string name="activity_model_activity_my_transports_text_view_hint">Activities</string>
+    <string name="activity_model_activity_transport_button_sheet_item_2_text">Private</string>
+    <string name="activity_model_activity_my_transports_text_view_text">Activities</string>
+    <string name="activity_model_activity_transport_button_sheet_title">Transport Type</string>
+    <string name="activity_model_activity_location_button_hint">Location</string>
+    <string name="activity_model_activity_event_button_hint">Event</string>
+    <string name="activity_model_activity_event_button_text">Event</string>
+    <string name="activity_model_activity_transport_button_sheet_item_1_text">Public</string>
+    <string name="activity_model_activity_location_button_text">Location</string>
+
+    <!-- Resources for RegisterActivity -->
+    <string name="register_activity_name_edit_text_hint">John Smith</string>
+    <string name="register_activity_nic_number_text_view_hint">NIC number</string>
+    <string name="register_activity_name_text_view_hint">Name</string>
+    <string name="register_activity_password_edit_text_hint">●●●●●●●</string>
+    <string name="register_activity_register_button_text">Continue</string>
+    <string name="register_activity_please_let_us_know_ytext_view_text">Please let us know you</string>
+    <string name="register_activity_mobile_edit_text_hint">071 234 5678</string>
+    <string name="register_activity_nic_number_text_view_text">NIC number</string>
+    <string name="register_activity_password_text_view_text">Password</string>
+    <string name="register_activity_email_text_view_hint">Email</string>
+    <string name="register_activity_please_let_us_know_ytext_view_hint">Please let us know you</string>
+    <string name="register_activity_email_text_view_text">Email</string>
+    <string name="register_activity_name_text_view_text">Name</string>
+    <string name="register_activity_password_text_view_hint">Password</string>
+    <string name="register_activity_email_edit_text_hint">jsmith@gmail.com</string>
+    <string name="register_activity_nic_edit_text_hint">961234567v</string>
+    <string name="register_activity_mobile_text_view_hint">Mobile</string>
+    <string name="register_activity_mobile_text_view_text">Mobile</string>
+    <string name="register_activity_register_button_hint">Continue</string>
+
+    <!-- Resources for AddLocationActivity -->
+    <string name="add_location_activity_my_transports_text_view_text">Add Location</string>
+    <string name="add_location_activity_login_button_text">Add Location</string>
+    <string name="add_location_activity_bus_number_text_view_hint">Where?</string>
+    <string name="add_location_activity_location_edit_text_hint">Start entering the place</string>
+    <string name="add_location_activity_datepicklocation_button_text">Pick a date</string>
+    <string name="add_location_activity_login_button_hint">Add Location</string>
+    <string name="add_location_activity_route_text_view_hint">When?</string>
+    <string name="add_location_activity_bus_number_text_view_text">Where?</string>
+    <string name="add_location_activity_route_text_view_text">When?</string>
+    <string name="add_location_activity_datepicklocation_button_hint">Pick a date</string>
+    <string name="add_location_activity_my_transports_text_view_hint">Add Location</string>
+
+    <!-- Resources for SignInActivity -->
+    <string name="sign_in_activity_login_button_text">Login</string>
+    <string name="sign_in_activity_forgot_password_text_view_hint">Forgot Password?</string>
+    <string name="sign_in_activity_login_button_hint">Login</string>
+    <string name="sign_in_activity_password_edit_text_hint">●●●●●●●</string>
+    <string name="sign_in_activity_register_button_hint">Register</string>
+    <string name="sign_in_activity_email_edit_text_hint">johnsmith@gmail.com</string>
+    <string name="sign_in_activity_forgot_password_text_view_text">Forgot Password?</string>
+    <string name="sign_in_activity_register_button_text">Register</string>
+    <string name="title_activity_maps">Map</string>
+</resources>

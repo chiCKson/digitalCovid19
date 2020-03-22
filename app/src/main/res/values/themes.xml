@@ -1,0 +1,54 @@
+<resources>
+	
+	<!-- Project level resources -->
+	<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+		<item name="colorPrimary">@color/color_primary</item>
+		<item name="colorPrimaryDark">@color/color_primary_dark</item>
+		<item name="colorAccent">@color/color_accent</item>
+	</style>
+	
+	<!-- WelcomeActivity -->
+	<style name="WelcomeActivityTheme" parent="Theme.AppCompat.NoActionBar"/>
+	
+	<!-- AddLocationActivity -->
+	<style name="AddLocationActivityTheme" parent="Theme.AppCompat.NoActionBar"/>
+	
+	<!-- ActivityModelActivity -->
+	<style name="ActivityModelActivityTheme" parent="Theme.AppCompat.NoActionBar"/>
+	
+	<!-- SignInActivity -->
+	<style name="SignInActivityTheme" parent="Theme.AppCompat.NoActionBar"/>
+	
+	<!-- HomeActivity -->
+	<style name="HomeActivityTheme" parent="Theme.AppCompat.NoActionBar"/>
+	
+	<!-- SymptomActivity -->
+	<style name="SymptomActivityTheme" parent="Theme.AppCompat.NoActionBar"/>
+	
+	<!-- AddEventModalActivity -->
+	<style name="AddEventModalActivityTheme" parent="Theme.AppCompat.NoActionBar"/>
+	
+	<!-- AddTransportModalActivity -->
+	<style name="AddTransportModalActivityTheme" parent="Theme.AppCompat.NoActionBar"/>
+	
+	<!-- SymptomsSecondActivity -->
+	<style name="SymptomsSecondActivityTheme" parent="Theme.AppCompat.NoActionBar"/>
+	<style name="SymptomsSecondActivityBreathingdifficultiesswitchSwitchTheme">
+		<item name="colorControlActivated">#A14FAB5E</item>
+	</style>
+	<style name="SymptomsSecondActivityHeadacheswitchSwitchTheme">
+		<item name="colorControlActivated">#A14FAB5E</item>
+	</style>
+	<style name="SymptomsSecondActivityCoughswitchSwitchTheme">
+		<item name="colorControlActivated">#A14FAB5E</item>
+	</style>
+	<style name="SymptomsSecondActivitySorethroatswitchSwitchTheme">
+		<item name="colorControlActivated">#A14FAB5E</item>
+	</style>
+	<style name="SymptomsSecondActivityFeverswitchSwitchTheme">
+		<item name="colorControlActivated">#A14FAB5E</item>
+	</style>
+	
+	<!-- RegisterActivity -->
+	<style name="RegisterActivityTheme" parent="Theme.AppCompat.NoActionBar"/>
+</resources>

@@ -1,0 +1,74 @@
+<layout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+
+	<data/>
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:id="@+id/constraint_layout_constraint_layout"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="#4FAB5E">
+	
+		<TextView
+			android:id="@+id/are_you_been_abroad_text_view"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/symptom_activity_are_you_been_abroad_text_view_margin_top"
+			android:fontFamily="@font/font_nunito_regular"
+			android:gravity="center"
+			android:text="@string/symptom_activity_are_you_been_abroad_text_view_text"
+			android:textColor="#FFFFFF"
+			android:textSize="@dimen/symptom_activity_are_you_been_abroad_text_view_text_size"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toRightOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			tools:layout_editor_absoluteX="38dp"
+			tools:layout_editor_absoluteY="51dp"/>
+	
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:id="@+id/answerssection_constraint_layout"
+			android:layout_width="@dimen/symptom_activity_answerssection_constraint_layout_width"
+			android:layout_height="@dimen/symptom_activity_answerssection_constraint_layout_height"
+			android:layout_marginBottom="@dimen/symptom_activity_answerssection_constraint_layout_margin_bottom"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toRightOf="parent"
+			tools:layout_editor_absoluteX="59dp"
+			tools:layout_editor_absoluteY="408dp">
+		
+			<Button
+				android:id="@+id/no_button"
+				android:layout_width="@dimen/symptom_activity_no_button_width"
+				android:layout_height="@dimen/symptom_activity_no_button_height"
+				android:background="@drawable/symptom_activity_no_button_ripple"
+				android:fontFamily="@font/font_nunito_regular"
+				android:gravity="center"
+				android:text="@string/symptom_activity_no_button_text"
+				android:textColor="#FFFFFF"
+				android:textSize="@dimen/symptom_activity_no_button_text_size"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintRight_toRightOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				tools:layout_editor_absoluteX="135dp"
+				tools:layout_editor_absoluteY="0dp"/>
+		
+			<Button
+				android:id="@+id/yes_button"
+				android:layout_width="@dimen/symptom_activity_yes_button_width"
+				android:layout_height="@dimen/symptom_activity_yes_button_height"
+				android:background="@drawable/symptom_activity_yes_button_ripple"
+				android:fontFamily="@font/font_nunito_regular"
+				android:gravity="center"
+				android:text="@string/symptom_activity_yes_button_text"
+				android:textColor="#FFFFFF"
+				android:textSize="@dimen/symptom_activity_yes_button_text_size"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintLeft_toLeftOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				tools:layout_editor_absoluteX="0dp"
+				tools:layout_editor_absoluteY="0dp"/>
+		</androidx.constraintlayout.widget.ConstraintLayout>
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
