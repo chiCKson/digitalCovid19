@@ -2,10 +2,13 @@ package com.company_name.digital_covid19.activity
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.res.Resources
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.company_name.digital_covid19.R
+import com.company_name.digital_covid19.methods.Methods
+import com.company_name.digital_covid19.models.User
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -14,6 +17,8 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
+import com.sdsmdg.tastytoast.TastyToast
 import kotlinx.android.synthetic.main.activity_maps.*
 
 
@@ -28,10 +33,22 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
     private lateinit var mMap: GoogleMap
     private lateinit var mAuth: FirebaseAuth
+    private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var database: DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
+        sharedPreferences=this.getSharedPreferences("digitalCovidPrefs",0)
+        val obj= Methods()
         mAuth = FirebaseAuth.getInstance()
+        val nic=obj.readSharedPreferences("currentUserNic",sharedPreferences)
+        database = FirebaseDatabase.getInstance().getReference("users/$nic")
+        if (mAuth.currentUser==null)
+            this.signOut()
+        else{
+            this.getUserData()
+
+        }
         round_btn_pressed_li_button.setOnClickListener {
             this.onRoundBtnPressedLiPressed()
         }
@@ -39,12 +56,29 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             this.signOut()
         }
 
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
                 .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
     }
+    private fun getUserData(){
+        val userListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
 
+                val user = dataSnapshot.getValue(User::class.java)
+                john_smith_text_view.text= user!!.username
+
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                val e=databaseError.toException()
+                TastyToast.makeText(applicationContext, "Error occured while reading database.$e",
+                        TastyToast.LENGTH_LONG, TastyToast.ERROR)
+            }
+        }
+        database.addValueEventListener(userListener)
+    }
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.

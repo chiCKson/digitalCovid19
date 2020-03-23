@@ -68,6 +68,7 @@ class RegisterActivity: AppCompatActivity() {
 	private fun writeNewUser( nic:String,name: String, email: String,mobile:String) {
 		val obj= Methods()
 		obj.addSharedPreference("currentUserNic",nic,sharedPreferences)
+		obj.addSharedPreference("currentUserName",name,sharedPreferences)
 		val user = User(name, email,nic,mobile)
 		database.child("users").child(nic).setValue(user)
 	}
@@ -101,7 +102,8 @@ class RegisterActivity: AppCompatActivity() {
 						this.writeNewUser(nic,name,email,mobile)
 						this.startSymptomActivity()
 					} else {
-						TastyToast.makeText(applicationContext, "Authentication failed.${task.exception}", TastyToast.LENGTH_LONG, TastyToast.ERROR)
+						TastyToast.makeText(applicationContext, "Authentication failed.${task.exception}",
+								TastyToast.LENGTH_LONG, TastyToast.ERROR)
 
 					}
 

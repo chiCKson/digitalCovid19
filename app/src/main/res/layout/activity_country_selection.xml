@@ -1,0 +1,49 @@
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_layout_constraint_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#4FAB5E">
+
+        <TextView
+            android:id="@+id/are_you_been_abroad_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/symptom_activity_are_you_been_abroad_text_view_margin_top"
+            android:fontFamily="@font/font_nunito_regular"
+            android:gravity="center"
+            android:text="@string/then_which_country_you_have_been"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/symptom_activity_are_you_been_abroad_text_view_text_size"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="38dp"
+            tools:layout_editor_absoluteY="51dp"/>
+        <AutoCompleteTextView
+            android:id="@+id/country_edit_text"
+            android:layout_width="@dimen/sign_in_activity_email_edit_text_width"
+            android:layout_height="@dimen/sign_in_activity_email_edit_text_height"
+            android:background="@drawable/sign_in_activity_email_edit_text_background"
+            android:fontFamily="@font/font_nunito_regular"
+
+            android:hint="Start typing country"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:textColor="#FFFFFF"
+            android:textColorHint="@color/color_hint_text"
+            android:textSize="@dimen/sign_in_activity_email_edit_text_text_size"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/are_you_been_abroad_text_view"
+            tools:layout_editor_absoluteX="3dp"
+            tools:layout_editor_absoluteY="0dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

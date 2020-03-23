@@ -84,6 +84,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/font_nunito_semibold"
+                android:layout_marginTop="@dimen/home_activity_john_smith_text_view_margin_top"
                 android:gravity="start"
                 android:text="@string/home_activity_safe_text_view_text"
                 android:textColor="#FFFFFF"

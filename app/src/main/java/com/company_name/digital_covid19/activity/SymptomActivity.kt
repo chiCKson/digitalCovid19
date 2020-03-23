@@ -51,15 +51,19 @@ class SymptomActivity: AppCompatActivity() {
 	
 	private fun onNoPressed() {
 	
-		this.startSymptomsSecondActivity()
+		this.startSymptomsSecondActivity(false)
 	}
 	
 	private fun onYesPressed() {
-	
+		this.startCountrySelectActivity()
 	}
 	
-	private fun startSymptomsSecondActivity() {
+	private fun startSymptomsSecondActivity(abroaded:Boolean) {
 	
-		this.startActivity(SymptomsSecondActivity.newIntent(this))
+		this.startActivity(SymptomsSecondActivity.newIntent(this,abroaded,""))
+	}
+	private fun startCountrySelectActivity() {
+
+		this.startActivity(CountrySelectionActivity.newIntent(this))
 	}
 }

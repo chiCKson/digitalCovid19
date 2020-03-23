@@ -28,10 +28,15 @@ import com.sdsmdg.tastytoast.TastyToast
 class SymptomsSecondActivity: AppCompatActivity() {
 
 	companion object {
-
-		fun newIntent(context: Context): Intent {
-
+		var valueAbroad:Boolean=false
+		var valueCountry:String=""
+		fun newIntent(context: Context,abroaded:Boolean,country:String): Intent {
+			valueAbroad=abroaded
+			valueCountry=country
 			return Intent(context, SymptomsSecondActivity::class.java)
+		}
+		fun getValue():Boolean{
+			return valueAbroad
 		}
 
 	}
@@ -44,6 +49,7 @@ class SymptomsSecondActivity: AppCompatActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
 
 		super.onCreate(savedInstanceState)
+		symptom=Symptom()
 		binding = DataBindingUtil.setContentView(this, R.layout.symptoms_second_activity)
 		database = FirebaseDatabase.getInstance().reference
 		val obj= Methods()
@@ -59,7 +65,9 @@ class SymptomsSecondActivity: AppCompatActivity() {
 	}
 	
 	private fun init() {
-		symptom.abroad = false
+		symptom.abroad= getValue()
+		if (getValue())
+			symptom.country = valueCountry
 		// Configure addSymptoms component
 		binding.addsymptomsButton.setOnClickListener {
 			this.onAddSymptomsPressed()
@@ -122,4 +130,5 @@ class SymptomsSecondActivity: AppCompatActivity() {
 	
 		this.startActivity(MapsActivity.newIntent(this))
 	}
+
 }

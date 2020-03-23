@@ -6,6 +6,6 @@ import com.google.firebase.database.IgnoreExtraProperties
 data class User(
         var username: String? = "",
         var email: String? = "",
-        var nic:String?,
-        var mobile:String?
+        var nic:String?="",
+        var mobile:String?=""
 )
