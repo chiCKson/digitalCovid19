@@ -129,6 +129,7 @@ class SymptomsSecondActivity: AppCompatActivity() {
 	private fun startHomeActivity() {
 	
 		this.startActivity(MapsActivity.newIntent(this))
+		finish()
 	}
 
 }

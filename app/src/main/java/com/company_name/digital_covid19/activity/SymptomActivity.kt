@@ -61,9 +61,11 @@ class SymptomActivity: AppCompatActivity() {
 	private fun startSymptomsSecondActivity(abroaded:Boolean) {
 	
 		this.startActivity(SymptomsSecondActivity.newIntent(this,abroaded,""))
+		finish()
 	}
 	private fun startCountrySelectActivity() {
 
 		this.startActivity(CountrySelectionActivity.newIntent(this))
+		finish()
 	}
 }

@@ -26,6 +26,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.sdsmdg.tastytoast.TastyToast
+import io.github.pierry.progress.Progress
 
 
 class RegisterActivity: AppCompatActivity() {
@@ -43,11 +44,15 @@ class RegisterActivity: AppCompatActivity() {
 	private lateinit var mAuth: FirebaseAuth
 	private lateinit var database: DatabaseReference
 	private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var methodObj:Methods
+    private lateinit var progressDialog: Progress
 	override fun onCreate(savedInstanceState: Bundle?) {
 	
 		super.onCreate(savedInstanceState)
 		mAuth = FirebaseAuth.getInstance()
 		database = FirebaseDatabase.getInstance().reference
+        methodObj= Methods()
+        progressDialog=methodObj.progressDialog(this)
 		binding = DataBindingUtil.setContentView(this, R.layout.register_activity)
 
 
@@ -66,9 +71,9 @@ class RegisterActivity: AppCompatActivity() {
 		return true
 	}
 	private fun writeNewUser( nic:String,name: String, email: String,mobile:String) {
-		val obj= Methods()
-		obj.addSharedPreference("currentUserNic",nic,sharedPreferences)
-		obj.addSharedPreference("currentUserName",name,sharedPreferences)
+
+        methodObj.addSharedPreference("currentUserNic",nic,sharedPreferences)
+        methodObj.addSharedPreference("currentUserName",name,sharedPreferences)
 		val user = User(name, email,nic,mobile)
 		database.child("users").child(nic).setValue(user)
 	}
@@ -76,6 +81,7 @@ class RegisterActivity: AppCompatActivity() {
 
 		// Configure Register component
 		binding.registerButton.setOnClickListener {
+            methodObj.progressDialogShow(progressDialog,"Please Wait! Registering to our servers.")
 			this.onRegisterPressed()
 		}
 	}
@@ -100,8 +106,11 @@ class RegisterActivity: AppCompatActivity() {
 					if (task.isSuccessful) {
 						val user = mAuth.currentUser
 						this.writeNewUser(nic,name,email,mobile)
+                        methodObj.progressDialogDismiss(progressDialog)
 						this.startSymptomActivity()
+						finish()
 					} else {
+                        methodObj.progressDialogDismiss(progressDialog)
 						TastyToast.makeText(applicationContext, "Authentication failed.${task.exception}",
 								TastyToast.LENGTH_LONG, TastyToast.ERROR)
 

@@ -19,6 +19,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.sdsmdg.tastytoast.TastyToast
+import io.github.pierry.progress.Progress
 import kotlinx.android.synthetic.main.activity_maps.*
 
 
@@ -35,13 +36,17 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var mAuth: FirebaseAuth
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var database: DatabaseReference
+    private lateinit var methodObj:Methods
+    private lateinit var progressDialog: Progress
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
         sharedPreferences=this.getSharedPreferences("digitalCovidPrefs",0)
-        val obj= Methods()
+        methodObj= Methods()
+        progressDialog=methodObj.progressDialog(this)
         mAuth = FirebaseAuth.getInstance()
-        val nic=obj.readSharedPreferences("currentUserNic",sharedPreferences)
+        val nic=methodObj.readSharedPreferences("currentUserNic",sharedPreferences)
+        methodObj.progressDialogShow(progressDialog,"Please Wait! Setting the Application.")
         database = FirebaseDatabase.getInstance().getReference("users/$nic")
         if (mAuth.currentUser==null)
             this.signOut()
@@ -68,11 +73,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
                 val user = dataSnapshot.getValue(User::class.java)
                 john_smith_text_view.text= user!!.username
+                methodObj.progressDialogDismiss(progressDialog)
 
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
                 val e=databaseError.toException()
+                methodObj.progressDialogDismiss(progressDialog)
                 TastyToast.makeText(applicationContext, "Error occured while reading database.$e",
                         TastyToast.LENGTH_LONG, TastyToast.ERROR)
             }

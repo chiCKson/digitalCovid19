@@ -63,4 +63,7 @@ dependencies {
 
     //custom Toast
     implementation 'com.sdsmdg.tastytoast:tastytoast:0.1.1'
+
+    //custom progressdialog
+    implementation 'com.github.Pierry:Progress:1.5'
 }

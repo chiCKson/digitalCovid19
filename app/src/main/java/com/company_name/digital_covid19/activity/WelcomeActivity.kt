@@ -91,14 +91,17 @@ class WelcomeActivity: AppCompatActivity() {
 	private fun startSignInActivity() {
 	
 		this.startActivity(SignInActivity.newIntent(this))
+		finish()
 	}
 	private fun startRegisterActivity() {
 
 		this.startActivity(RegisterActivity.newIntent(this))
+		finish()
 	}
 	private fun startHomeActivity() {
 
 		this.startActivity(MapsActivity.newIntent(this))
+		finish()
 	}
 	private fun startAnimationOne() {
 	

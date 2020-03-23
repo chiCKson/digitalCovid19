@@ -13,13 +13,16 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentActivity
 import com.company_name.digital_covid19.R
 import com.company_name.digital_covid19.databinding.SignInActivityBinding
+import com.company_name.digital_covid19.methods.Methods
 import com.google.firebase.auth.FirebaseAuth
 import com.sdsmdg.tastytoast.TastyToast
+import io.github.pierry.progress.Progress
 
 
 class SignInActivity: AppCompatActivity() {
@@ -35,10 +38,14 @@ class SignInActivity: AppCompatActivity() {
 	
 	private lateinit var binding: SignInActivityBinding
 	private lateinit var mAuth: FirebaseAuth
+	private lateinit var methodObj:Methods
+	private lateinit var progressDialog: Progress
 	override fun onCreate(savedInstanceState: Bundle?) {
 	
 		super.onCreate(savedInstanceState)
 		mAuth = FirebaseAuth.getInstance()
+		methodObj= Methods()
+		progressDialog=methodObj.progressDialog(this)
 		binding = DataBindingUtil.setContentView(this, R.layout.sign_in_activity)
 		this.init()
 	}
@@ -52,6 +59,7 @@ class SignInActivity: AppCompatActivity() {
 
 		// Configure Login component
 		binding.loginButton.setOnClickListener {
+			methodObj.progressDialogShow(progressDialog,"Please Wait! Authentiating.")
 			this.onLoginPressed()
 		}
 
@@ -94,7 +102,9 @@ class SignInActivity: AppCompatActivity() {
 						// Sign in success, update UI with the signed-in user's information
 						//Log.d(FragmentActivity.TAG, "signInWithEmail:success")
 						val user = mAuth.currentUser
+						methodObj.progressDialogDismiss(progressDialog)
 						this.startHomeActivity()
+						finish()
 					} else {
 						// If sign in fails, display a message to the user.
 
