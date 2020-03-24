@@ -79,7 +79,7 @@
 				android:fontFamily="@font/font_nunito_regular"
 				android:gravity="center"
 				android:layout_gravity="center_horizontal"
-				android:text="@string/welcome_activity_register_button_text"
+				android:text="Register Now"
 				android:textColor="@color/welcome_activity_register_button_text_color_selector"
 				android:textSize="@dimen/welcome_activity_register_button_text_size"
 			/>

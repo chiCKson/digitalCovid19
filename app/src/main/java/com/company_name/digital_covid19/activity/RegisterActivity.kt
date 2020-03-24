@@ -66,9 +66,23 @@ class RegisterActivity: AppCompatActivity() {
 			return false
 		if (binding.nicEditText.text.toString()=="")
 			return false
+		if(binding.nicEditText.text.length!=10 || binding.nicEditText.text.length!=12)
+			return false
+		if(binding.nicEditText.text.length==10){
+			if(binding.nicEditText.text[9].toString()!="V" || binding.nicEditText.text[9].toString()!="v")
+			{
+				return false
+			}
+			return true
+		}
+		if(binding.nicEditText.text.toString()=="0000000000" || binding.nicEditText.text.toString()=="000000000000")
+			return false
 		if (binding.passwordEditText.text.length<8)
 			return false
+		if(binding.mobileEditText.text.length!=10)
+			false
 		return true
+
 	}
 	private fun writeNewUser( nic:String,name: String, email: String,mobile:String) {
 

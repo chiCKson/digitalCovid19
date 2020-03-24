@@ -10,6 +10,21 @@
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:background="#4FAB5E">
+
+		<ImageView
+			android:id="@+id/promotion_image"
+			android:layout_width="154dp"
+			android:layout_height="158dp"
+			android:layout_marginStart="85dp"
+			android:layout_marginTop="50dp"
+			android:layout_marginEnd="95dp"
+			android:layout_marginBottom="20dp"
+			android:contentDescription="TODO"
+			android:scaleType="fitXY"
+			android:src="@drawable/logo"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
 	
 		<androidx.constraintlayout.widget.ConstraintLayout
 			android:id="@+id/componentsection_constraint_layout"
@@ -88,7 +103,7 @@
 				android:background="@drawable/sign_in_activity_password_edit_text_background"
 				android:fontFamily="@font/font_arialmt"
 
-				android:hint="@string/sign_in_activity_password_edit_text_hint"
+				android:hint="Password"
 				android:inputType="textPassword"
 				android:maxLines="1"
 				android:textColor="#FFFFFF"
@@ -107,7 +122,7 @@
 				android:background="@drawable/sign_in_activity_email_edit_text_background"
 				android:fontFamily="@font/font_nunito_regular"
 
-				android:hint="@string/sign_in_activity_email_edit_text_hint"
+				android:hint="Username or Email"
 				android:inputType="textEmailAddress"
 				android:maxLines="1"
 				android:textColor="#FFFFFF"

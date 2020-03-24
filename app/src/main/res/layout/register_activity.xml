@@ -16,46 +16,33 @@
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 
+			android:layout_marginEnd="16dp"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintHorizontal_bias="0.0"
 			app:layout_constraintLeft_toLeftOf="parent"
 			app:layout_constraintRight_toRightOf="parent"
-			app:layout_constraintTop_toTopOf="parent"
-			>
+			app:layout_constraintTop_toTopOf="parent">
 
 			<LinearLayout
 				android:id="@+id/scroll_scroll_view_content"
-				android:orientation="vertical"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_gravity="center_horizontal">
+				android:layout_gravity="center_horizontal"
+				android:orientation="vertical">
 
-				<TextView
-					android:id="@+id/please_let_us_know_ytext_view"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
+				<Button
+					android:id="@+id/register_button"
+					android:layout_width="@dimen/register_activity_register_button_width"
+					android:layout_height="@dimen/register_activity_register_button_height"
+					android:layout_marginBottom="10dp"
+					android:background="@drawable/register_activity_register_button_ripple"
 					android:fontFamily="@font/font_nunito_regular"
-					android:gravity="center_horizontal"
-					android:text="@string/register_activity_please_let_us_know_ytext_view_text"
-					android:textColor="@color/register_activity_please_let_us_know_ytext_view_text_color"
-					android:textSize="@dimen/register_activity_please_let_us_know_ytext_view_text_size"
-					app:layout_constraintLeft_toLeftOf="parent"
-					app:layout_constraintRight_toRightOf="parent"
-					app:layout_constraintTop_toTopOf="parent"
-					tools:layout_editor_absoluteX="53dp"
-					tools:layout_editor_absoluteY="0dp"/>
-
-				<TextView
-					android:id="@+id/name_text_view"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_marginStart="@dimen/register_activity_name_text_view_margin_start"
-					android:layout_marginTop="@dimen/register_activity_name_text_view_margin_top"
-					android:gravity="start"
-					android:text="@string/register_activity_name_text_view_text"
-					android:textColor="@color/register_activity_name_text_view_text_color"
-					android:textSize="@dimen/register_activity_name_text_view_text_size"
-
-					tools:layout_editor_absoluteX="27dp"
-					tools:layout_editor_absoluteY="50dp"/>
+					android:gravity="center"
+					android:text="@string/register_activity_register_button_text"
+					android:textColor="#FFFFFF"
+					android:textSize="@dimen/register_activity_register_button_text_size"
+					tools:layout_editor_absoluteX="0dp"
+					tools:layout_editor_absoluteY="545dp" />
 
 				<EditText
 					android:id="@+id/name_edit_text"
@@ -73,20 +60,6 @@
 
 					tools:layout_editor_absoluteX="0dp"
 					tools:layout_editor_absoluteY="73dp" />
-
-				<TextView
-					android:id="@+id/nic_number_text_view"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_marginStart="@dimen/register_activity_nic_number_text_view_margin_start"
-					android:layout_marginTop="@dimen/register_activity_nic_number_text_view_margin_top"
-					android:gravity="start"
-					android:text="@string/register_activity_nic_number_text_view_text"
-					android:textColor="@color/register_activity_nic_number_text_view_text_color"
-					android:textSize="@dimen/register_activity_nic_number_text_view_text_size"
-
-					tools:layout_editor_absoluteX="27dp"
-					tools:layout_editor_absoluteY="146dp"/>
 
 				<EditText
 					android:id="@+id/nic_edit_text"
@@ -106,20 +79,6 @@
 					tools:layout_editor_absoluteX="0dp"
 					tools:layout_editor_absoluteY="169dp" />
 
-				<TextView
-					android:id="@+id/email_text_view"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_marginStart="@dimen/register_activity_email_text_view_margin_start"
-					android:layout_marginTop="@dimen/register_activity_email_text_view_margin_top"
-					android:gravity="start"
-					android:text="@string/register_activity_email_text_view_text"
-					android:textColor="@color/register_activity_email_text_view_text_color"
-					android:textSize="@dimen/register_activity_email_text_view_text_size"
-
-					tools:layout_editor_absoluteX="27dp"
-					tools:layout_editor_absoluteY="242dp"/>
-
 				<EditText
 					android:id="@+id/email_edit_text"
 					android:layout_width="@dimen/register_activity_email_edit_text_width"
@@ -137,20 +96,6 @@
 
 					tools:layout_editor_absoluteX="0dp"
 					tools:layout_editor_absoluteY="265dp" />
-
-				<TextView
-					android:id="@+id/mobile_text_view"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_marginStart="@dimen/register_activity_mobile_text_view_margin_start"
-					android:layout_marginTop="@dimen/register_activity_mobile_text_view_margin_top"
-					android:gravity="start"
-					android:text="@string/register_activity_mobile_text_view_text"
-					android:textColor="@color/register_activity_mobile_text_view_text_color"
-					android:textSize="@dimen/register_activity_mobile_text_view_text_size"
-
-					tools:layout_editor_absoluteX="27dp"
-					tools:layout_editor_absoluteY="338dp"/>
 
 				<EditText
 					android:id="@+id/mobile_edit_text"
@@ -170,19 +115,6 @@
 					tools:layout_editor_absoluteX="0dp"
 					tools:layout_editor_absoluteY="361dp" />
 
-				<TextView
-					android:id="@+id/password_text_view"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_marginStart="@dimen/register_activity_password_text_view_margin_start"
-					android:layout_marginTop="@dimen/register_activity_password_text_view_margin_top"
-					android:gravity="start"
-					android:text="@string/register_activity_password_text_view_text"
-					android:textColor="@color/register_activity_password_text_view_text_color"
-
-					tools:layout_editor_absoluteX="27dp"
-					tools:layout_editor_absoluteY="434dp"/>
-
 				<EditText
 					android:id="@+id/password_edit_text"
 					android:layout_width="@dimen/register_activity_password_edit_text_width"
@@ -199,41 +131,111 @@
 					android:textSize="@dimen/register_activity_password_edit_text_text_size"
 
 					tools:layout_editor_absoluteX="0dp"
-					tools:layout_editor_absoluteY="457dp"/>
+					tools:layout_editor_absoluteY="457dp" />
+
+				<TextView
+					android:id="@+id/please_let_us_know_ytext_view"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:fontFamily="@font/font_nunito_regular"
+					android:gravity="center_horizontal"
+					android:text="@string/register_activity_please_let_us_know_ytext_view_text"
+					android:textColor="@color/register_activity_please_let_us_know_ytext_view_text_color"
+					android:textSize="@dimen/register_activity_please_let_us_know_ytext_view_text_size"
+					app:layout_constraintLeft_toLeftOf="parent"
+					app:layout_constraintRight_toRightOf="parent"
+					app:layout_constraintTop_toTopOf="parent"
+					tools:layout_editor_absoluteX="53dp"
+					tools:layout_editor_absoluteY="0dp" />
+
+				<TextView
+					android:id="@+id/name_text_view"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="@dimen/register_activity_name_text_view_margin_start"
+					android:layout_marginTop="@dimen/register_activity_name_text_view_margin_top"
+					android:gravity="start"
+					android:text="@string/register_activity_name_text_view_text"
+					android:textColor="@color/register_activity_name_text_view_text_color"
+					android:textSize="@dimen/register_activity_name_text_view_text_size"
+
+					tools:layout_editor_absoluteX="27dp"
+					tools:layout_editor_absoluteY="50dp" />
+
+				<TextView
+					android:id="@+id/nic_number_text_view"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="@dimen/register_activity_nic_number_text_view_margin_start"
+					android:layout_marginTop="@dimen/register_activity_nic_number_text_view_margin_top"
+					android:gravity="start"
+					android:text="@string/register_activity_nic_number_text_view_text"
+					android:textColor="@color/register_activity_nic_number_text_view_text_color"
+					android:textSize="@dimen/register_activity_nic_number_text_view_text_size"
+
+					tools:layout_editor_absoluteX="27dp"
+					tools:layout_editor_absoluteY="146dp" />
+
+				<TextView
+					android:id="@+id/email_text_view"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="@dimen/register_activity_email_text_view_margin_start"
+					android:layout_marginTop="@dimen/register_activity_email_text_view_margin_top"
+					android:gravity="start"
+					android:text="@string/register_activity_email_text_view_text"
+					android:textColor="@color/register_activity_email_text_view_text_color"
+					android:textSize="@dimen/register_activity_email_text_view_text_size"
+
+					tools:layout_editor_absoluteX="27dp"
+					tools:layout_editor_absoluteY="242dp" />
+
+				<TextView
+					android:id="@+id/mobile_text_view"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="@dimen/register_activity_mobile_text_view_margin_start"
+					android:layout_marginTop="@dimen/register_activity_mobile_text_view_margin_top"
+					android:gravity="start"
+					android:text="@string/register_activity_mobile_text_view_text"
+					android:textColor="@color/register_activity_mobile_text_view_text_color"
+					android:textSize="@dimen/register_activity_mobile_text_view_text_size"
+
+					tools:layout_editor_absoluteX="27dp"
+					tools:layout_editor_absoluteY="338dp" />
+
+				<TextView
+					android:id="@+id/password_text_view"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="@dimen/register_activity_password_text_view_margin_start"
+					android:layout_marginTop="@dimen/register_activity_password_text_view_margin_top"
+					android:gravity="start"
+					android:text="@string/register_activity_password_text_view_text"
+					android:textColor="@color/register_activity_password_text_view_text_color"
+
+					tools:layout_editor_absoluteX="27dp"
+					tools:layout_editor_absoluteY="434dp" />
 
 				<View
 					android:id="@+id/divider_constraint_layout"
 					android:layout_width="@dimen/register_activity_divider_constraint_layout_width"
 					android:layout_height="@dimen/register_activity_divider_constraint_layout_height"
+					android:layout_gravity="center_horizontal"
 					android:layout_marginTop="@dimen/register_activity_divider_constraint_layout_margin_top"
 					android:background="@color/register_activity_divider_constraint_layout_background_color"
-					android:layout_gravity="center_horizontal"
 					tools:layout_editor_absoluteX="135dp"
-					tools:layout_editor_absoluteY="38dp"/>
+					tools:layout_editor_absoluteY="38dp" />
 
 				<View
 					android:id="@+id/divider_two_constraint_layout"
 					android:layout_width="@dimen/register_activity_divider_two_constraint_layout_width"
 					android:layout_height="@dimen/register_activity_divider_two_constraint_layout_height"
+					android:layout_gravity="center_horizontal"
 					android:layout_marginBottom="@dimen/register_activity_divider_two_constraint_layout_margin_bottom"
 					android:background="@color/register_activity_divider_two_constraint_layout_background_color"
-					android:layout_gravity="center_horizontal"
 					tools:layout_editor_absoluteX="135dp"
-					tools:layout_editor_absoluteY="523dp"/>
-
-				<Button
-					android:id="@+id/register_button"
-					android:layout_width="@dimen/register_activity_register_button_width"
-					android:layout_height="@dimen/register_activity_register_button_height"
-					android:background="@drawable/register_activity_register_button_ripple"
-					android:fontFamily="@font/font_nunito_regular"
-					android:gravity="center"
-					android:text="@string/register_activity_register_button_text"
-					android:textColor="#FFFFFF"
-					android:textSize="@dimen/register_activity_register_button_text_size"
-					android:layout_marginBottom="10dp"
-					tools:layout_editor_absoluteX="0dp"
-					tools:layout_editor_absoluteY="545dp"/>
+					tools:layout_editor_absoluteY="523dp" />
 			</LinearLayout>
 		</ScrollView>
 	</androidx.constraintlayout.widget.ConstraintLayout>
