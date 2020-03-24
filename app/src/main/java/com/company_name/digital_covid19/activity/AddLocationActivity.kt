@@ -64,7 +64,7 @@ class AddLocationActivity: AppCompatActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
 	
 		super.onCreate(savedInstanceState)
-		Places.initialize(applicationContext, resources.getString(R.string.google_api_key))
+		Places.initialize(applicationContext, resources.getString(R.string.google_maps_key))
 		val placesClient = Places.createClient(this)
 		gRef=ref.child("geofire/users")
 		sharedPreferences=this.getSharedPreferences("digitalCovidPrefs",0)
