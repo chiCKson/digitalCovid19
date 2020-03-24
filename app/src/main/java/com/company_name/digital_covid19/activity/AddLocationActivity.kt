@@ -18,6 +18,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.company_name.digital_covid19.R
 import com.company_name.digital_covid19.databinding.AddLocationActivityBinding
@@ -63,7 +64,7 @@ class AddLocationActivity: AppCompatActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
 	
 		super.onCreate(savedInstanceState)
-		Places.initialize(applicationContext, "AIzaSyBtu-gWA2AQO5HqQUAcsEQzZUOsKiSSIAI")
+		Places.initialize(applicationContext, resources.getString(R.string.google_api_key))
 		val placesClient = Places.createClient(this)
 		gRef=ref.child("geofire/users")
 		sharedPreferences=this.getSharedPreferences("digitalCovidPrefs",0)
