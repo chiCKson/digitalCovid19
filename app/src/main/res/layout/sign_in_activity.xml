@@ -47,7 +47,7 @@
 				app:layout_constraintTop_toTopOf="parent"
 				tools:layout_editor_absoluteX="0dp"
 				tools:layout_editor_absoluteY="161dp">
-			
+
 				<Button
 					android:id="@+id/register_button"
 					android:layout_width="@dimen/sign_in_activity_register_button_width"
@@ -122,7 +122,7 @@
 				android:background="@drawable/sign_in_activity_email_edit_text_background"
 				android:fontFamily="@font/font_nunito_regular"
 
-				android:hint="Username or Email"
+				android:hint="@Username or Email"
 				android:inputType="textEmailAddress"
 				android:maxLines="1"
 				android:textColor="#FFFFFF"

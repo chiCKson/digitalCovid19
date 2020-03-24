@@ -106,7 +106,7 @@
 					android:fontFamily="@font/font_nunito_regular"
 
 					android:hint="@string/register_activity_mobile_edit_text_hint"
-					android:inputType="text"
+					android:inputType="number"
 					android:maxLines="1"
 					android:textColor="#000000"
 					android:textColorHint="@color/color_hint_text"

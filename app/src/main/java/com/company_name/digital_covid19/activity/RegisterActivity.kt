@@ -68,14 +68,16 @@ class RegisterActivity: AppCompatActivity() {
 			return false
 		if(binding.nicEditText.text.length!=10 || binding.nicEditText.text.length!=12)
 			return false
-		if(binding.nicEditText.text.length==10){
-			if(binding.nicEditText.text[9].toString()!="V" || binding.nicEditText.text[9].toString()!="v")
+		if(binding.nicEditText.text.length!=12){
+			if(binding.nicEditText.text.toString()[9].equals("V"))
 			{
-				return false
+				return true
 			}
-			return true
+			return false
 		}
 		if(binding.nicEditText.text.toString()=="0000000000" || binding.nicEditText.text.toString()=="000000000000")
+			return false
+		if(binding.nicEditText.text.toString().toInt()<0)
 			return false
 		if (binding.passwordEditText.text.length<8)
 			return false
