@@ -73,7 +73,7 @@
 
     <!-- Resources for HomeActivity -->
     <string name="home_activity_john_smith_text_view_hint">John Smith</string>
-    <string name="home_activity_safe_text_view_text">Safe</string>
+    <string name="home_activity_safe_text_view_text">(YOU ARE SAFE)</string>
     <string name="home_activity_safe_text_view_hint">Safe</string>
     <string name="home_activity_john_smith_text_view_text">John Smith</string>
 

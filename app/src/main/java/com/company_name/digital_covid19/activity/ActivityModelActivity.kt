@@ -10,13 +10,14 @@ package com.company_name.digital_covid19.activity
 
 import android.content.Context
 import android.content.Intent
-import androidx.databinding.DataBindingUtil
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.view.View
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import com.company_name.digital_covid19.R
 import com.company_name.digital_covid19.databinding.ActivityModelActivityBinding
-import com.company_name.digital_covid19.dialog.ActivityModelActivityTransportButtonSheet
+import com.yeyint.customalertdialog.CustomAlertDialog
 
 
 class ActivityModelActivity: AppCompatActivity() {
@@ -78,17 +79,44 @@ class ActivityModelActivity: AppCompatActivity() {
 	}
 	
 	private fun onTransportPressed() {
-	
-		ActivityModelActivityTransportButtonSheet().show(this.supportFragmentManager, "ActivityModelActivityTransportButtonSheet")
+		val dialog = CustomAlertDialog(this, CustomAlertDialog.DialogStyle.CURVE)
+		dialog.setAlertTitle("Transport Method")
+		dialog.setAlertMessage("Please choose you used transportation method in last few weeks.")
+		dialog.setDialogType(CustomAlertDialog.DialogType.SUCCESS)
+		dialog.setPositiveButton("Public") {
+			val dialogBusTrain = CustomAlertDialog(this, CustomAlertDialog.DialogStyle.CURVE)
+			dialogBusTrain.setAlertTitle("Transport Method")
+			dialogBusTrain.setAlertMessage("Please choose you used transportation method in last few weeks.")
+			dialogBusTrain.setDialogType(CustomAlertDialog.DialogType.SUCCESS)
+			dialogBusTrain.setPositiveButton("Bus") {
+				Toast.makeText(applicationContext, "Bus Button Clicked", Toast.LENGTH_SHORT).show()
+				dialogBusTrain.dismiss()
+			}
+			dialogBusTrain.setNegativeButton("Train") {
+				Toast.makeText(applicationContext, "Train Button Clicked", Toast.LENGTH_SHORT).show()
+				dialogBusTrain.cancel()
+			}
+			dialogBusTrain.create();
+			dialogBusTrain.show();
+			dialog.dismiss()
+		}
+		dialog.setNegativeButton("Private") {
+			Toast.makeText(applicationContext, "Private Button Clicked", Toast.LENGTH_SHORT).show()
+			dialog.cancel()
+		}
+		dialog.create();
+		dialog.show();
 	}
 	
 	private fun startAddLocationActivity() {
 	
 		this.startActivity(AddLocationActivity.newIntent(this))
+		finish()
 	}
 	
 	private fun startAddEventModalActivity() {
 	
 		this.startActivity(AddEventModalActivity.newIntent(this))
+		finish()
 	}
 }

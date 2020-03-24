@@ -73,6 +73,7 @@ class RegisterActivity: AppCompatActivity() {
 	private fun writeNewUser( nic:String,name: String, email: String,mobile:String) {
 
         methodObj.addSharedPreference("currentUserNic",nic,sharedPreferences)
+		methodObj.addSharedPreferenceInt("userLocId",1,sharedPreferences)
         methodObj.addSharedPreference("currentUserName",name,sharedPreferences)
 		val user = User(name, email,nic,mobile)
 		database.child("users").child(nic).setValue(user)

@@ -124,7 +124,7 @@
 	<dimen name="home_activity_group10_constraint_layout_height">27dp</dimen>
 	<dimen name="home_activity_group10_constraint_layout_margin_start">24dp</dimen>
 	<dimen name="home_activity_profilesection_constraint_layout_margin_top">16dp</dimen>
-	<dimen name="home_activity_group10_constraint_layout_margin_top">27dp</dimen>
+	<dimen name="home_activity_group10_constraint_layout_margin_top">20dp</dimen>
 	<dimen name="home_activity_profilesectionbackground_constraint_layout_height">48dp</dimen>
 	<dimen name="home_activity_round_btn_pressed_li_button_height">58dp</dimen>
 	<dimen name="home_activity_round_btn_pressed_li_button_width">58dp</dimen>
@@ -134,7 +134,7 @@
 	<dimen name="home_activity_map_map_view_height">645dp</dimen>
 	<dimen name="home_activity_profilesectionbackground_constraint_layout_margin_end">7dp</dimen>
 	<dimen name="home_activity_profile_image_view_border_size">2dp</dimen>
-	<dimen name="home_activity_safe_text_view_text_size">17sp</dimen>
+	<dimen name="home_activity_safe_text_view_text_size">10sp</dimen>
 	<dimen name="home_activity_profilesection_constraint_layout_width">249dp</dimen>
 	<dimen name="home_activity_round_btn_pressed_li_button_radius">28dp</dimen>
 	<dimen name="home_activity_group10_constraint_layout_width">139dp</dimen>
@@ -221,7 +221,7 @@
 	<dimen name="add_transport_modal_activity_route_edit_text_text_size">22sp</dimen>
 	
 	<!-- Resources for ActivityModelActivity -->
-	<dimen name="activity_model_activity_transport_button_margin_bottom">186dp</dimen>
+	<dimen name="activity_model_activity_transport_button_margin_bottom">10dp</dimen>
 	<dimen name="activity_model_activity_event_button_text_size">22sp</dimen>
 	<dimen name="activity_model_activity_event_button_border_size">1dp</dimen>
 	<dimen name="activity_model_activity_line17_constraint_layout_height">1dp</dimen>
@@ -230,7 +230,7 @@
 	<dimen name="activity_model_activity_close_button_margin_end">24dp</dimen>
 	<dimen name="activity_model_activity_line17_constraint_layout_margin_top">15dp</dimen>
 	<dimen name="activity_model_activity_transport_button_width">300dp</dimen>
-	<dimen name="activity_model_activity_event_button_margin_top">233dp</dimen>
+	<dimen name="activity_model_activity_event_button_margin_top">10dp</dimen>
 	<dimen name="activity_model_activity_location_button_width">300dp</dimen>
 	<dimen name="activity_model_activity_close_button_height">17dp</dimen>
 	<dimen name="activity_model_activity_location_button_radius">5dp</dimen>

@@ -18,7 +18,15 @@ class Methods {
             .putString(key, value)
             .apply()
     }
-
+    fun addSharedPreferenceInt(key:String,value:Int,preferences: SharedPreferences){
+        preferences
+                .edit()  // create an Editor
+                .putInt(key, value)
+                .apply()
+    }
+    fun readSharedPreferencesInt(key:String,preferences: SharedPreferences):Int?{
+        return preferences.getInt(key,-1)
+    }
     fun readSharedPreferences(key:String,preferences: SharedPreferences):String?{
         return preferences.getString(key,"null")
     }

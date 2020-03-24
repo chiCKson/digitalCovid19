@@ -46,18 +46,18 @@ class AddEventModalActivity: AppCompatActivity() {
 		}
 
 		// Configure Login component
-		binding.loginButton.setOnClickListener({ view ->
+		binding.loginButton.setOnClickListener {
 			this.onLoginPressed()
-		})
-		
+		}
+
 		// Configure Login component
-		binding.loginTwoButton.setOnClickListener({ view ->
+		binding.loginTwoButton.setOnClickListener {
 			this.onLoginTwoPressed()
-		})
+		}
 	}
 	
-	fun onClosePressed() {
-	
+	private fun onClosePressed() {
+
 		this.finish()
 	}
 	

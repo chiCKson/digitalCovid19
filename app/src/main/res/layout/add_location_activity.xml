@@ -69,11 +69,11 @@
 			tools:layout_editor_absoluteY="540dp"/>
 	
 		<Button
-			android:id="@+id/login_button"
+			android:id="@+id/add_location_button"
 			android:layout_width="@dimen/add_location_activity_login_button_width"
 			android:layout_height="@dimen/add_location_activity_login_button_height"
 			android:layout_marginBottom="@dimen/add_location_activity_login_button_margin_bottom"
-			android:background="?attr/selectableItemBackground"
+			android:background="@color/add_event_modal_activity_login_two_button_border_color"
 			android:fontFamily="@font/font_nunito_regular"
 			android:gravity="center"
 			android:text="@string/add_location_activity_login_button_text"
