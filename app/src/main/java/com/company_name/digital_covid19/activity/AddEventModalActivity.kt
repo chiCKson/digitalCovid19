@@ -13,13 +13,13 @@ import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.databinding.DataBindingUtil
+import android.opengl.Visibility
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import com.company_name.digital_covid19.R
 import com.company_name.digital_covid19.databinding.AddEventModalActivityBinding
 import com.company_name.digital_covid19.methods.Methods
@@ -33,9 +33,9 @@ import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.widget.Autocomplete
 import com.google.android.libraries.places.widget.AutocompleteActivity
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import com.sdsmdg.tastytoast.TastyToast
+import io.github.pierry.progress.Progress
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -60,26 +60,37 @@ class AddEventModalActivity: AppCompatActivity() {
 	private lateinit var geoFire: GeoFire
 	private lateinit var latLng: LatLng
 	private lateinit var gRef: DatabaseReference
+	private lateinit var progressDialog: Progress
 	private var mYear=0
 	private var mDay=0
 	private  var mMonth=0
 	private lateinit var events:ArrayList<String>
 	override fun onCreate(savedInstanceState: Bundle?) {
-		events= arrayListOf("test","test1","test2")
+		events= ArrayList()
 		gRef=ref.child("geofire/events")
 		sharedPreferences=this.getSharedPreferences("digitalCovidPrefs",0)
 		methodObj= Methods()
+		progressDialog=methodObj.progressDialog(this)
+		methodObj.progressDialogShow(progressDialog,"Please Wait!, While we are lading events detais.")
+		this.getEventList()
 		Places.initialize(applicationContext, resources.getString(R.string.google_maps_key))
 		super.onCreate(savedInstanceState)
 		binding = DataBindingUtil.setContentView(this, R.layout.add_event_modal_activity)
-		ArrayAdapter(this, android.R.layout.simple_list_item_1, events).also { adapter ->
-			binding.eventnameEditText.setAdapter(adapter)
-		}
+
 		this.init()
 	}
 	
 	private fun init() {
+		binding.eventnameEditText.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
+
+			binding.locationEditText.isEnabled=false
+			binding.pickDateButton.isEnabled=false
+			//try to give data to user in 2.0
+			binding.locationEditText.hint="Location set continue adding"
+			binding.pickDateButton.text="Date is set already."
+		}
 		binding.locationEditText.setOnClickListener {
+
 			this.autoComplete()
 		}
 		// Configure Close component
@@ -97,7 +108,30 @@ class AddEventModalActivity: AppCompatActivity() {
 			this.onaddEventButtonPressed()
 		}
 	}
-	
+	private fun getEventList(){
+		val eventListener = object : ValueEventListener {
+			override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+				for (child in dataSnapshot.children) {
+					//Object object = child.getKey();
+					events.add(child.key.toString())
+				}
+				ArrayAdapter(applicationContext, android.R.layout.simple_list_item_1, events).also { adapter ->
+					binding.eventnameEditText.setAdapter(adapter)
+				}
+				methodObj.progressDialogDismiss(progressDialog)
+
+			}
+
+			override fun onCancelled(databaseError: DatabaseError) {
+				val e=databaseError.toException()
+				methodObj.progressDialogDismiss(progressDialog)
+				TastyToast.makeText(applicationContext, "Error occured while reading database.$e",
+						TastyToast.LENGTH_LONG, TastyToast.ERROR)
+			}
+		}
+		ref.child("events").addValueEventListener(eventListener)
+	}
 	private fun onClosePressed() {
 
 		this.finish()
@@ -134,7 +168,7 @@ class AddEventModalActivity: AppCompatActivity() {
 			val key=binding.eventnameEditText.text.toString()
 			if (latLng!=null) {
 				geoFire.setLocation(key, GeoLocation(latLng.latitude, latLng.longitude))
-				this.addNewEvent(key,binding.pickDateButton.text.toString(),binding.locationEditText.text.toString())
+				this.addNewEvent(key,binding.pickDateButton.text.toString(),binding.locationEditText.text.toString(),latLng.latitude,latLng.longitude)
 				this.addDateUserWise(nic, binding.pickDateButton.text.toString() )
 				this.addEventUserWise(nic,binding.eventnameEditText.text.toString())
 				TastyToast.makeText(applicationContext, "Event added Successfully.",
@@ -151,9 +185,10 @@ class AddEventModalActivity: AppCompatActivity() {
 	}
 	private fun addEventUserWise(nic:String,event: String){
 		ref.child("eventWiseUsers").child(event).push().setValue(nic)
+		ref.child("userWiseEvents").child(nic).push().setValue(event)
 	}
-	private fun addNewEvent(name:String,date:String,place:String){
-		val event=Event(name,date,place)
+	private fun addNewEvent(name:String,date:String,place:String,lat:Double,long:Double){
+		val event=Event(name,date,place,lat,long)
 		ref.child("events").child(name).setValue(event)
 
 	}
@@ -163,6 +198,7 @@ class AddEventModalActivity: AppCompatActivity() {
 						AutocompleteActivityMode.OVERLAY, fields).setCountry("LK")
 				.build(this)
 		startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE)
+
 	}
 	override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
 		super.onActivityResult(requestCode, resultCode, data)

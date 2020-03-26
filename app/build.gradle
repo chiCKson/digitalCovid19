@@ -6,6 +6,13 @@ apply plugin: 'com.google.gms.google-services'
 
 android {
 
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
     compileSdkVersion 28
 
     defaultConfig {
@@ -72,4 +79,7 @@ dependencies {
 
     //geofire
     implementation 'com.firebase:geofire-android:3.0.0'
+
+    //ktx
+    implementation "androidx.fragment:fragment-ktx:1.2.3"
 }

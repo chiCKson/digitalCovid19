@@ -95,4 +95,8 @@
 	<color name="symptoms_second_activity_headacheswitch_switch_thumb_tint_color">#FFFFFF</color>
 	<color name="symptoms_second_activity_breathingdifficultiesswitch_switch_thumb_tint_color">#FFFFFF</color>
 	<color name="symptoms_second_activity_sorethroatswitch_switch_thumb_tint_color">#FFFFFF</color>
+
+	<!--manual colors-->
+	<color name="red_transparent">#9CFF0000</color>
+	<color name="green_transparent">#4FAB5E</color>
 </resources>

@@ -30,7 +30,7 @@
     <string name="symptoms_second_activity_headache_text_view_hint">Headache</string>
 
     <!-- Resources for AddEventModalActivity -->
-    <string name="add_event_modal_activity_location_edit_text_hint">Start entering the location</string>
+    <string name="add_event_modal_activity_location_edit_text_hint">Choose Location</string>
     <string name="add_event_modal_activity_login_two_button_text">Pick a date</string>
     <string name="add_event_modal_activity_eventname_edit_text_hint">Live in Concert</string>
     <string name="add_event_modal_activity_date_text_view_text">Date</string>
@@ -94,7 +94,7 @@
     <string name="register_activity_name_edit_text_hint">John Smith</string>
     <string name="register_activity_nic_number_text_view_hint">NIC number</string>
     <string name="register_activity_name_text_view_hint">Name</string>
-    <string name="register_activity_password_edit_text_hint">●●●●●●●</string>
+    <string name="register_activity_password_edit_text_hint">Enter Your Password</string>
     <string name="register_activity_register_button_text">Continue</string>
     <string name="register_activity_please_let_us_know_ytext_view_text">Please let us know you</string>
     <string name="register_activity_mobile_edit_text_hint">071 234 5678</string>
@@ -105,7 +105,7 @@
     <string name="register_activity_email_text_view_text">Email</string>
     <string name="register_activity_name_text_view_text">Name</string>
     <string name="register_activity_password_text_view_hint">Password</string>
-    <string name="register_activity_email_edit_text_hint">jsmith@gmail.com</string>
+    <string name="register_activity_email_edit_text_hint">Enter yout email address</string>
     <string name="register_activity_nic_edit_text_hint">961234567v</string>
     <string name="register_activity_mobile_text_view_hint">Mobile</string>
     <string name="register_activity_mobile_text_view_text">Mobile</string>
@@ -115,7 +115,7 @@
     <string name="add_location_activity_my_transports_text_view_text">Add Location</string>
     <string name="add_location_activity_login_button_text">Add Location</string>
     <string name="add_location_activity_bus_number_text_view_hint">Where?</string>
-    <string name="add_location_activity_location_edit_text_hint">Start entering the place</string>
+    <string name="add_location_activity_location_edit_text_hint">Choose Location</string>
     <string name="add_location_activity_datepicklocation_button_text">Pick a date</string>
     <string name="add_location_activity_login_button_hint">Add Location</string>
     <string name="add_location_activity_route_text_view_hint">When?</string>
@@ -128,11 +128,12 @@
     <string name="sign_in_activity_login_button_text">Login</string>
     <string name="sign_in_activity_forgot_password_text_view_hint">Forgot Password?</string>
     <string name="sign_in_activity_login_button_hint">Login</string>
-    <string name="sign_in_activity_password_edit_text_hint">●●●●●●●</string>
+    <string name="sign_in_activity_password_edit_text_hint">Password</string>
     <string name="sign_in_activity_register_button_hint">Register</string>
-    <string name="sign_in_activity_email_edit_text_hint">johnsmith@gmail.com</string>
+    <string name="sign_in_activity_email_edit_text_hint">Enter your email</string>
     <string name="sign_in_activity_forgot_password_text_view_text">Forgot Password?</string>
     <string name="sign_in_activity_register_button_text">Register</string>
     <string name="title_activity_maps">Map</string>
     <string name="then_which_country_you_have_been">Then which country you have been?</string>
+    <string name="confrim_password_register">Confrim Password</string>
 </resources>

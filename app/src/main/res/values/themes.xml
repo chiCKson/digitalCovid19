@@ -35,18 +35,23 @@
 	<style name="SymptomsSecondActivityTheme" parent="Theme.AppCompat.NoActionBar"/>
 	<style name="SymptomsSecondActivityBreathingdifficultiesswitchSwitchTheme">
 		<item name="colorControlActivated">#A14FAB5E</item>
+		<item name="colorControlNormal">#ABFF1100</item>
 	</style>
 	<style name="SymptomsSecondActivityHeadacheswitchSwitchTheme">
 		<item name="colorControlActivated">#A14FAB5E</item>
+		<item name="colorControlNormal">#ABFF1100</item>
 	</style>
 	<style name="SymptomsSecondActivityCoughswitchSwitchTheme">
 		<item name="colorControlActivated">#A14FAB5E</item>
+		<item name="colorControlNormal">#ABFF1100</item>
 	</style>
 	<style name="SymptomsSecondActivitySorethroatswitchSwitchTheme">
 		<item name="colorControlActivated">#A14FAB5E</item>
+		<item name="colorControlNormal">#ABFF1100</item>
 	</style>
 	<style name="SymptomsSecondActivityFeverswitchSwitchTheme">
 		<item name="colorControlActivated">#A14FAB5E</item>
+		<item name="colorControlNormal">#ABFF1100</item>
 	</style>
 	
 	<!-- RegisterActivity -->

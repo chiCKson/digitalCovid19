@@ -47,7 +47,7 @@
             android:layout_marginEnd="@dimen/home_activity_profile_image_view_margin_end"
             android:background="@drawable/home_activity_profile_image_view_background"
             android:scaleType="center"
-            android:src="@mipmap/test_profile"
+            android:src="@drawable/ic_person"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"

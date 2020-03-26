@@ -1,0 +1,10 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <stroke
+        android:color="@color/home_activity_profile_image_view_border_color"
+        android:width="@dimen/home_activity_profile_image_view_border_size"/>
+
+    <corners android:radius="@dimen/home_activity_profile_image_view_radius"/>
+
+    <solid android:color="#FF1100"/>
+</shape>

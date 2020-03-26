@@ -11,6 +11,7 @@ package com.company_name.digital_covid19.activity
 import android.animation.*
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.databinding.DataBindingUtil
 import android.graphics.Color
 import android.os.Bundle
@@ -20,6 +21,7 @@ import android.util.TypedValue
 import android.view.View
 import com.company_name.digital_covid19.R
 import com.company_name.digital_covid19.databinding.WelcomeActivityBinding
+import com.company_name.digital_covid19.methods.Methods
 import com.google.firebase.auth.FirebaseAuth
 import io.supernova.uitoolkit.animation.ViewBackgroundProperties
 
@@ -35,8 +37,11 @@ class WelcomeActivity: AppCompatActivity() {
 	
 	private lateinit var binding: WelcomeActivityBinding
 	private lateinit var mAuth: FirebaseAuth
+	private lateinit var sharedPreferences: SharedPreferences
+	private lateinit var methodObj: Methods
 	override fun onCreate(savedInstanceState: Bundle?) {
-	
+		methodObj= Methods()
+		sharedPreferences=this.getSharedPreferences("digitalCovidPrefs",0)
 		super.onCreate(savedInstanceState)
 		mAuth = FirebaseAuth.getInstance()
 		binding = DataBindingUtil.setContentView(this, R.layout.welcome_activity)
@@ -48,7 +53,10 @@ class WelcomeActivity: AppCompatActivity() {
 	
 	private fun init() {
 		if (mAuth.currentUser!=null){
-			this.startHomeActivity()
+			if (methodObj.readSharedPreferences("addSymptom",sharedPreferences)=="null") {
+						this.startSymptomActivity()
+			} else
+				this.startHomeActivity()
 		}
 		// Configure Register component
 		binding.registerButton.setOnClickListener {
@@ -103,6 +111,10 @@ class WelcomeActivity: AppCompatActivity() {
 		this.startActivity(MapsActivity.newIntent(this))
 		finish()
 	}
+	private fun startSymptomActivity() {
+		this.startActivity(SymptomActivity.newIntent(this))
+		finish()
+	}
 	private fun startAnimationOne() {
 	
 		val animator1 = ObjectAnimator.ofPropertyValuesHolder(binding.registerButton, PropertyValuesHolder.ofKeyframe(View.SCALE_X, Keyframe.ofFloat(0f, 0.3f), Keyframe.ofFloat(0.2f, 1.1f), Keyframe.ofFloat(0.4f, 0.9f), Keyframe.ofFloat(0.6f, 1.03f), Keyframe.ofFloat(0.8f, 0.97f), Keyframe.ofFloat(1f, 1f)), PropertyValuesHolder.ofKeyframe(View.SCALE_Y, Keyframe.ofFloat(0f, 0.3f), Keyframe.ofFloat(0.2f, 1.1f), Keyframe.ofFloat(0.4f, 0.9f), Keyframe.ofFloat(0.6f, 1.03f), Keyframe.ofFloat(0.8f, 0.97f), Keyframe.ofFloat(1f, 1f)))
@@ -146,3 +158,5 @@ class WelcomeActivity: AppCompatActivity() {
 		animatorSet4.start()
 	}
 }
+
+

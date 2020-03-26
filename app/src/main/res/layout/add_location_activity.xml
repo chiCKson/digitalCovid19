@@ -117,7 +117,7 @@
 			tools:layout_editor_absoluteX="151dp"
 			tools:layout_editor_absoluteY="205dp"/>
 	
-		<EditText
+		<Button
 			android:id="@+id/location_edit_text"
 			android:layout_width="@dimen/add_location_activity_location_edit_text_width"
 			android:layout_height="@dimen/add_location_activity_location_edit_text_height"
@@ -125,8 +125,8 @@
 			android:background="@drawable/add_location_activity_location_edit_text_background"
 			android:fontFamily="@font/font_nunito_regular"
 			android:gravity="center|center_vertical"
-			android:hint="@string/add_location_activity_location_edit_text_hint"
-			android:inputType="text"
+			android:text="@string/add_location_activity_location_edit_text_hint"
+
 			android:maxLines="1"
 			android:textColor="#000000"
 			android:textColorHint="@color/color_hint_text"

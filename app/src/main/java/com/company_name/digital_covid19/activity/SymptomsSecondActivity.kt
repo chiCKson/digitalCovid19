@@ -40,23 +40,24 @@ class SymptomsSecondActivity: AppCompatActivity() {
 		}
 
 	}
-	
+
 	private lateinit var binding: SymptomsSecondActivityBinding
 	private lateinit var symptom: Symptom
 	private lateinit var sharedPreferences: SharedPreferences
 	private lateinit var currentUserNic:String
 	private lateinit var database: DatabaseReference
+	private lateinit var methodObj:Methods
 	override fun onCreate(savedInstanceState: Bundle?) {
 
 		super.onCreate(savedInstanceState)
 		symptom=Symptom()
 		binding = DataBindingUtil.setContentView(this, R.layout.symptoms_second_activity)
 		database = FirebaseDatabase.getInstance().reference
-		val obj= Methods()
+		methodObj= Methods()
 		sharedPreferences=this.getSharedPreferences("digitalCovidPrefs",0)
 
-		if (obj.readSharedPreferences("currentUserNic",sharedPreferences)!="null") {
-			currentUserNic= obj.readSharedPreferences("currentUserNic",sharedPreferences).toString()
+		if (methodObj.readSharedPreferences("currentUserNic",sharedPreferences)!="null") {
+			currentUserNic= methodObj.readSharedPreferences("currentUserNic",sharedPreferences).toString()
 		}
 		this.init()
 	}
@@ -102,6 +103,7 @@ class SymptomsSecondActivity: AppCompatActivity() {
 	
 	private fun onAddSymptomsPressed() {
 		this.addSymptoms()
+		methodObj.addSharedPreference("addSymptom","yes",sharedPreferences)
 		TastyToast.makeText(applicationContext, "Symptom added Successfully.", TastyToast.LENGTH_LONG, TastyToast.SUCCESS)
 		this.startHomeActivity()
 	}

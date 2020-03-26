@@ -35,6 +35,7 @@ import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.sdsmdg.tastytoast.TastyToast
+import com.yeyint.customalertdialog.CustomAlertDialog
 import java.util.*
 
 
@@ -88,7 +89,20 @@ class AddLocationActivity: AppCompatActivity() {
 
 		// Configure Login component
 		binding.addLocationButton.setOnClickListener {
-			this.onAddLocationPressed()
+			if (this.validateForm())
+				this.onAddLocationPressed()
+			else{
+				val dialogError = CustomAlertDialog(this, CustomAlertDialog.DialogStyle.DEFAULT)
+				dialogError.setAlertTitle("Error")
+				dialogError.setAlertMessage("Please be kind enough to fill all the fields.")
+				dialogError.setDialogType(CustomAlertDialog.DialogType.ERROR)
+				dialogError.setNegativeButton("Ok") {
+
+					dialogError.cancel()
+				}
+				dialogError.create();
+				dialogError.show();
+			}
 		}
 
 		// Configure DatePickLocation component
@@ -96,7 +110,13 @@ class AddLocationActivity: AppCompatActivity() {
 			this.onDatePickLocationPressed()
 		}
 	}
-	
+	private fun validateForm():Boolean{
+		if (binding.datepicklocationButton.text=="Pick a date")
+			return false
+		if (binding.locationEditText.text=="Choose Location")
+			return false
+		return true
+	}
 	private fun onClosePressed() {
 	
 		this.finish()

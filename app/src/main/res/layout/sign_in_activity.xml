@@ -43,7 +43,7 @@
 					android:gravity="center"
 					android:text="@string/sign_in_activity_register_button_text"
 					android:textColor="#FFFFFF"
-					android:textSize="@dimen/sign_in_activity_register_button_text_size"
+
 					app:layout_constraintLeft_toLeftOf="parent"
 					app:layout_constraintTop_toTopOf="parent"
 					tools:layout_editor_absoluteX="154dp"
@@ -58,7 +58,7 @@
 					android:gravity="center"
 					android:text="@string/sign_in_activity_login_button_text"
 					android:textColor="@color/sign_in_activity_login_button_text_color"
-					android:textSize="@dimen/sign_in_activity_login_button_text_size"
+
 					app:layout_constraintLeft_toLeftOf="parent"
 					app:layout_constraintTop_toTopOf="parent"
 					tools:layout_editor_absoluteX="0dp"

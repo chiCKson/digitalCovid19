@@ -8,20 +8,20 @@
 
 package com.company_name.digital_covid19.activity
 
-import android.R.attr.password
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.location.Location
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.FragmentActivity
 import com.company_name.digital_covid19.R
 import com.company_name.digital_covid19.databinding.RegisterActivityBinding
 import com.company_name.digital_covid19.methods.Methods
 import com.company_name.digital_covid19.models.User
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -46,6 +46,8 @@ class RegisterActivity: AppCompatActivity() {
 	private lateinit var sharedPreferences: SharedPreferences
     private lateinit var methodObj:Methods
     private lateinit var progressDialog: Progress
+	private lateinit var fusedLocationClient: FusedLocationProviderClient
+
 	override fun onCreate(savedInstanceState: Bundle?) {
 	
 		super.onCreate(savedInstanceState)
@@ -54,20 +56,49 @@ class RegisterActivity: AppCompatActivity() {
         methodObj= Methods()
         progressDialog=methodObj.progressDialog(this)
 		binding = DataBindingUtil.setContentView(this, R.layout.register_activity)
+		fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
 
 		sharedPreferences=this.getSharedPreferences("digitalCovidPrefs",0)
 		this.init()
 	}
 	private fun validateForm():Boolean{
-		if (binding.emailEditText.text.toString()=="")
+
+
+		if (binding.nicEditText.text.toString()=="" || binding.passwordEditText.text.toString()=="" || binding.emailEditText.text.toString()==""){
+			TastyToast.makeText(applicationContext, "All fileds should be filled.",
+					TastyToast.LENGTH_LONG, TastyToast.ERROR)
 			return false
-		if (binding.passwordEditText.text.toString()=="")
+		}
+		if (binding.passwordEditText.text.length<8){
+			TastyToast.makeText(applicationContext, "Password should be atleast 8 characters long.",
+					TastyToast.LENGTH_LONG, TastyToast.ERROR)
+			binding.passwordEditText.background=ContextCompat.getDrawable(this,R.drawable.error_edit_text)
 			return false
-		if (binding.nicEditText.text.toString()=="")
+		}
+		val regexNicOld = """\d{9}[vV]""".toRegex()
+		val regexNicNew = """\d{11}""".toRegex()
+		if (!regexNicOld.matches(binding.nicEditText.text.toString()))
+			if(!regexNicNew.matches(binding.nicEditText.text.toString())){
+				TastyToast.makeText(applicationContext, "Error in National Identity Card Number.",
+						TastyToast.LENGTH_LONG, TastyToast.ERROR)
+				binding.nicEditText.background=ContextCompat.getDrawable(this,R.drawable.error_edit_text)
+				return false
+			}
+
+		if(binding.passwordEditText.text.toString()!=binding.confirmPasswordEditText.text.toString()){
+			TastyToast.makeText(applicationContext, "Entered passwords are not match.",
+					TastyToast.LENGTH_LONG, TastyToast.ERROR)
+			binding.confirmPasswordEditText.background=ContextCompat.getDrawable(this,R.drawable.error_edit_text)
 			return false
-		if (binding.passwordEditText.text.length<8)
+		}
+		val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+".toRegex()
+		if (!emailPattern.matches(binding.emailEditText.text.toString())){
+			TastyToast.makeText(applicationContext, "You did not enter a valid email address.",
+					TastyToast.LENGTH_LONG, TastyToast.ERROR)
+			binding.emailEditText.background=ContextCompat.getDrawable(this,R.drawable.error_edit_text)
 			return false
+		}
 		return true
 	}
 	private fun writeNewUser( nic:String,name: String, email: String,mobile:String) {
@@ -75,24 +106,34 @@ class RegisterActivity: AppCompatActivity() {
         methodObj.addSharedPreference("currentUserNic",nic,sharedPreferences)
 		methodObj.addSharedPreferenceInt("userLocId",1,sharedPreferences)
         methodObj.addSharedPreference("currentUserName",name,sharedPreferences)
-		val user = User(name, email,nic,mobile)
-		database.child("users").child(nic).setValue(user)
+		fusedLocationClient.lastLocation
+				.addOnSuccessListener { location : Location? ->
+					val user = User(name, email,nic,mobile, location!!.latitude, location.longitude)
+					database.child("users").child(nic).setValue(user)
+				}
+
+
 	}
 	private fun init() {
 
 		// Configure Register component
 		binding.registerButton.setOnClickListener {
-            methodObj.progressDialogShow(progressDialog,"Please Wait! Registering to our servers.")
+
 			this.onRegisterPressed()
 		}
 	}
+	private fun makeGreen(){
+		binding.emailEditText.background=ContextCompat.getDrawable(this,R.drawable.register_activity_password_edit_text_background)
+		binding.confirmPasswordEditText.background=ContextCompat.getDrawable(this,R.drawable.register_activity_password_edit_text_background)
+		binding.nicEditText.background=ContextCompat.getDrawable(this,R.drawable.register_activity_password_edit_text_background)
+		binding.passwordEditText.background=ContextCompat.getDrawable(this,R.drawable.register_activity_password_edit_text_background)
+	}
 	
 	private fun onRegisterPressed() {
+		this.makeGreen()
 		if (this.validateForm()){
+			methodObj.progressDialogShow(progressDialog,"Please Wait! Registering to our servers.")
 			this.registerUserOnDb()
-		}else{
-			TastyToast.makeText(applicationContext, "Please fill the form correctly. All field should fill, password should have atleast 8 characters.", TastyToast.LENGTH_LONG, TastyToast.ERROR)
-			//Toast.makeText(this@RegisterActivity, "Please fill the form correctly. All field should fill, password should have atleast 8 characters.",Toast.LENGTH_SHORT).show()
 		}
 
 	}
@@ -108,8 +149,8 @@ class RegisterActivity: AppCompatActivity() {
 						val user = mAuth.currentUser
 						this.writeNewUser(nic,name,email,mobile)
                         methodObj.progressDialogDismiss(progressDialog)
-						this.startSymptomActivity()
-						finish()
+						this.sendVerificationEmail()
+
 					} else {
                         methodObj.progressDialogDismiss(progressDialog)
 						TastyToast.makeText(applicationContext, "Authentication failed.${task.exception}",
@@ -118,6 +159,19 @@ class RegisterActivity: AppCompatActivity() {
 					}
 
 
+				}
+	}
+	private fun sendVerificationEmail(){
+		val user = FirebaseAuth.getInstance().currentUser
+		user!!.sendEmailVerification()
+				.addOnCompleteListener { task ->
+					if (task.isSuccessful) {
+						startSymptomActivity()
+						finish()
+					} else {
+						TastyToast.makeText(applicationContext, "Error sending verification email.Please try again later. ",
+								TastyToast.LENGTH_LONG, TastyToast.ERROR)
+					}
 				}
 	}
 	

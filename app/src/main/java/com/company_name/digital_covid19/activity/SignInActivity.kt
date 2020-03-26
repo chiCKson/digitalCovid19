@@ -8,12 +8,10 @@
 
 package com.company_name.digital_covid19.activity
 
-import android.R.attr.password
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentActivity
@@ -22,6 +20,7 @@ import com.company_name.digital_covid19.databinding.SignInActivityBinding
 import com.company_name.digital_covid19.methods.Methods
 import com.google.firebase.auth.FirebaseAuth
 import com.sdsmdg.tastytoast.TastyToast
+import com.yeyint.customalertdialog.CustomAlertDialog
 import io.github.pierry.progress.Progress
 
 
@@ -54,13 +53,23 @@ class SignInActivity: AppCompatActivity() {
 	
 		// Configure Register component
 		binding.registerButton.setOnClickListener {
-			this.onRegisterPressed()
+			if(binding.registerButton.text.toString()!="Cancel")
+				this.onRegisterPressed()
+			else
+				this.changeUiForLogin()
 		}
 
 		// Configure Login component
 		binding.loginButton.setOnClickListener {
-			methodObj.progressDialogShow(progressDialog,"Please Wait! Authentiating.")
-			this.onLoginPressed()
+
+			if (binding.loginButton.text.toString()!="Reset")
+				this.onLoginPressed()
+			else {
+				if (binding.emailEditText.text.toString()!="")
+					this.sendForgetPasswordEmail(binding.emailEditText.text.toString())
+				else
+					TastyToast.makeText(applicationContext, "Please enter your email that previously registered.", TastyToast.LENGTH_LONG, TastyToast.ERROR)
+			}
 		}
 
 		// Configure g+ component
@@ -72,11 +81,45 @@ class SignInActivity: AppCompatActivity() {
 		binding.facebookButton.setOnClickListener{
 			this.onFacebookPressed()
 		}
+		binding.forgotPasswordTextView.setOnClickListener {
+			this.changeUiForPasswordChange()
+		}
 	}
-	
+
+	private fun changeUiForLogin() {
+		binding.loginButton.text="Login"
+		binding.registerButton.text="Register"
+		binding.passwordEditText.visibility= View.VISIBLE
+	}
+
+	private fun changeUiForPasswordChange() {
+		binding.loginButton.text="Reset"
+		binding.registerButton.text="Cancel"
+		binding.passwordEditText.visibility= View.INVISIBLE
+	}
+
+
+	private fun sendForgetPasswordEmail(email:String) {
+		methodObj.progressDialogShow(progressDialog,"Please Wait!")
+		FirebaseAuth.getInstance().sendPasswordResetEmail(email)
+				.addOnCompleteListener { task ->
+					if (task.isSuccessful) {
+						TastyToast.makeText(applicationContext, "Your password reset mail has been sent your email provided.Log in to your email and follow the instructions.", TastyToast.LENGTH_LONG, TastyToast.SUCCESS)
+						startWelcomActivity()
+						finish()
+					}else{
+						methodObj.progressDialogDismiss(progressDialog)
+						TastyToast.makeText(applicationContext, "Error sending the email.", TastyToast.LENGTH_LONG, TastyToast.ERROR)
+					}
+				}
+	}
+
 	private fun onRegisterPressed() {
 	
 		this.startRegisterActivity()
+	}
+	private fun startWelcomActivity(){
+		this.startActivity(WelcomeActivity.newIntent(this))
 	}
 	
 	private fun onLoginPressed() {
@@ -94,6 +137,7 @@ class SignInActivity: AppCompatActivity() {
 	
 	}
 	private fun signin(){
+		methodObj.progressDialogShow(progressDialog,"Please Wait!")
 		val email=binding.emailEditText.text.toString()
 		val password=binding.passwordEditText.text.toString()
 		mAuth.signInWithEmailAndPassword(email, password)
@@ -107,8 +151,8 @@ class SignInActivity: AppCompatActivity() {
 						finish()
 					} else {
 						// If sign in fails, display a message to the user.
-
-						TastyToast.makeText(applicationContext, "Authentication failed.${task.exception}", TastyToast.LENGTH_LONG, TastyToast.ERROR)
+						methodObj.progressDialogDismiss(progressDialog)
+						TastyToast.makeText(applicationContext, "Authentication failed.Please check your credentials.", TastyToast.LENGTH_LONG, TastyToast.ERROR)
 
 					}
 
@@ -129,10 +173,12 @@ class SignInActivity: AppCompatActivity() {
 	private fun startRegisterActivity() {
 	
 		this.startActivity(RegisterActivity.newIntent(this))
+		finish()
 	}
 	
 	private fun startHomeActivity() {
 	
 		this.startActivity(MapsActivity.newIntent(this))
+		finish()
 	}
 }

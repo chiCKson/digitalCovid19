@@ -1,0 +1,13 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <stroke
+        android:color="@color/quantum_vanillaredA700"
+        android:width="@dimen/register_activity_password_edit_text_border_size"/>
+    <padding android:bottom="10dp"
+        android:left="20dp"
+        android:right="20dp"
+        android:top="10dp"/>
+    <corners android:radius="@dimen/register_activity_password_edit_text_radius"/>
+
+    <solid android:color="#FFFFFF"/>
+</shape>
