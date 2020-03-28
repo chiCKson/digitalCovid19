@@ -23,6 +23,7 @@ import com.company_name.digital_covid19.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.sdsmdg.tastytoast.TastyToast
+import com.yeyint.customalertdialog.CustomAlertDialog
 import io.github.pierry.progress.Progress
 
 
@@ -100,37 +101,28 @@ class SymptomsSecondActivity: AppCompatActivity() {
 		if (getValue())
 			symptom.country = valueCountry
 		// Configure addSymptoms component
-		binding.addsymptomsButton.setOnClickListener {
-			this.onAddSymptomsPressed()
-		}
+		breathingDifficultiesDialog()
 
-		// Configure breathingDifficultiesSwitch component
-		binding.breathingdifficultiesswitchSwitch.setOnClickListener {
-			this.breathingdifficultiesswitchValueChanged()
-		}
-
-		// Configure HeadacheSwitch component
-		binding.headacheswitchSwitch.setOnClickListener {
-
-			this.headacheswitchValueChanged()
-		}
-
-		// Configure CoughSwitch component
-		binding.coughswitchSwitch.setOnClickListener {
-			this.oncoughswitchValueChanged()
-		}
-
-		// Configure soreThroatSwitch component
-		binding.sorethroatswitchSwitch.setOnClickListener {
-			this.onsorethroatswitchValueChanged()
-		}
-
-		// Configure FeverSwitch component
-		binding.feverswitchSwitch.setOnClickListener {
-			this.onfeverswitchValueChanged()
-		}
 	}
-	
+	private fun breathingDifficultiesDialog(){
+		val dialogVerifyEmail = CustomAlertDialog(this, CustomAlertDialog.DialogStyle.CURVE)
+		dialogVerifyEmail.setAlertTitle("Answer these questins")
+		dialogVerifyEmail.setAlertMessage("Have you feeling any breathing difficulties in past few weeks?")
+		dialogVerifyEmail.setDialogType(CustomAlertDialog.DialogType.SUCCESS)
+		//dialogVerifyEmail.setDialogImage(getDrawable(R.mipmap.ic_launcher_foreground),0);
+		dialogVerifyEmail.setNegativeButton("No") {
+			symptom.breathin = false
+			headacheswitchValueChanged()
+			dialogVerifyEmail.dismiss()
+		}
+		dialogVerifyEmail.setPositiveButton("Yes"){
+			symptom.breathin = true
+			headacheswitchValueChanged()
+			dialogVerifyEmail.dismiss()
+		}
+		dialogVerifyEmail.create();
+		dialogVerifyEmail.show();
+	}
 	private fun onAddSymptomsPressed() {
 		this.addSymptoms()
 		methodObj.addSharedPreference("addSymptom","yes",sharedPreferences)
@@ -138,24 +130,92 @@ class SymptomsSecondActivity: AppCompatActivity() {
 		this.startHomeActivity()
 	}
 	
-	private fun breathingdifficultiesswitchValueChanged() {
-		symptom.breathin = binding.breathingdifficultiesswitchSwitch.isChecked
-	}
+
 	
 	private fun headacheswitchValueChanged() {
-		symptom.headache=binding.headacheswitchSwitch.isChecked
+		val dialogVerifyEmail = CustomAlertDialog(this, CustomAlertDialog.DialogStyle.CURVE)
+		dialogVerifyEmail.setAlertTitle("Answer these questins")
+		dialogVerifyEmail.setAlertMessage("Have you feeling any headache in past few weeks?")
+		dialogVerifyEmail.setDialogType(CustomAlertDialog.DialogType.SUCCESS)
+		//dialogVerifyEmail.setDialogImage(getDrawable(R.mipmap.ic_launcher_foreground),0);
+		dialogVerifyEmail.setNegativeButton("No") {
+			symptom.headache = false
+			oncoughswitchValueChanged()
+			dialogVerifyEmail.dismiss()
+		}
+		dialogVerifyEmail.setPositiveButton("Yes"){
+			symptom.headache = true
+			oncoughswitchValueChanged()
+			dialogVerifyEmail.dismiss()
+		}
+		dialogVerifyEmail.create();
+		dialogVerifyEmail.show();
+
 	}
 	
 	private fun oncoughswitchValueChanged() {
-		symptom.cough=binding.coughswitchSwitch.isChecked
+		val dialogVerifyEmail = CustomAlertDialog(this, CustomAlertDialog.DialogStyle.CURVE)
+		dialogVerifyEmail.setAlertTitle("Answer these questins")
+		dialogVerifyEmail.setAlertMessage("Have you feeling dry cough in past few weeks?")
+		dialogVerifyEmail.setDialogType(CustomAlertDialog.DialogType.SUCCESS)
+
+		dialogVerifyEmail.setNegativeButton("No") {
+			symptom.cough = false
+			onsorethroatswitchValueChanged()
+			dialogVerifyEmail.dismiss()
+		}
+		dialogVerifyEmail.setPositiveButton("Yes"){
+			symptom.cough= true
+			onsorethroatswitchValueChanged()
+			dialogVerifyEmail.dismiss()
+		}
+		dialogVerifyEmail.create();
+		dialogVerifyEmail.show();
+
 	}
 	
 	private fun onsorethroatswitchValueChanged() {
-		symptom.throat=binding.sorethroatswitchSwitch.isChecked
+		val dialogVerifyEmail = CustomAlertDialog(this, CustomAlertDialog.DialogStyle.CURVE)
+		dialogVerifyEmail.setAlertTitle("Answer these questins")
+		dialogVerifyEmail.setAlertMessage("Have you feeling sore throat in past few weeks?")
+		dialogVerifyEmail.setDialogType(CustomAlertDialog.DialogType.SUCCESS)
+		//dialogVerifyEmail.setDialogImage(getDrawable(R.mipmap.ic_launcher_foreground),0);
+		dialogVerifyEmail.setNegativeButton("No") {
+			symptom.throat = false
+			onfeverswitchValueChanged()
+			dialogVerifyEmail.dismiss()
+		}
+		dialogVerifyEmail.setPositiveButton("Yes"){
+			symptom.throat= true
+			onfeverswitchValueChanged()
+			dialogVerifyEmail.dismiss()
+		}
+		dialogVerifyEmail.create();
+		dialogVerifyEmail.show();
+
+
 	}
 	
 	private fun onfeverswitchValueChanged() {
-		symptom.fever=binding.feverswitchSwitch.isChecked
+		val dialogVerifyEmail = CustomAlertDialog(this, CustomAlertDialog.DialogStyle.CURVE)
+		dialogVerifyEmail.setAlertTitle("Answer these questins")
+		dialogVerifyEmail.setAlertMessage("Have you feeling sore throat in past few weeks?")
+		dialogVerifyEmail.setDialogType(CustomAlertDialog.DialogType.SUCCESS)
+		//dialogVerifyEmail.setDialogImage(getDrawable(R.mipmap.ic_launcher_foreground),0);
+		dialogVerifyEmail.setNegativeButton("No") {
+			symptom.fever = false
+			this.onAddSymptomsPressed()
+			dialogVerifyEmail.dismiss()
+		}
+		dialogVerifyEmail.setPositiveButton("Yes"){
+			symptom.fever= true
+			this.onAddSymptomsPressed()
+			dialogVerifyEmail.dismiss()
+		}
+		dialogVerifyEmail.create();
+		dialogVerifyEmail.show();
+
+
 	}
 	
 	private fun startHomeActivity() {
