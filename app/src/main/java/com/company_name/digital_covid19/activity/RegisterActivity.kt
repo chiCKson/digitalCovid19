@@ -8,11 +8,13 @@
 
 package com.company_name.digital_covid19.activity
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.location.Location
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
@@ -20,8 +22,15 @@ import com.company_name.digital_covid19.R
 import com.company_name.digital_covid19.databinding.RegisterActivityBinding
 import com.company_name.digital_covid19.methods.Methods
 import com.company_name.digital_covid19.models.User
+import com.google.android.gms.common.api.Status
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.libraries.places.api.Places
+import com.google.android.libraries.places.api.model.Place
+import com.google.android.libraries.places.widget.Autocomplete
+import com.google.android.libraries.places.widget.AutocompleteActivity
+import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -39,7 +48,7 @@ class RegisterActivity: AppCompatActivity() {
 			return Intent(context, RegisterActivity::class.java)
 		}
 	}
-	
+	var PLACE_AUTOCOMPLETE_REQUEST_CODE = 1
 	private lateinit var binding: RegisterActivityBinding
 	private lateinit var mAuth: FirebaseAuth
 	private lateinit var database: DatabaseReference
@@ -47,11 +56,13 @@ class RegisterActivity: AppCompatActivity() {
     private lateinit var methodObj:Methods
     private lateinit var progressDialog: Progress
 	private lateinit var fusedLocationClient: FusedLocationProviderClient
-
+	private lateinit var latLng: LatLng
 	override fun onCreate(savedInstanceState: Bundle?) {
 	
 		super.onCreate(savedInstanceState)
 		mAuth = FirebaseAuth.getInstance()
+		Places.initialize(applicationContext, resources.getString(R.string.google_maps_key))
+		val placesClient = Places.createClient(this)
 		database = FirebaseDatabase.getInstance().reference
         methodObj= Methods()
         progressDialog=methodObj.progressDialog(this)
@@ -63,7 +74,11 @@ class RegisterActivity: AppCompatActivity() {
 		this.init()
 	}
 	private fun validateForm():Boolean{
-
+		if (binding.selectLocationButton.text=="Choose Location"){
+			TastyToast.makeText(applicationContext, "Please select the location.",
+					TastyToast.LENGTH_LONG, TastyToast.ERROR)
+			return false
+		}
 
 		if (binding.nicEditText.text.toString()=="" || binding.passwordEditText.text.toString()=="" || binding.emailEditText.text.toString()==""){
 			TastyToast.makeText(applicationContext, "All fileds should be filled.",
@@ -102,24 +117,23 @@ class RegisterActivity: AppCompatActivity() {
 		return true
 	}
 	private fun writeNewUser( nic:String,name: String, email: String,mobile:String) {
-
         methodObj.addSharedPreference("currentUserNic",nic,sharedPreferences)
 		methodObj.addSharedPreferenceInt("userLocId",1,sharedPreferences)
         methodObj.addSharedPreference("currentUserName",name,sharedPreferences)
-		fusedLocationClient.lastLocation
-				.addOnSuccessListener { location : Location? ->
-					val user = User(name, email,nic,mobile, location!!.latitude, location.longitude)
-					database.child("users").child(nic).setValue(user)
-				}
-
-
+		methodObj.addSharedPreference("secondUse","yes",sharedPreferences)
+		methodObj.deletePreference(sharedPreferences,"addSymptom")
+		val user = User(name, email,nic,mobile, latLng.latitude, latLng.longitude)
+		database.child("users").child(nic).setValue(user)
 	}
 	private fun init() {
 
 		// Configure Register component
 		binding.registerButton.setOnClickListener {
-
-			this.onRegisterPressed()
+			if (latLng!=null)
+				this.onRegisterPressed()
+		}
+		binding.selectLocationButton.setOnClickListener {
+			autoComplete()
 		}
 	}
 	private fun makeGreen(){
@@ -132,7 +146,7 @@ class RegisterActivity: AppCompatActivity() {
 	private fun onRegisterPressed() {
 		this.makeGreen()
 		if (this.validateForm()){
-			methodObj.progressDialogShow(progressDialog,"Please Wait! Registering to our servers.")
+			methodObj.progressDialogShow(progressDialog,"Please Wait!")
 			this.registerUserOnDb()
 		}
 
@@ -166,7 +180,8 @@ class RegisterActivity: AppCompatActivity() {
 		user!!.sendEmailVerification()
 				.addOnCompleteListener { task ->
 					if (task.isSuccessful) {
-						startSymptomActivity()
+						signout()
+						startWelcomeActivity()
 						finish()
 					} else {
 						TastyToast.makeText(applicationContext, "Error sending verification email.Please try again later. ",
@@ -174,9 +189,48 @@ class RegisterActivity: AppCompatActivity() {
 					}
 				}
 	}
-	
+
+	private fun signout() {
+		mAuth.signOut()
+		methodObj.deletePreference(sharedPreferences,"currentUserNic")
+	}
+
+
+	private fun startWelcomeActivity() {
+		this.startActivity(WelcomeActivity.newIntent(this))
+	}
+
 	private fun startSymptomActivity() {
 	
 		this.startActivity(SymptomActivity.newIntent(this))
+	}
+	private fun autoComplete(){
+		val fields = listOf(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG)
+		val intent = Autocomplete.IntentBuilder(
+						AutocompleteActivityMode.OVERLAY, fields).setCountry("LK")
+				.build(this)
+		startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE)
+	}
+	override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+		super.onActivityResult(requestCode, resultCode, data)
+
+		if (requestCode == PLACE_AUTOCOMPLETE_REQUEST_CODE) {
+			if (resultCode == Activity.RESULT_OK) {
+				val place = Autocomplete.getPlaceFromIntent(data!!)
+
+				latLng= place.latLng!!
+				binding.selectLocationButton.text=place.name
+
+				//Log.i(FragmentActivity.TAG, "Place: " + place.name + ", " + place.id)
+			} else if (resultCode == AutocompleteActivity.RESULT_ERROR) {
+
+
+				val status: Status = Autocomplete.getStatusFromIntent(data!!)
+				Toast.makeText(this,"error$status", Toast.LENGTH_LONG).show()
+				//Log.i(FragmentActivity.TAG, status.getStatusMessage())
+			} else if (resultCode == Activity.RESULT_CANCELED) {
+				// The user canceled the operation.
+			}
+		}
 	}
 }

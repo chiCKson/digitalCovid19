@@ -10,9 +10,11 @@ package com.company_name.digital_covid19.activity
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentActivity
 import com.company_name.digital_covid19.R
@@ -34,17 +36,18 @@ class SignInActivity: AppCompatActivity() {
 			return Intent(context, SignInActivity::class.java)
 		}
 	}
-	
+	private lateinit var sharedPreferences: SharedPreferences
 	private lateinit var binding: SignInActivityBinding
 	private lateinit var mAuth: FirebaseAuth
 	private lateinit var methodObj:Methods
-	private lateinit var progressDialog: Progress
+
 	override fun onCreate(savedInstanceState: Bundle?) {
 	
 		super.onCreate(savedInstanceState)
+		sharedPreferences=this.getSharedPreferences("digitalCovidPrefs",0)
 		mAuth = FirebaseAuth.getInstance()
 		methodObj= Methods()
-		progressDialog=methodObj.progressDialog(this)
+
 		binding = DataBindingUtil.setContentView(this, R.layout.sign_in_activity)
 		this.init()
 	}
@@ -100,15 +103,21 @@ class SignInActivity: AppCompatActivity() {
 
 
 	private fun sendForgetPasswordEmail(email:String) {
-		methodObj.progressDialogShow(progressDialog,"Please Wait!")
+		var progress=Progress(this)
+		progress.setBackgroundColor(ContextCompat.getColor(this,R.color.welcome_activity_register_button_text_color))
+				.setMessageColor(ContextCompat.getColor(this,R.color.register_activity_constraint_layout_constraint_layout_background_color))
+				.setProgressColor(ContextCompat.getColor(this,R.color.register_activity_constraint_layout_constraint_layout_background_color))
+				.setMessage("Please Wait!")
+				.show()
 		FirebaseAuth.getInstance().sendPasswordResetEmail(email)
 				.addOnCompleteListener { task ->
 					if (task.isSuccessful) {
+						progress.dismiss()
 						TastyToast.makeText(applicationContext, "Your password reset mail has been sent your email provided.Log in to your email and follow the instructions.", TastyToast.LENGTH_LONG, TastyToast.SUCCESS)
 						startWelcomActivity()
 						finish()
 					}else{
-						methodObj.progressDialogDismiss(progressDialog)
+						progress.dismiss()
 						TastyToast.makeText(applicationContext, "Error sending the email.", TastyToast.LENGTH_LONG, TastyToast.ERROR)
 					}
 				}
@@ -137,21 +146,37 @@ class SignInActivity: AppCompatActivity() {
 	
 	}
 	private fun signin(){
-		methodObj.progressDialogShow(progressDialog,"Please Wait!")
+		var progress=Progress(this)
+		progress.setBackgroundColor(ContextCompat.getColor(this,R.color.welcome_activity_register_button_text_color))
+				.setMessageColor(ContextCompat.getColor(this,R.color.register_activity_constraint_layout_constraint_layout_background_color))
+				.setProgressColor(ContextCompat.getColor(this,R.color.register_activity_constraint_layout_constraint_layout_background_color))
+				.setMessage("Please Wait!")
+				.show()
 		val email=binding.emailEditText.text.toString()
 		val password=binding.passwordEditText.text.toString()
 		mAuth.signInWithEmailAndPassword(email, password)
 				.addOnCompleteListener(this) { task ->
 					if (task.isSuccessful) {
-						// Sign in success, update UI with the signed-in user's information
-						//Log.d(FragmentActivity.TAG, "signInWithEmail:success")
 						val user = mAuth.currentUser
-						methodObj.progressDialogDismiss(progressDialog)
-						this.startHomeActivity()
-						finish()
+						if (user!!.isEmailVerified){
+							progress.dismiss()
+							if (methodObj.readSharedPreferences("addSymptom",sharedPreferences)=="null") {
+								this.startSymptomActivity()
+							}else{
+								this.startHomeActivity()
+							}
+
+							finish()
+						}else{
+							mAuth.signOut()
+							startWelcomeActivity()
+						}
+
 					} else {
 						// If sign in fails, display a message to the user.
-						methodObj.progressDialogDismiss(progressDialog)
+
+						progress.dismiss()
+
 						TastyToast.makeText(applicationContext, "Authentication failed.Please check your credentials.", TastyToast.LENGTH_LONG, TastyToast.ERROR)
 
 					}
@@ -179,6 +204,14 @@ class SignInActivity: AppCompatActivity() {
 	private fun startHomeActivity() {
 	
 		this.startActivity(MapsActivity.newIntent(this))
+		finish()
+	}
+	private fun startWelcomeActivity() {
+		this.startActivity(WelcomeActivity.newIntent(this))
+		finish()
+	}
+	private fun startSymptomActivity() {
+		this.startActivity(SymptomActivity.newIntent(this))
 		finish()
 	}
 }

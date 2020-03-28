@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/add_location_activity_location_edit_text_border_color"
+        tools:context=".activity.StatisticActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+   >
+    <TextView
+        android:id="@+id/updated_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/font_nunito_regular"
+        android:layout_gravity="center_horizontal"
+        android:text="Time"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+
+        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteY="51dp"/>
+    <TextView
+    android:id="@+id/local_new_cases_textview"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+
+    android:fontFamily="@font/font_nunito_regular"
+    android:layout_gravity="center_horizontal"
+    android:text="0"
+    android:textColor="#FFFFFF"
+    android:textSize="80dp"
+
+    tools:layout_editor_absoluteX="38dp"
+    tools:layout_editor_absoluteY="51dp"/>
+    <TextView
+        android:id="@+id/local_new_cases_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/font_nunito_regular"
+        android:layout_gravity="center_horizontal"
+        android:text="Local New Cases"
+        android:textColor="#FFFFFF"
+        android:textSize="30dp"
+
+        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteY="51dp"/>
+    <TextView
+        android:id="@+id/local_total_cases_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:fontFamily="@font/font_nunito_regular"
+        android:layout_gravity="center_horizontal"
+        android:text="0"
+        android:textColor="#FFFFFF"
+        android:textSize="80dp"
+
+        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteY="51dp"/>
+    <TextView
+        android:id="@+id/local_total_cases_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/font_nunito_regular"
+        android:layout_gravity="center_horizontal"
+        android:text="Local Total Cases"
+        android:textColor="#FFFFFF"
+        android:textSize="30dp"
+
+        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteY="51dp"/>
+    <TextView
+        android:id="@+id/local_hospital_cases_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:fontFamily="@font/font_nunito_regular"
+        android:layout_gravity="center_horizontal"
+        android:text="0"
+        android:textColor="#FFFFFF"
+        android:textSize="80dp"
+
+        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteY="51dp"/>
+    <TextView
+        android:id="@+id/local_hospital_cases_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/font_nunito_regular"
+        android:layout_gravity="center_horizontal"
+        android:text="Total number in hospitals"
+        android:textColor="#FFFFFF"
+        android:textSize="30dp"
+
+        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteY="51dp"/>
+    <TextView
+        android:id="@+id/local_recovered_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:fontFamily="@font/font_nunito_regular"
+        android:layout_gravity="center_horizontal"
+        android:text="0"
+        android:textColor="#FFFFFF"
+        android:textSize="80dp"
+
+        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteY="51dp"/>
+    <TextView
+        android:id="@+id/local_recovered_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/font_nunito_regular"
+        android:layout_gravity="center_horizontal"
+        android:text="Total Recovered"
+        android:textColor="#FFFFFF"
+        android:textSize="30dp"
+
+        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteY="51dp"/>
+    <TextView
+        android:id="@+id/local_death_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:fontFamily="@font/font_nunito_regular"
+        android:layout_gravity="center_horizontal"
+        android:text="0"
+        android:textColor="#FFFFFF"
+        android:textSize="80dp"
+
+        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteY="51dp"/>
+    <TextView
+        android:id="@+id/local_death_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/font_nunito_regular"
+        android:layout_gravity="center_horizontal"
+        android:text="Local Deathes"
+        android:textColor="#FFFFFF"
+        android:textSize="30dp"
+
+        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteY="51dp"/>
+
+</LinearLayout>
+    </ScrollView>
+    </LinearLayout>
+</layout>

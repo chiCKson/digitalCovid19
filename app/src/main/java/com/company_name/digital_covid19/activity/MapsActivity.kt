@@ -5,18 +5,18 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.Resources
 import android.graphics.Color
-import android.location.Location
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
+import co.zsmb.materialdrawerkt.builders.drawer
+import co.zsmb.materialdrawerkt.draweritems.badgeable.primaryItem
+import co.zsmb.materialdrawerkt.draweritems.badgeable.secondaryItem
 import com.company_name.digital_covid19.R
 import com.company_name.digital_covid19.methods.Methods
 import com.company_name.digital_covid19.models.DigitalCovidCommonViewModel
 import com.company_name.digital_covid19.models.User
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -24,8 +24,9 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.mikepenz.materialdrawer.DrawerBuilder
+
 import com.sdsmdg.tastytoast.TastyToast
-import com.yeyint.customalertdialog.CustomAlertDialog
 import io.github.pierry.progress.Progress
 import kotlinx.android.synthetic.main.activity_maps.*
 
@@ -45,24 +46,68 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var database: DatabaseReference
     private lateinit var methodObj:Methods
     private lateinit var progressDialog: Progress
-    private lateinit var fusedLocationClient: FusedLocationProviderClient
-   // private lateinit var possibleUserList:ArrayList<String>
+    private lateinit var currentUserDetails:User
+    private lateinit var userList:ArrayList<User>
     private val model: DigitalCovidCommonViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
-        //possibleUserList=ArrayList()
+        currentUserDetails=User()
+        userList=ArrayList()
         sharedPreferences=this.getSharedPreferences("digitalCovidPrefs",0)
         methodObj= Methods()
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         progressDialog=methodObj.progressDialog(this)
         mAuth = FirebaseAuth.getInstance()
         methodObj.progressDialogShow(progressDialog,"Please Wait! Setting the Application.")
-        database = FirebaseDatabase.getInstance().getReference()
+        database = FirebaseDatabase.getInstance().reference
+        val draw =drawer{
+            primaryItem("Map") {
+                icon=R.drawable.ic_location_on_black_24dp
+            }
+            primaryItem ("Profile"){
+                icon=R.drawable.ic_account_circle_black_24dp
+            }
+            primaryItem("My Symptoms") {
+                icon=R.drawable.ic_local_hospital_black_24dp
+            }
+            primaryItem("My Events") {
+                icon=R.drawable.ic_event_black_24dp
+            }
+            primaryItem("Statistics"){
+                icon=R.drawable.ic_insert_chart_black_24dp
+                onClick { _ ->
+                    startActivity(Intent(applicationContext,StatisticActivity::class.java))
+                    false
+                }
+
+            }
+            primaryItem("SignOut") {
+                icon=R.drawable.ic_exit_to_app_black_24dp
+                onClick { _ ->
+                   signOut()
+                    false
+                }
+            }
+        }
+        menu.setOnClickListener {
+            draw.openDrawer()
+        }
+        if (mAuth.currentUser==null)
+            this.signOut()
+        else{
+            this.getUserData()
+        }
+
         val mapObserver=Observer<Boolean>{set ->
             if (set) {
+                val userLocationObserver=Observer<LatLng>{place->
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(place))
+                    mMap.animateCamera( CameraUpdateFactory.zoomTo( 12.0f ) )
 
+                }
+                model.userLocation.observe(this,userLocationObserver)
                 val statusObserver = Observer<String> { status ->
+
                     val nic=methodObj.readSharedPreferences("currentUserNic",sharedPreferences)
                     getInfectedUsers(mMap)
                     getPossibleOneUsers(mMap)
@@ -92,34 +137,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         checkUserPossibleTwo()
         checkUserPossibleOne()
         checkUserInfected()
-        if (mAuth.currentUser==null)
-            this.signOut()
-        else{
-            this.getUserData()
-        }
-        if(!mAuth.currentUser!!.isEmailVerified){
-            val dialogVerifyEmail = CustomAlertDialog(this, CustomAlertDialog.DialogStyle.FILL_STYLE)
-            dialogVerifyEmail.setAlertMessage("A verification email has been sent to your email.Please login to your email account and follow the instructions given to verify your account.")
-            dialogVerifyEmail.setDialogType(CustomAlertDialog.DialogType.ERROR)
-            dialogVerifyEmail.setDialogImage(getDrawable(R.mipmap.ic_launcher_foreground),0);
-            dialogVerifyEmail.setPositiveButton("Resend the Email") {
-                sendVerificationEmail()
-                dialogVerifyEmail.dismiss()
-            }
-            dialogVerifyEmail.setNegativeButton("Cancel") {
 
-                dialogVerifyEmail.cancel()
-            }
 
-            dialogVerifyEmail.create();
-            dialogVerifyEmail.show();
-        }
         round_btn_pressed_li_button.setOnClickListener {
             this.onRoundBtnPressedLiPressed()
         }
-        profile_image_view.setOnClickListener {
-            this.signOut()
-        }
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
                 .findFragmentById(R.id.map) as SupportMapFragment
@@ -197,15 +220,20 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for(child in dataSnapshot.children){
                     val user = child.getValue(User::class.java)
+                    userList.add(user!!)
                     if (mAuth.currentUser?.email == user?.email){
+                        currentUserDetails=user
                         john_smith_text_view.text= user!!.username
+                        val latLng=LatLng(user.lat,user.long)
+                        model.userLocation.value=latLng
                         methodObj.addSharedPreference("currentUserNic",user.nic.toString(),sharedPreferences)
-                        methodObj.progressDialogDismiss(progressDialog)
 
-                        return
+
+
                     }
 
                 }
+                methodObj.progressDialogDismiss(progressDialog)
             }
             override fun onCancelled(databaseError: DatabaseError) {
                 val e=databaseError.toException()
@@ -230,14 +258,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         }
         model.mMapSet.value=true
-        fusedLocationClient.lastLocation
-                .addOnSuccessListener { location : Location? ->
-                    val colomco = LatLng(location!!.latitude, location.longitude)
-                    //mMap.addMarker(MarkerOptions().position(colomco).title("Marker in Colombo"))
 
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(colomco))
-                    mMap.animateCamera( CameraUpdateFactory.zoomTo( 12.0f ) )
-                }
+
 
     }
     private fun onRoundBtnPressedLiPressed() {
@@ -256,39 +278,29 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun signOut(){
         if (mAuth.currentUser!=null) {
             mAuth.signOut()
+            methodObj.deletePreference(sharedPreferences,"secondUse")
+            methodObj.deletePreference(sharedPreferences,"currentUserNic")
+
             this.startWelcomeActivity()
             finish()
         }
     }
 
     private fun possibleUsersLevelOneDrawPath(mMap:GoogleMap,from:String,to:String,title:String){
-        val userPossibleListener = object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                var latLngFrom:LatLng= LatLng(0.0,0.0)
-                var latLngTo:LatLng=LatLng(0.0,0.0)
-                for (child in dataSnapshot.children) {
-                    val user=child.getValue(User::class.java)
-                    if(user!!.nic==from)
-                        latLngFrom=LatLng(user!!.lat,user.long)
-                    if (user!!.nic==to)
-                        latLngTo=LatLng(user!!.lat,user.long)
-                }
-                val line: Polyline = mMap.addPolyline(PolylineOptions()
+        var latLngFrom = LatLng(0.0,0.0)
+        var latLngTo =LatLng(0.0,0.0)
+        for (user in userList) {
+            if(user.nic==from)
+                latLngFrom=LatLng(user.lat,user.long)
+            if (user.nic==to)
+                latLngTo=LatLng(user.lat,user.long)
+        }
+        val line: Polyline = mMap.addPolyline(PolylineOptions()
                         .add(latLngFrom, latLngTo)
                         .width(5f)
                         .color(Color.RED))
-                mMap.addMarker(MarkerOptions().position(latLngFrom).title(title).snippet("Level 1").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)))
-                mMap.addMarker(MarkerOptions().position(latLngTo).title("Carrier"))
-            }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-                val e=databaseError.toException()
-
-                TastyToast.makeText(applicationContext, "Error occured while reading database.$e",
-                        TastyToast.LENGTH_LONG, TastyToast.ERROR)
-            }
-        }
-        database.child("users").addValueEventListener(userPossibleListener)
+        mMap.addMarker(MarkerOptions().position(latLngFrom).title(title).snippet("Level 1").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)))
+        mMap.addMarker(MarkerOptions().position(latLngTo).title("Carrier"))
     }
     private fun getInfectedUsers(mMap: GoogleMap){
         val infetedUserList=ArrayList<String>()
@@ -484,18 +496,5 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         circleOptions.strokeColor(color)
         mMap.addCircle(circleOptions);
     }
-    private fun sendVerificationEmail(){
-        val user = FirebaseAuth.getInstance().currentUser
-        user!!.sendEmailVerification()
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        TastyToast.makeText(applicationContext, "Verification email resent.",
-                                TastyToast.LENGTH_LONG, TastyToast.SUCCESS)
 
-                    } else {
-                        TastyToast.makeText(applicationContext, "Error sending verification email.Please try again later. ",
-                                TastyToast.LENGTH_LONG, TastyToast.ERROR)
-                    }
-                }
-    }
 }

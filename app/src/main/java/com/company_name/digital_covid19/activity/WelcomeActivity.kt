@@ -8,22 +8,25 @@
 
 package com.company_name.digital_covid19.activity
 
-import android.animation.*
+import android.animation.AnimatorSet
+import android.animation.Keyframe
+import android.animation.ObjectAnimator
+import android.animation.PropertyValuesHolder
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.databinding.DataBindingUtil
-import android.graphics.Color
 import android.os.Bundle
-import androidx.core.view.animation.PathInterpolatorCompat
-import androidx.appcompat.app.AppCompatActivity
 import android.util.TypedValue
 import android.view.View
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.animation.PathInterpolatorCompat
+import androidx.databinding.DataBindingUtil
 import com.company_name.digital_covid19.R
 import com.company_name.digital_covid19.databinding.WelcomeActivityBinding
 import com.company_name.digital_covid19.methods.Methods
 import com.google.firebase.auth.FirebaseAuth
-import io.supernova.uitoolkit.animation.ViewBackgroundProperties
+import com.yeyint.customalertdialog.CustomAlertDialog
 
 
 class WelcomeActivity: AppCompatActivity() {
@@ -53,10 +56,32 @@ class WelcomeActivity: AppCompatActivity() {
 	
 	private fun init() {
 		if (mAuth.currentUser!=null){
-			if (methodObj.readSharedPreferences("addSymptom",sharedPreferences)=="null") {
-						this.startSymptomActivity()
-			} else
-				this.startHomeActivity()
+			if(mAuth.currentUser!!.isEmailVerified){
+				if (methodObj.readSharedPreferences("addSymptom",sharedPreferences)=="null") {
+							this.startSymptomActivity()
+				} else
+					this.startHomeActivity()
+			}
+		}else{
+
+			if (methodObj.readSharedPreferences("currentUserNic",sharedPreferences)=="null"){
+				if(methodObj.readSharedPreferences("secondUse",sharedPreferences)!="null"){
+					val dialogVerifyEmail = CustomAlertDialog(this, CustomAlertDialog.DialogStyle.FILL_STYLE)
+					dialogVerifyEmail.setAlertMessage("A verification email has been sent to your email.Please login to your email account and follow the instructions given to verify your account.If already verified then ignore the message and continue to Login..")
+					dialogVerifyEmail.setDialogType(CustomAlertDialog.DialogType.ERROR)
+					dialogVerifyEmail.setDialogImage(getDrawable(R.mipmap.ic_launcher_foreground),0);
+					dialogVerifyEmail.setNegativeButton("Cancel") {
+						dialogVerifyEmail.dismiss()
+					}
+					dialogVerifyEmail.setPositiveButton("Login"){
+						this.startSignInActivity()
+						dialogVerifyEmail.dismiss()
+					}
+					dialogVerifyEmail.create();
+					dialogVerifyEmail.show();
+				}
+			}
+
 		}
 		// Configure Register component
 		binding.registerButton.setOnClickListener {

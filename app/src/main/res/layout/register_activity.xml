@@ -236,6 +236,35 @@
 
 					tools:layout_editor_absoluteX="0dp"
 					tools:layout_editor_absoluteY="457dp" />
+				<TextView
+					android:id="@+id/select_location_text_view"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="@dimen/register_activity_password_text_view_margin_start"
+					android:layout_marginTop="@dimen/register_activity_password_text_view_margin_top"
+					android:gravity="start"
+					android:text="Where Your from?"
+					android:textColor="@color/register_activity_password_text_view_text_color"
+
+					tools:layout_editor_absoluteX="27dp"
+					tools:layout_editor_absoluteY="434dp"/>
+				<Button
+					android:id="@+id/select_location_button"
+					android:layout_width="@dimen/register_activity_password_edit_text_width"
+					android:layout_height="@dimen/register_activity_password_edit_text_height"
+					android:layout_marginBottom="@dimen/register_activity_password_edit_text_margin_bottom"
+					android:background="@drawable/register_activity_password_edit_text_background"
+					android:fontFamily="@font/font_arialmt"
+
+					android:text="Choose Location"
+
+					android:maxLines="1"
+					android:textColor="@color/register_activity_password_text_view_text_color"
+
+					android:textSize="@dimen/register_activity_password_edit_text_text_size"
+
+					tools:layout_editor_absoluteX="0dp"
+					tools:layout_editor_absoluteY="457dp" />
 				<View
 					android:id="@+id/divider_constraint_layout"
 					android:layout_width="@dimen/register_activity_divider_constraint_layout_width"

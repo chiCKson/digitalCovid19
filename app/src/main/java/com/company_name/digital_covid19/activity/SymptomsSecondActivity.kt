@@ -20,9 +20,10 @@ import com.company_name.digital_covid19.databinding.SymptomsSecondActivityBindin
 import com.company_name.digital_covid19.methods.Methods
 import com.company_name.digital_covid19.models.Symptom
 import com.company_name.digital_covid19.models.User
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 import com.sdsmdg.tastytoast.TastyToast
+import io.github.pierry.progress.Progress
 
 
 class SymptomsSecondActivity: AppCompatActivity() {
@@ -40,26 +41,55 @@ class SymptomsSecondActivity: AppCompatActivity() {
 		}
 
 	}
+	private lateinit var mAuth: FirebaseAuth
 
 	private lateinit var binding: SymptomsSecondActivityBinding
 	private lateinit var symptom: Symptom
 	private lateinit var sharedPreferences: SharedPreferences
 	private lateinit var currentUserNic:String
 	private lateinit var database: DatabaseReference
+	private lateinit var progressDialog: Progress
 	private lateinit var methodObj:Methods
 	override fun onCreate(savedInstanceState: Bundle?) {
 
 		super.onCreate(savedInstanceState)
 		symptom=Symptom()
-		binding = DataBindingUtil.setContentView(this, R.layout.symptoms_second_activity)
-		database = FirebaseDatabase.getInstance().reference
 		methodObj= Methods()
-		sharedPreferences=this.getSharedPreferences("digitalCovidPrefs",0)
+		binding = DataBindingUtil.setContentView(this, R.layout.symptoms_second_activity)
+		mAuth = FirebaseAuth.getInstance()
+		progressDialog=methodObj.progressDialog(this)
+		database = FirebaseDatabase.getInstance().reference
 
-		if (methodObj.readSharedPreferences("currentUserNic",sharedPreferences)!="null") {
-			currentUserNic= methodObj.readSharedPreferences("currentUserNic",sharedPreferences).toString()
-		}
+		sharedPreferences=this.getSharedPreferences("digitalCovidPrefs",0)
+		getUserData()
 		this.init()
+	}
+	private fun getUserData(){
+		methodObj.progressDialogShow(progressDialog,"Please Wait")
+		val userListener = object : ValueEventListener {
+			override fun onDataChange(dataSnapshot: DataSnapshot) {
+				for(child in dataSnapshot.children){
+					val user = child.getValue(User::class.java)
+					if (mAuth.currentUser?.email == user?.email){
+
+						currentUserNic= user!!.nic.toString()
+
+						methodObj.addSharedPreference("currentUserNic",user!!.nic.toString(),sharedPreferences)
+						methodObj.progressDialogDismiss(progressDialog)
+
+						return
+					}
+
+				}
+			}
+			override fun onCancelled(databaseError: DatabaseError) {
+				val e=databaseError.toException()
+
+				TastyToast.makeText(applicationContext, "Error occured while reading database.$e",
+						TastyToast.LENGTH_LONG, TastyToast.ERROR)
+			}
+		}
+		database.child("users").addValueEventListener(userListener)
 	}
 	private fun addSymptoms( ) {
 		database.child("symptoms").child(currentUserNic).setValue(symptom)

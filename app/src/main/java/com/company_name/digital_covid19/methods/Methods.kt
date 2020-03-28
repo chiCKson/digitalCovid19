@@ -18,6 +18,9 @@ class Methods {
             .putString(key, value)
             .apply()
     }
+    fun deletePreference(preferences: SharedPreferences,key: String){
+        preferences.edit().remove(key).apply();
+    }
     fun addSharedPreferenceBoolean(key:String,value:Boolean,preferences: SharedPreferences){
         preferences
                 .edit()  // create an Editor

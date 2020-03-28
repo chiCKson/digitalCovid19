@@ -2,6 +2,7 @@ package com.company_name.digital_covid19.models
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.android.gms.maps.model.LatLng
 
 class DigitalCovidCommonViewModel : ViewModel() {
 
@@ -11,6 +12,9 @@ class DigitalCovidCommonViewModel : ViewModel() {
     }
     val userStatus: MutableLiveData<String> by lazy {
         MutableLiveData<String>()
+    }
+    val userLocation:MutableLiveData<LatLng> by lazy {
+        MutableLiveData<LatLng>()
     }
 
     // Rest of the ViewModel...

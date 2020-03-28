@@ -136,4 +136,7 @@
     <string name="title_activity_maps">Map</string>
     <string name="then_which_country_you_have_been">Then which country you have been?</string>
     <string name="confrim_password_register">Confrim Password</string>
+    <string name="title_activity_statistics">StatisticsActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
 </resources>

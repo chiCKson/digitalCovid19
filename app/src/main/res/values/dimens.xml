@@ -1,5 +1,5 @@
 <resources>
-	
+
 	<!-- Resources for SymptomActivity -->
 	<dimen name="symptom_activity_answerssection_constraint_layout_margin_bottom">131dp</dimen>
 	<dimen name="symptom_activity_no_button_width">100dp</dimen>
@@ -16,7 +16,7 @@
 	<dimen name="symptom_activity_yes_button_text_size">22sp</dimen>
 	<dimen name="symptom_activity_are_you_been_abroad_text_view_margin_top">51dp</dimen>
 	<dimen name="symptom_activity_yes_button_radius">5dp</dimen>
-	
+
 	<!-- Resources for SymptomsSecondActivity -->
 	<dimen name="symptoms_second_activity_addsymptoms_button_margin_bottom">30dp</dimen>
 	<dimen name="symptoms_second_activity_breathing_difficulti_text_view_text_size">22sp</dimen>
@@ -64,7 +64,7 @@
 	<dimen name="symptoms_second_activity_addsymptoms_button_text_size">22sp</dimen>
 	<dimen name="symptoms_second_activity_headache_constraint_layout_height">33dp</dimen>
 	<dimen name="symptoms_second_activity_fever_text_view_margin_top">3dp</dimen>
-	
+
 	<!-- Resources for AddEventModalActivity -->
 	<dimen name="add_event_modal_activity_event_name_text_view_margin_top">28dp</dimen>
 	<dimen name="add_event_modal_activity_date_text_view_text_size">18sp</dimen>
@@ -111,7 +111,7 @@
 	<dimen name="add_event_modal_activity_login_two_button_width">295dp</dimen>
 	<dimen name="add_event_modal_activity_login_two_button_margin_top">55dp</dimen>
 	<dimen name="add_event_modal_activity_login_two_button_border_size">1dp</dimen>
-	
+
 	<!-- Resources for HomeActivity -->
 	<dimen name="home_activity_profile_image_view_margin_end">7dp</dimen>
 	<dimen name="home_activity_round_btn_pressed_li_button_text_size">12sp</dimen>
@@ -139,7 +139,7 @@
 	<dimen name="home_activity_round_btn_pressed_li_button_radius">28dp</dimen>
 	<dimen name="home_activity_group10_constraint_layout_width">139dp</dimen>
 	<dimen name="home_activity_profilesectionbackground_constraint_layout_radius">24dp</dimen>
-	
+
 	<!-- Resources for WelcomeActivity -->
 	<dimen name="welcome_activity_login_button_width">178dp</dimen>
 	<dimen name="welcome_activity_login_button_radius">17dp</dimen>
@@ -178,7 +178,7 @@
 	<dimen name="welcome_activity_facebook_button_width">56dp</dimen>
 	<dimen name="welcome_activity_login_button_height">43dp</dimen>
 	<dimen name="welcome_activity_social_constraint_layout_width">200dp</dimen>
-	
+
 	<!-- Resources for AddTransportModalActivity -->
 	<dimen name="add_transport_modal_activity_busnumber_edit_text_text_size">22sp</dimen>
 	<dimen name="add_transport_modal_activity_addtransport_button_radius">17dp</dimen>
@@ -219,7 +219,7 @@
 	<dimen name="add_transport_modal_activity_route_text_view_margin_end">116dp</dimen>
 	<dimen name="add_transport_modal_activity_close_image_view_margin_top">20dp</dimen>
 	<dimen name="add_transport_modal_activity_route_edit_text_text_size">22sp</dimen>
-	
+
 	<!-- Resources for ActivityModelActivity -->
 	<dimen name="activity_model_activity_transport_button_margin_bottom">10dp</dimen>
 	<dimen name="activity_model_activity_event_button_text_size">22sp</dimen>
@@ -248,7 +248,7 @@
 	<dimen name="activity_model_activity_event_button_radius">5dp</dimen>
 	<dimen name="activity_model_activity_event_button_height">100dp</dimen>
 	<dimen name="activity_model_activity_transport_button_border_size">1dp</dimen>
-	
+
 	<!-- Resources for RegisterActivity -->
 	<dimen name="register_activity_divider_two_constraint_layout_radius">2dp</dimen>
 	<dimen name="register_activity_name_edit_text_radius">24dp</dimen>
@@ -311,7 +311,7 @@
 	<dimen name="register_activity_email_edit_text_radius">24dp</dimen>
 	<dimen name="register_activity_password_edit_text_border_size">2dp</dimen>
 	<dimen name="register_activity_divider_two_constraint_layout_width">24dp</dimen>
-	
+
 	<!-- Resources for SignInActivity -->
 	<dimen name="sign_in_activity_password_edit_text_height">48dp</dimen>
 	<dimen name="sign_in_activity_login_button_width">145dp</dimen>
@@ -357,7 +357,7 @@
 	<dimen name="sign_in_activity_password_edit_text_text_size">18sp</dimen>
 	<dimen name="sign_in_activity_login_button_border_size">2dp</dimen>
 	<dimen name="sign_in_activity_social_constraint_layout_height">56dp</dimen>
-	
+
 	<!-- Resources for AddLocationActivity -->
 	<dimen name="add_location_activity_datepicklocation_button_height">48dp</dimen>
 	<dimen name="add_location_activity_close_button_width">17dp</dimen>
@@ -392,4 +392,10 @@
 	<dimen name="add_location_activity_location_edit_text_border_size">1dp</dimen>
 	<dimen name="add_location_activity_line17_constraint_layout_margin_end">-1dp</dimen>
 	<dimen name="add_location_activity_datepicklocation_button_radius">24dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="appbar_padding">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="appbar_padding_top">8dp</dimen>
 </resources>
