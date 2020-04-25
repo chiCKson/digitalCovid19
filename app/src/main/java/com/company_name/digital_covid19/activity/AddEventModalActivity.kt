@@ -13,16 +13,21 @@ import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Color
 import android.opengl.Visibility
 import android.os.Bundle
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import cc.cloudist.acplibrary.ACProgressConstant
+import cc.cloudist.acplibrary.ACProgressPie
 import com.company_name.digital_covid19.R
 import com.company_name.digital_covid19.databinding.AddEventModalActivityBinding
 import com.company_name.digital_covid19.methods.Methods
+import com.company_name.digital_covid19.models.DigitalCovidCommonViewModel
 import com.company_name.digital_covid19.models.Event
 import com.firebase.geofire.GeoFire
 import com.firebase.geofire.GeoLocation
@@ -35,6 +40,7 @@ import com.google.android.libraries.places.widget.AutocompleteActivity
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
 import com.google.firebase.database.*
 import com.sdsmdg.tastytoast.TastyToast
+import com.yeyint.customalertdialog.CustomAlertDialog
 import io.github.pierry.progress.Progress
 import java.util.*
 import kotlin.collections.ArrayList
@@ -65,9 +71,14 @@ class AddEventModalActivity: AppCompatActivity() {
 	private var mDay=0
 	private  var mMonth=0
 	private lateinit var events:ArrayList<String>
+	private var dateSet:Boolean=false
+	private var locationSet:Boolean=false
+	private val model: DigitalCovidCommonViewModel by viewModels()
 	override fun onCreate(savedInstanceState: Bundle?) {
 		events= ArrayList()
 		gRef=ref.child("geofire/events")
+		TastyToast.makeText(applicationContext, getString(R.string.how_event_name),
+				TastyToast.LENGTH_LONG, TastyToast.DEFAULT)
 		sharedPreferences=this.getSharedPreferences("digitalCovidPrefs",0)
 		methodObj= Methods()
 		progressDialog=methodObj.progressDialog(this)
@@ -85,9 +96,7 @@ class AddEventModalActivity: AppCompatActivity() {
 
 			binding.locationEditText.isEnabled=false
 			binding.pickDateButton.isEnabled=false
-			//try to give data to user in 2.0
-			binding.locationEditText.hint="Location set continue adding"
-			binding.pickDateButton.text="Date is set already."
+			getEvents(binding.eventnameEditText.text.toString())
 		}
 		binding.locationEditText.setOnClickListener {
 
@@ -105,7 +114,13 @@ class AddEventModalActivity: AppCompatActivity() {
 
 		// Configure Login component
 		binding.addEventButton.setOnClickListener {
-			this.onaddEventButtonPressed()
+			if (dateSet)
+				if (locationSet)
+					this.onaddEventButtonPressed()
+				else
+					TastyToast.makeText(applicationContext, getString(R.string.location_select), TastyToast.LENGTH_LONG, TastyToast.ERROR)
+			else
+				TastyToast.makeText(applicationContext, getString(R.string.add_transport_modal_activity_date_button_hint), TastyToast.LENGTH_LONG, TastyToast.ERROR)
 		}
 	}
 	private fun getEventList(){
@@ -145,6 +160,7 @@ class AddEventModalActivity: AppCompatActivity() {
 		val datePickerDialog = DatePickerDialog(this,
 				DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
 					binding.pickDateButton.text = dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year
+					dateSet=true
 					val date = dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year
 					geoFire = GeoFire(gRef.child(date))
 
@@ -180,6 +196,7 @@ class AddEventModalActivity: AppCompatActivity() {
 		}
 
 	}
+
 	private fun addDateUserWise( nic:String,date: String) {
 		ref.child("userWiseDates").child(nic).push().setValue(date)
 	}
@@ -191,6 +208,31 @@ class AddEventModalActivity: AppCompatActivity() {
 		val event=Event(name,date,place,lat,long)
 		ref.child("events").child(name).setValue(event)
 
+	}
+
+	private fun getEvents(id:String){
+		val dialog = ACProgressPie.Builder(this)
+				.ringColor(Color.WHITE)
+				.pieColor(Color.WHITE)
+				.updateType(ACProgressConstant.PIE_AUTO_UPDATE)
+				.build()
+		dialog.show()
+		val eventListner = object : ValueEventListener {
+			override fun onDataChange(dataSnapshot: DataSnapshot) {
+				val event=dataSnapshot.getValue(Event::class.java)
+				binding.pickDateButton.text=event!!.date
+				binding.locationEditText.setText(event.place)
+
+				dialog.dismiss()
+			}
+			override fun onCancelled(databaseError: DatabaseError) {
+				val e=databaseError.toException()
+				dialog.dismiss()
+				TastyToast.makeText(applicationContext, resources.getString(R.string.error_db),
+						TastyToast.LENGTH_LONG, TastyToast.ERROR)
+			}
+		}
+		ref.child("events").child(id).addValueEventListener(eventListner)
 	}
 	private fun autoComplete(){
 		val fields = listOf(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG)
@@ -208,6 +250,8 @@ class AddEventModalActivity: AppCompatActivity() {
 				val place = Autocomplete.getPlaceFromIntent(data!!)
 				binding.locationEditText.setText(place.name)
 				latLng= place.latLng!!
+				locationSet=true
+
 
 				//Log.i(FragmentActivity.TAG, "Place: " + place.name + ", " + place.id)
 			} else if (resultCode == AutocompleteActivity.RESULT_ERROR) {

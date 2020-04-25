@@ -13,9 +13,18 @@ class DigitalCovidCommonViewModel : ViewModel() {
     val userStatus: MutableLiveData<String> by lazy {
         MutableLiveData<String>()
     }
-    val userLocation:MutableLiveData<LatLng> by lazy {
-        MutableLiveData<LatLng>()
+    val userSet:MutableLiveData<Boolean> by lazy {
+        MutableLiveData<Boolean>()
+    }
+    val eventNameListSet:MutableLiveData<Boolean> by lazy {
+        MutableLiveData<Boolean>()
+    }
+    val eventListSet:MutableLiveData<Boolean> by lazy {
+        MutableLiveData<Boolean>()
     }
 
+    val doctorListSet:MutableLiveData<Boolean> by lazy {
+        MutableLiveData<Boolean>()
+    }
     // Rest of the ViewModel...
 }

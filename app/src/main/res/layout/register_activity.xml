@@ -70,7 +70,7 @@
 					android:layout_marginTop="@dimen/register_activity_name_edit_text_margin_top"
 					android:background="@drawable/register_activity_password_edit_text_background"
 					android:fontFamily="@font/font_nunito_regular"
-					android:hint="Enter your name"
+					android:hint="@string/enter_your_name"
 					android:inputType="text"
 					android:maxLines="1"
 					android:textColor="#009688"
@@ -102,7 +102,7 @@
 					android:background="@drawable/register_activity_password_edit_text_background"
 					android:fontFamily="@font/font_nunito_regular"
 
-					android:hint="Enter your nic number"
+					android:hint="@string/enter_your_nic_number"
 					android:inputType="text"
 					android:maxLines="1"
 					android:textColor="#009688"
@@ -167,7 +167,7 @@
 					android:fontFamily="@font/font_nunito_regular"
 
 					android:hint="@string/register_activity_mobile_edit_text_hint"
-					android:inputType="text"
+					android:inputType="number"
 					android:maxLines="1"
 					android:textColor="#009688"
 					android:textColorHint="@color/color_hint_text"
@@ -176,66 +176,7 @@
 					tools:layout_editor_absoluteX="0dp"
 					tools:layout_editor_absoluteY="361dp" />
 
-				<TextView
-					android:id="@+id/password_text_view"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_marginStart="@dimen/register_activity_password_text_view_margin_start"
-					android:layout_marginTop="@dimen/register_activity_password_text_view_margin_top"
-					android:gravity="start"
-					android:text="@string/register_activity_password_text_view_text"
-					android:textColor="@color/register_activity_password_text_view_text_color"
 
-					tools:layout_editor_absoluteX="27dp"
-					tools:layout_editor_absoluteY="434dp"/>
-
-				<EditText
-					android:id="@+id/password_edit_text"
-					android:layout_width="@dimen/register_activity_password_edit_text_width"
-					android:layout_height="@dimen/register_activity_password_edit_text_height"
-					android:layout_marginBottom="@dimen/register_activity_password_edit_text_margin_bottom"
-					android:background="@drawable/register_activity_password_edit_text_background"
-					android:fontFamily="@font/font_arialmt"
-
-					android:hint="@string/register_activity_password_edit_text_hint"
-					android:inputType="textPassword"
-					android:maxLines="1"
-					android:textColor="#009688"
-					android:textColorHint="@color/color_hint_text"
-					android:textSize="@dimen/register_activity_password_edit_text_text_size"
-
-					tools:layout_editor_absoluteX="0dp"
-					tools:layout_editor_absoluteY="457dp" />
-				<TextView
-					android:id="@+id/confirm_password_text_view"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_marginStart="@dimen/register_activity_password_text_view_margin_start"
-					android:layout_marginTop="@dimen/register_activity_password_text_view_margin_top"
-					android:gravity="start"
-					android:text="@string/confrim_password_register"
-					android:textColor="@color/register_activity_password_text_view_text_color"
-
-					tools:layout_editor_absoluteX="27dp"
-					tools:layout_editor_absoluteY="434dp"/>
-
-				<EditText
-					android:id="@+id/confirm_password_edit_text"
-					android:layout_width="@dimen/register_activity_password_edit_text_width"
-					android:layout_height="@dimen/register_activity_password_edit_text_height"
-					android:layout_marginBottom="@dimen/register_activity_password_edit_text_margin_bottom"
-					android:background="@drawable/register_activity_password_edit_text_background"
-					android:fontFamily="@font/font_arialmt"
-
-					android:hint="@string/confrim_password_register"
-					android:inputType="textPassword"
-					android:maxLines="1"
-					android:textColor="#009688"
-					android:textColorHint="@color/color_hint_text"
-					android:textSize="@dimen/register_activity_password_edit_text_text_size"
-
-					tools:layout_editor_absoluteX="0dp"
-					tools:layout_editor_absoluteY="457dp" />
 				<TextView
 					android:id="@+id/select_location_text_view"
 					android:layout_width="wrap_content"
@@ -243,7 +184,7 @@
 					android:layout_marginStart="@dimen/register_activity_password_text_view_margin_start"
 					android:layout_marginTop="@dimen/register_activity_password_text_view_margin_top"
 					android:gravity="start"
-					android:text="Where Your from?"
+					android:text="@string/where_your_from"
 					android:textColor="@color/register_activity_password_text_view_text_color"
 
 					tools:layout_editor_absoluteX="27dp"
@@ -256,7 +197,7 @@
 					android:background="@drawable/register_activity_password_edit_text_background"
 					android:fontFamily="@font/font_arialmt"
 
-					android:text="Choose Location"
+					android:text="@string/choose_location"
 
 					android:maxLines="1"
 					android:textColor="@color/register_activity_password_text_view_text_color"

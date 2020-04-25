@@ -1,0 +1,216 @@
+<resources>
+    <string name="age">வயது</string>
+    <string name="gender">பால்‍</string>
+    <string name="symptom">அறிகுறி</string>
+    <string name="disease_history">நோய் வரலாறு</string>
+    <string name="medical_advices_menu">வைத்திய ஆலோசனைகளை நாட</string>
+    <string name="symptoms_q">பின்வரும் கேள்விகளுக்கு பதில் தரவும் </string>
+    <string name="symptom_success">அறிகுறி வெற்றிகரமாக சேர்க்கை பெற்றது.</string>
+    <string name="breathing_difficulties">கடந்த சில கிழமைகளில்  உங்களுக்கு சுவாசக் கோளாறு ஏதேனும் இருந்ததா ?</string>
+    <string name="patient_history">நீங்கள் வேறேதேனும் நோய்களால் பாதிக்கப்பட்டவரா? அல்லது சிகிச்சை பெறுபவரா? (நீரிவு, இதய நோய், சிறுநீரக கோளாறு, அல்லது வேறேதாவதாகவும் இருக்கலாம்)</string>
+    <string name="smelling">கடந்த சில கிழமைகளில்  உங்களின் மண நுகர்ச்சித் திறனில் குறைபாடுள்ளதா ?</string>
+    <string name="gender_label">நீங்கள்</string>
+    <string name="male">ஆண் </string>
+    <string name="female">பெண்</string>
+    <string name="tamil_button">தமிழ்</string>
+    <string name="sinhala">සිංහල</string>
+    <string name="english">English</string>
+    <string name="headache_label">கடந்த சில கிழமைகளில்  உங்களுக்கு தலைவலி இருந்ததா ?</string>
+    <string name="cough_label">கடந்த சில கிழமைகளில்  உங்களுக்கு வரட்டு இருமல் இருந்ததா ?</string>
+    <string name="sorethroat_label">கடந்த சில கிழமைகளில் உங்கள் தொண்டையில் நோவு எதனையும் உணர்கிறீர்களா ?</string>
+    <string name="fever_label">கடந்த சில கிழமைகளில்  உங்களுக்கு காய்ச்சல் இருந்ததா ?</string>
+    <string name="updatedIn">பின்வரும் திகதியில் இத் தரவுகள் மேம்படுத்தப்பட்டது </string>
+    <string name="confirmed_cases">தொற்றுக்குள்ளானோர்</string>
+    <string name="under_observation">சிகிச்சை பெறுவோர்</string>
+    <string name="recovered">குணமடைந்தோர்</string>
+    <string name="deathes">இறப்புக்கள் </string>
+    <string name="traveling_Method">பயண விதம்</string>
+    <string name="traveling_q">கடந்த சில கிழமைகளில்  நீங்கள் பயணம் செய்த  பயண விதத்தை தேர்ந்தெடுங்கள்.</string>
+    <string name="public_label">அரசினர் </string>
+    <string name="public_traveling_method">கடந்த சில கிழமைகளில்  நீங்கள் பயணம் செய்த  பயண விதத்தை (தனியார்) தேர்ந்தெடுங்கள்</string>
+    <string name="bus">பேருந்து </string>
+    <string name="train"> புகையிரதம்</string>
+    <string name="private_label">தனியார்</string>
+    <string name="please_enter_the_recieved_code">கிடைக்கப்பெற்ற இரகசிய குறியீட்டினை பதிவு செய்யவும்.</string>
+    <string name="resend_code">இரகசிய குறியீட்டினை மீண்டும் அனுப்பவும்</string>
+    <string name="verify_code">இரகசிய குறியீட்டினை சரிபார்க்கவும்</string>
+    <string name="error_nic">தேசிய அடையாள அட்டை இலக்கத்ததில் தவறுள்ளது .</string>
+    <string name="error_valid_email">சரியான மின்னஞ்சல் முகவரி பதிவிடப்படவில்லை </string>
+    <string name="code_sent_verify">இரகசிய குறியீடு வெற்றிகரமாக அனுப்ப்பட்டுள்ளது</string>
+    <string name="went_wrong">ஏதோ தவறு நிழ்ந்துள்ளது விரைவில் சீர் செய்கிறோம்</string>
+    <string name="invalid_code">தவறான குறியீடு பதிவிடப்பட்டுள்ளது ...</string>
+    <string name="number_not_empty">கையடக்கத் தொலைபேசி எண் பதிவிடப்படவில்லை.</string>
+    <string name="number_long_digit_check">கையடக்கத் தொலைபேசி எண் 10 எண்களை மட்டுமே கொண்டிருக்க வேண்டும் .</string>
+    <string name="new_cases">புதிதாக இணங்காணப்பட்டோர்</string>
+    <string name="first_register">முதலில் உங்கள் தகவல்களை பதிவு செய்யுங்கள்.</string>
+    <string name="no_events_yet">நீங்கள் இதுவரை எந்த நிகழ்ச்சியையும் சேர்க்கவில்லை.</string>
+    <string name="event_type">நிகழ்ச்சியின் வகை</string>
+    <string name="event_type_details">தயவு செய்து நிகழ்வின் வகையை தெரிவு செய்யவும். பொது நிகழ்வுகள் என்பவை அதிக மக்கள் கலந்து கொண்டவை(திருமணம், பிறந்தநாள் போன்றவை..) தனியார் நிகழ்வுகள் என்பவை குறிப்பிட்ட மக்கள் மாத்திரம் பங்குகொண்டவை (பொருள் கொள்வனவுகள், இரவு விருந்து போன்றன..)</string>
+
+    <!-- miscelnous-->
+    <string name="loading">கொஞ்சம் பொறுக்கவும் !</string>
+    <string name="error_db">தரவுத்தளத்தை நாடும் போது சிறு பிரச்சனை .</string>
+    <string name="error_email">தங்கள் மின்னஞ்சலூடான உறுதிப்படுத்தலில் பிரச்சனை மீண்டும் முயற்சிக்கவும். </string>
+    <!-- Home -->
+    <string name="infect">(மருத்துவ உதவியை நாடவும்)</string>
+	
+    <string name="possible">(தயவு செய்து வீட்டீலேயே இருக்கவும்.)</string>
+    <string name="location_select">தயவு செய்து உங்கள் இடத்தினை தேர்ந்தெடுக்கவும்.</string>
+    <string name="fill_all">தயவு செய்து எல்லா விபரங்களையும் பதிவிடுங்கள்.</string>
+    <string name="password_8">தங்களது கடவுச்சொல் நிச்சயமாக 8 உருக்களையேனும் கொண்டிருக்க வேண்டும்.</string>
+    <!-- Menu -->
+    <string name="menu_home">முகப்பு</string>
+    <string name="menu_Profile">என் விபரம்</string>
+    <string name="menu_family">என் குடும்பம்</string>
+    <string name="menu_symptom">என் அறிகுறிகள்</string>
+    <string name="menu_event">என் நிகழ்வுகள்</string>
+    <string name="menu_signout">வெளியேறு</string>
+    <string name="menu_stat">மேலதிக விபரங்கள் </string>
+    <string name="language_menu">மொழி</string>
+    <!-- Project level resources -->
+    <string name="app_name">எண்ணிம கோவிட் -19</string>
+    <string name="add_location_activity_menu_item_title">பொருள் </string>
+    <string name="symptom_activity_menu_item_title">பொருள் </string>
+
+    <!-- Resources for SymptomActivity -->
+    <string name="symptom_activity_yes_button_hint">ஆம் </string>
+    <string name="symptom_activity_are_you_been_abroad_text_view_text">நீங்கள் கடந்த சில கிழமைகளுள் வெளிநாடு ஏதும் சென்று வந்தீர்களா?
+?</string> 
+    <string name="symptom_activity_no_button_hint">இல்லை </string>
+    <string name="symptom_activity_no_button_text">இல்லை </string>
+    <string name="symptom_activity_are_you_been_abroad_text_view_hint">நீங்கள் கடந்த சில கிழமைகளுக்ள் வெளிநாடு ஏதும் சென்று வந்தீர்களா?</string>
+    <string name="symptom_activity_yes_button_text">ஆம் </string>
+
+    <!-- Resources for SymptomsSecondActivity -->
+    <string name="symptoms_second_activity_cough_text_view_text">இருமல்</string>
+    <string name="symptoms_second_activity_addsymptoms_button_hint">அறிகுறியை சேர்க்க </string>
+    <string name="symptoms_second_activity_addsymptoms_button_text">அறிகுறியை சேர்க்க </string>
+    <string name="symptoms_second_activity_breathing_difficulti_text_view_text">சுவாச இடர்பாடுகள் </string>
+    <string name="symptoms_second_activity_fever_text_view_hint">காய்ச்சல் </string>
+    <string name="symptoms_second_activity_sore_throat_text_view_hint">தொண்டை நோவு </string>
+    <string name="symptoms_second_activity_my_symptoms_text_view_hint">என் அறிகுறிகள் </string>
+    <string name="symptoms_second_activity_my_symptoms_text_view_text">என் அறிகுறிகள் </string>
+    <string name="symptoms_second_activity_breathing_difficulti_text_view_hint">சுவாச  இடர்பாடுகள்</string>
+    <string name="symptoms_second_activity_sore_throat_text_view_text">தொண்டை நோவு </string>
+    <string name="symptoms_second_activity_headache_text_view_text">தலைவலி</string>
+    <string name="symptoms_second_activity_cough_text_view_hint">இருமல்</string>
+    <string name="symptoms_second_activity_fever_text_view_text">காய்ச்சல்</string>
+    <string name="symptoms_second_activity_headache_text_view_hint">தலைவலி</string>
+
+    <!-- Resources for AddEventModalActivity -->
+    <string name="add_event_modal_activity_location_edit_text_hint">தங்கள் இடத்தினை தேர்ந்தெடுக்கவும் </string>
+    <string name="add_event_modal_activity_login_two_button_text">திகதியினை தேர்ந்தெடுக்கவும்</string>
+    <string name="add_event_modal_activity_eventname_edit_text_hint">நேரடி நிகழ்ச்சிகள்</string>
+    <string name="add_event_modal_activity_date_text_view_text">திகதி</string>
+    <string name="add_event_modal_activity_login_button_text">நிகழ்ச்சியினை சேர்க்க</string>
+    <string name="add_event_modal_activity_attending_an_event_text_view_hint">நிகழ்ச்சியில் பங்குபற்றல் </string>
+    <string name="add_event_modal_activity_location_text_view_text">இடம் </string>
+    <string name="add_event_modal_activity_location_text_view_hint">இடம் </string>
+    <string name="add_event_modal_activity_login_button_hint">நிகழ்ச்சியினை சேர்க்க</string>
+    <string name="add_event_modal_activity_attending_an_event_text_view_text">நிகழ்ச்சியில் பங்குபற்றல்</string>
+    <string name="add_event_modal_activity_event_name_text_view_text">நிகழ்வின் பெயர்</string>
+    <string name="add_event_modal_activity_event_name_text_view_hint">நிகழ்வின் பெயர்</string>
+    <string name="add_event_modal_activity_date_text_view_hint">திகதி</string>
+    <string name="add_event_modal_activity_login_two_button_hint">திகதியினை தேர்ந்தெடுக்கவும்</string>
+
+    <!-- Resources for WelcomeActivity -->
+    <string name="welcome_activity_digital_covid19_text_view_text">எண்ணிம கோவிட் -19</string>
+    <string name="welcome_activity_digital_covid19_text_view_hint">எண்ணிம கோவிட் -19</string>
+    <string name="welcome_activity_keeping_you_safer_text_view_text">உங்களை காக்கும் எங்களின் நோக்கம்</string>
+    <string name="welcome_activity_login_button_text">உள்நுழைய </string>
+    <string name="welcome_activity_register_button_text">பதிவு செய்ய</string>
+    <string name="welcome_activity_keeping_you_safer_text_view_hint">உங்களை காக்கும் எங்களின் நோக்கம்</string>
+    <string name="welcome_activity_register_button_hint">பதிவு செய்ய</string>
+    <string name="welcome_activity_login_button_hint">உள்நுழைய </string>
+
+    <!-- Resources for AddTransportModalActivity -->
+    <string name="add_transport_modal_activity_my_transports_text_view_hint">எனது பயணங்கள்</string>
+    <string name="add_transport_modal_activity_busnumber_edit_text_hint">உங்களிடம்</string>
+    <string name="add_transport_modal_activity_bus_number_text_view_text">வாகன இலக்கம்</string>
+    <string name="add_transport_modal_activity_route_text_view_text">பயணப்பாதை </string>
+    <string name="add_transport_modal_activity_addtransport_button_text">பயணம் ஒன்றை சேர்க்க</string>
+    <string name="add_transport_modal_activity_route_edit_text_hint">பயணப்பாதை எண் </string>
+    <string name="add_transport_modal_activity_date_button_text">திகதியினை தேர்ந்தெடுக்கவும்</string>
+    <string name="add_transport_modal_activity_date_text_view_text">>திகதி</string>
+    <string name="add_transport_modal_activity_date_button_hint">திகதியினை தேர்ந்தெடுக்கவும்</string>
+    <string name="add_transport_modal_activity_bus_number_text_view_hint">வாகன இலக்கம்</string>
+    <string name="add_transport_modal_activity_date_text_view_hint">திகதி</string>
+    <string name="add_transport_modal_activity_route_text_view_hint">பயணப்பாதை </string>
+    <string name="add_transport_modal_activity_my_transports_text_view_text">என் பயணங்கள் </string>
+    <string name="add_transport_modal_activity_addtransport_button_hint">பயணம் ஒன்றை சேர்க்க</string>
+
+    <!-- Resources for HomeActivity -->
+    <string name="home_activity_john_smith_text_view_hint">மயூரன்</string>
+    <string name="home_activity_safe_text_view_text">(நீங்கள் பாதுகாப்பாக உள்ளீர்கள்)</string>
+    <string name="home_activity_safe_text_view_hint">பாதுகாப்பானது</string>
+    <string name="home_activity_john_smith_text_view_text">மயூரன்</string>
+
+    <!-- Resources for ActivityModelActivity -->
+    <string name="activity_model_activity_transport_button_text">பயணங்கள்</string>
+    <string name="activity_model_activity_transport_button_hint">பயணங்கள்</string>
+    <string name="activity_model_activity_my_transports_text_view_hint">நடவடிக்கைகள்</string>
+    <string name="activity_model_activity_transport_button_sheet_item_2_text">தனியார்</string>
+    <string name="activity_model_activity_my_transports_text_view_text">நடவடிக்கைகள்</string>
+    <string name="activity_model_activity_transport_button_sheet_title">பயண வகை </string>
+    <string name="activity_model_activity_location_button_hint">பயண இடம் </string>
+    <string name="activity_model_activity_event_button_hint">நிகழ்ச்சிகள் </string>
+    <string name="activity_model_activity_event_button_text">நிகழ்ச்சிகள் </string>
+    <string name="activity_model_activity_transport_button_sheet_item_1_text">அரசினர் </string>
+    <string name="activity_model_activity_location_button_text">பயண இடம் </string>
+
+    <!-- Resources for RegisterActivity -->
+    <string name="register_activity_name_edit_text_hint">மயூரன்</string>
+    <string name="register_activity_nic_number_text_view_hint">ஆள் அடையாள அட்டை இல</string>
+    <string name="register_activity_name_text_view_hint">பெயர்</string>
+    <string name="register_activity_password_edit_text_hint">கடவுச்சொல்லை பதிவிடவும்</string>
+    <string name="register_activity_register_button_text">தொடரவும்</string>
+    <string name="register_activity_please_let_us_know_ytext_view_text">எங்களிடம் நீங்கள் யாரென்று தெரியப்படுத்துங்கள்</string>
+    <string name="register_activity_mobile_edit_text_hint">கையடக்க தொலைபேசி இலக்கத்தை பதிவிடவும்</string>
+    <string name="register_activity_nic_number_text_view_text">ஆள் அடையாள அட்டை இல</string>
+    <string name="register_activity_password_text_view_text">கடவுச்சொல்</string>
+    <string name="register_activity_email_text_view_hint">மின்னஞ்சல் முகவரியை</string>
+    <string name="register_activity_please_let_us_know_ytext_view_hint">எங்களிடம் நீங்கள் யாரென்று தெரியப்படுத்துங்கள்</string>
+    <string name="register_activity_email_text_view_text">மின்னஞ்சல் முகவரியை</string>
+    <string name="register_activity_name_text_view_text">பெயர்</string>
+    <string name="register_activity_password_text_view_hint">கடவுச்சொல்</string>
+    <string name="register_activity_email_edit_text_hint">மின்னஞ்சல் முகவரியை பதிவிடவும்</string>
+    <string name="register_activity_nic_edit_text_hint">961234567v</string>
+    <string name="register_activity_mobile_text_view_hint">கையடக்க தொலைபேசி</string>
+    <string name="register_activity_mobile_text_view_text">கையடக்க தொலைபேசி</string>
+    <string name="register_activity_register_button_hint">தொடரவும்</string>
+
+    <!-- Resources for AddLocationActivity -->
+    <string name="add_location_activity_my_transports_text_view_text">இடம் ஒன்றினை சேர்த்தல் </string>
+    <string name="add_location_activity_login_button_text">இடம் ஒன்றினை சேர்த்தல் </string>
+    <string name="add_location_activity_bus_number_text_view_hint">எங்கே ?</string>
+    <string name="add_location_activity_location_edit_text_hint">இடத்தினை தேர்ந்தெடுக்கவும்</string>
+    <string name="add_location_activity_datepicklocation_button_text">திகதியினை தேர்ந்தெடுக்கவும்</string>
+    <string name="add_location_activity_login_button_hint">இடம் ஒன்றினை சேர்த்தல்</string>
+    <string name="add_location_activity_route_text_view_hint">எப்பொழுது ?</string>
+    <string name="add_location_activity_bus_number_text_view_text">எங்கே ?</string>
+    <string name="add_location_activity_route_text_view_text">எப்பொழுது ?</string>
+    <string name="add_location_activity_datepicklocation_button_hint">திகதியினை தேர்ந்தெடுக்கவும்</string>
+    <string name="add_location_activity_my_transports_text_view_hint">இடம் ஒன்றினை சேர்த்தல்</string>
+
+    <!-- Resources for SignInActivity -->
+    <string name="sign_in_activity_login_button_text">உள்நுழைய </string>
+    <string name="sign_in_activity_forgot_password_text_view_hint">கடவுச்சொல் நினைவிலில்லையா</string>
+    <string name="sign_in_activity_login_button_hint">உள்நுழைய </string>
+    <string name="sign_in_activity_password_edit_text_hint">கடவுச்சொல்</string>
+    <string name="sign_in_activity_register_button_hint">பதிவு செய்ய</string>
+    <string name="sign_in_activity_email_edit_text_hint">உங்கள் மின்னஞ்சல் முகவரியை பதிவிடவும்</string>
+    <string name="sign_in_activity_forgot_password_text_view_text">கடவுச்சொல் நினைவிலில்லையா</string>
+    <string name="sign_in_activity_register_button_text">பதிவு செய்ய</string>
+    <string name="title_activity_maps">வரைபடம் </string>
+    <string name="then_which_country_you_have_been">ஆயின் எந்த நாட்டிற்கு சென்றிருந்தீர்கள் ?</string>
+    <string name="confrim_password_register">கடவுச்சொல்லை உறுதிப்படுத்தவும்</string>
+    <string name="title_activity_statistics">நிகழ்ச்சி விபரங்கள் </string>
+    <string name="tab_text_1">பக்கம் 1</string>
+    <string name="tab_text_2">பக்கம் 2</string>
+    <string name="enter_your_name">பெயரை பதிவிடவும்</string>
+    <string name="enter_your_nic_number">அடையாள அட்டை இலக்கத்தை பதிவிடவும்</string>
+    <string name="where_your_from">நீங்கள் எவ்விடத்தை சேர்ந்தவர் </string>
+    <string name="choose_location">தங்கள் இடத்தினை தேர்ந்தெடுக்கவும் </string>
+    <string name="start_typing_country">நாட்டின் பெயரை பதிவிடுகிறீர்கள் </string>
+
+</resources>

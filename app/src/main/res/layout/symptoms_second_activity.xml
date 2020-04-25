@@ -10,8 +10,51 @@
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:background="#4FAB5E">
-	
 
-	
+
+		<EditText
+			android:id="@+id/history_editText"
+			android:layout_width="300dp"
+			android:layout_height="wrap_content"
+			android:background="@drawable/sign_in_activity_email_edit_text_background"
+			android:ems="10"
+			android:layout_marginTop="100dp"
+			android:inputType="textMultiLine"
+			android:hint="@string/patient_history"
+			android:textColor="#FFFFFF"
+			android:textColorHint="@color/color_hint_text"
+			android:textSize="@dimen/sign_in_activity_email_edit_text_text_size"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toRightOf="parent"/>
+		<Button
+		android:id="@+id/add_symptom_button"
+		android:layout_width="145dp"
+		android:layout_height="@dimen/sign_in_activity_login_button_height"
+		android:background="@drawable/sign_in_activity_login_button_ripple"
+		android:fontFamily="@font/font_nunito_regular"
+		android:gravity="center"
+		android:layout_marginTop="10dp"
+		android:text="@string/symptoms_second_activity_addsymptoms_button_text"
+		android:textColor="@color/sign_in_activity_login_button_text_color"
+		app:layout_constraintTop_toBottomOf="@+id/history_editText"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toLeftOf="@+id/skip_button"
+		/>
+		<Button
+			android:id="@+id/skip_button"
+			android:layout_width="145dp"
+			android:layout_marginStart="5dp"
+			android:layout_height="@dimen/sign_in_activity_login_button_height"
+			android:background="@drawable/sign_in_activity_login_button_ripple"
+			android:fontFamily="@font/font_nunito_regular"
+			android:gravity="center"
+			android:layout_marginTop="10dp"
+			android:text="Skip"
+			android:textColor="@color/sign_in_activity_login_button_text_color"
+			app:layout_constraintTop_toBottomOf="@+id/history_editText"
+			app:layout_constraintLeft_toRightOf="@+id/add_symptom_button"
+			app:layout_constraintRight_toRightOf="parent"
+			/>
 	</androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

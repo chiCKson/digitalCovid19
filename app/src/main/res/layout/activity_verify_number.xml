@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data/>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#4FAB5E"
+    tools:context=".activity.VerifyNumberActivity">
+    <EditText
+        android:id="@+id/code_edit_text"
+        android:layout_width="@dimen/sign_in_activity_email_edit_text_width"
+        android:layout_height="@dimen/sign_in_activity_email_edit_text_height"
+        android:background="@drawable/sign_in_activity_email_edit_text_background"
+        android:fontFamily="@font/font_nunito_regular"
+
+        android:hint="@string/please_enter_the_recieved_code"
+        android:inputType="number"
+        android:maxLines="1"
+        android:textColor="#FFFFFF"
+        android:textColorHint="@color/color_hint_text"
+        android:textSize="@dimen/sign_in_activity_email_edit_text_text_size"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timer_text_view"
+        tools:layout_editor_absoluteX="3dp"
+        tools:layout_editor_absoluteY="0dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/timer_text_view"
+        android:text="60"
+        android:textSize="100dp"
+        android:layout_marginTop="100dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        ></TextView>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/buttonsection_constraint_layout"
+        android:layout_width="@dimen/sign_in_activity_buttonsection_constraint_layout_width"
+        android:layout_height="@dimen/sign_in_activity_buttonsection_constraint_layout_height"
+        android:layout_marginTop="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/code_edit_text"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="10dp">
+
+        <Button
+            android:id="@+id/resend_button"
+            android:layout_width="@dimen/sign_in_activity_register_button_width"
+            android:layout_height="@dimen/sign_in_activity_register_button_height"
+            android:layout_marginStart="@dimen/sign_in_activity_register_button_margin_start"
+            android:background="@drawable/sign_in_activity_register_button_ripple"
+            android:fontFamily="@font/font_nunito_regular"
+            android:gravity="center"
+            android:text="@string/resend_code"
+            android:textColor="#FFFFFF"
+
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="154dp"
+            tools:layout_editor_absoluteY="0dp"/>
+
+        <Button
+            android:id="@+id/verify_button"
+            android:layout_width="@dimen/sign_in_activity_login_button_width"
+            android:layout_height="@dimen/sign_in_activity_login_button_height"
+            android:background="@drawable/sign_in_activity_login_button_ripple"
+            android:fontFamily="@font/font_nunito_regular"
+            android:gravity="center"
+            android:text="@string/verify_code"
+            android:textColor="@color/sign_in_activity_login_button_text_color"
+
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

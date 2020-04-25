@@ -11,13 +11,15 @@ package com.company_name.digital_covid19.activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.databinding.DataBindingUtil
 import android.os.Bundle
+import androidx.lifecycle.Observer
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import android.view.View
+import androidx.databinding.DataBindingUtil
 import com.company_name.digital_covid19.R
 import com.company_name.digital_covid19.databinding.SymptomsSecondActivityBinding
 import com.company_name.digital_covid19.methods.Methods
+import com.company_name.digital_covid19.models.DigitalCovidCommonViewModel
 import com.company_name.digital_covid19.models.Symptom
 import com.company_name.digital_covid19.models.User
 import com.google.firebase.auth.FirebaseAuth
@@ -25,6 +27,7 @@ import com.google.firebase.database.*
 import com.sdsmdg.tastytoast.TastyToast
 import com.yeyint.customalertdialog.CustomAlertDialog
 import io.github.pierry.progress.Progress
+import java.util.*
 
 
 class SymptomsSecondActivity: AppCompatActivity() {
@@ -51,6 +54,7 @@ class SymptomsSecondActivity: AppCompatActivity() {
 	private lateinit var database: DatabaseReference
 	private lateinit var progressDialog: Progress
 	private lateinit var methodObj:Methods
+	private val model: DigitalCovidCommonViewModel by viewModels()
 	override fun onCreate(savedInstanceState: Bundle?) {
 
 		super.onCreate(savedInstanceState)
@@ -63,36 +67,68 @@ class SymptomsSecondActivity: AppCompatActivity() {
 
 		sharedPreferences=this.getSharedPreferences("digitalCovidPrefs",0)
 		getUserData()
-		this.init()
+		val statusObserver = Observer<Boolean> { set ->
+			this.init()
+
+		}
+		model.userSet.observe(this, statusObserver)
+
+		binding.addSymptomButton.setOnClickListener {
+			symptom.history=binding.historyEditText.text.toString()
+			this.onAddSymptomsPressed()
+		}
+		binding.skipButton.setOnClickListener {
+			symptom.history=binding.historyEditText.text.toString()
+			this.onAddSymptomsPressed()
+		}
 	}
 	private fun getUserData(){
-		methodObj.progressDialogShow(progressDialog,"Please Wait")
+		methodObj.progressDialogShow(progressDialog,resources.getString(R.string.loading))
 		val userListener = object : ValueEventListener {
 			override fun onDataChange(dataSnapshot: DataSnapshot) {
 				for(child in dataSnapshot.children){
 					val user = child.getValue(User::class.java)
-					if (mAuth.currentUser?.email == user?.email){
+
+
+					if (mAuth.currentUser?.phoneNumber == user?.mobile){
 
 						currentUserNic= user!!.nic.toString()
 
 						methodObj.addSharedPreference("currentUserNic",user!!.nic.toString(),sharedPreferences)
 						methodObj.progressDialogDismiss(progressDialog)
-
+						model.userSet.value=true
 						return
 					}
 
 				}
+				TastyToast.makeText(applicationContext, getString(R.string.first_register),
+						TastyToast.LENGTH_LONG, TastyToast.ERROR)
+
+				startActivity(Intent(this@SymptomsSecondActivity,RegisterActivity::class.java))
 			}
 			override fun onCancelled(databaseError: DatabaseError) {
 				val e=databaseError.toException()
-
-				TastyToast.makeText(applicationContext, "Error occured while reading database.$e",
+				methodObj.progressDialogDismiss(progressDialog)
+				TastyToast.makeText(applicationContext, resources.getString(R.string.error_db),
 						TastyToast.LENGTH_LONG, TastyToast.ERROR)
 			}
 		}
 		database.child("users").addValueEventListener(userListener)
 	}
 	private fun addSymptoms( ) {
+		var age=0
+		if (currentUserNic.length==10){
+			val year: Int = Calendar.getInstance().get(Calendar.YEAR)
+			val ex=currentUserNic.substring(0,2)
+			val bYear="19$ex".toInt()
+			age=year-bYear
+		}else{
+			val year: Int = Calendar.getInstance().get(Calendar.YEAR)
+			val bYear=currentUserNic.substring(0,4).toInt()
+
+			age=year-bYear
+		}
+		symptom.age=age
 		database.child("symptoms").child(currentUserNic).setValue(symptom)
 	}
 	
@@ -101,21 +137,21 @@ class SymptomsSecondActivity: AppCompatActivity() {
 		if (getValue())
 			symptom.country = valueCountry
 		// Configure addSymptoms component
-		breathingDifficultiesDialog()
+		addSex()
 
 	}
 	private fun breathingDifficultiesDialog(){
 		val dialogVerifyEmail = CustomAlertDialog(this, CustomAlertDialog.DialogStyle.CURVE)
-		dialogVerifyEmail.setAlertTitle("Answer these questins")
-		dialogVerifyEmail.setAlertMessage("Have you feeling any breathing difficulties in past few weeks?")
+		dialogVerifyEmail.setAlertTitle(resources.getString(R.string.symptoms_q))
+		dialogVerifyEmail.setAlertMessage(resources.getString(R.string.breathing_difficulties))
 		dialogVerifyEmail.setDialogType(CustomAlertDialog.DialogType.SUCCESS)
 		//dialogVerifyEmail.setDialogImage(getDrawable(R.mipmap.ic_launcher_foreground),0);
-		dialogVerifyEmail.setNegativeButton("No") {
+		dialogVerifyEmail.setNegativeButton(resources.getString(R.string.symptom_activity_no_button_hint)) {
 			symptom.breathin = false
 			headacheswitchValueChanged()
 			dialogVerifyEmail.dismiss()
 		}
-		dialogVerifyEmail.setPositiveButton("Yes"){
+		dialogVerifyEmail.setPositiveButton(resources.getString(R.string.symptom_activity_yes_button_hint)){
 			symptom.breathin = true
 			headacheswitchValueChanged()
 			dialogVerifyEmail.dismiss()
@@ -126,7 +162,7 @@ class SymptomsSecondActivity: AppCompatActivity() {
 	private fun onAddSymptomsPressed() {
 		this.addSymptoms()
 		methodObj.addSharedPreference("addSymptom","yes",sharedPreferences)
-		TastyToast.makeText(applicationContext, "Symptom added Successfully.", TastyToast.LENGTH_LONG, TastyToast.SUCCESS)
+		TastyToast.makeText(applicationContext, resources.getString(R.string.symptom_success), TastyToast.LENGTH_LONG, TastyToast.SUCCESS)
 		this.startHomeActivity()
 	}
 	
@@ -134,16 +170,16 @@ class SymptomsSecondActivity: AppCompatActivity() {
 	
 	private fun headacheswitchValueChanged() {
 		val dialogVerifyEmail = CustomAlertDialog(this, CustomAlertDialog.DialogStyle.CURVE)
-		dialogVerifyEmail.setAlertTitle("Answer these questins")
-		dialogVerifyEmail.setAlertMessage("Have you feeling any headache in past few weeks?")
+		dialogVerifyEmail.setAlertTitle(resources.getString(R.string.symptoms_q))
+		dialogVerifyEmail.setAlertMessage(resources.getString(R.string.headache_label))
 		dialogVerifyEmail.setDialogType(CustomAlertDialog.DialogType.SUCCESS)
 		//dialogVerifyEmail.setDialogImage(getDrawable(R.mipmap.ic_launcher_foreground),0);
-		dialogVerifyEmail.setNegativeButton("No") {
+		dialogVerifyEmail.setNegativeButton(resources.getString(R.string.symptom_activity_no_button_hint)) {
 			symptom.headache = false
 			oncoughswitchValueChanged()
 			dialogVerifyEmail.dismiss()
 		}
-		dialogVerifyEmail.setPositiveButton("Yes"){
+		dialogVerifyEmail.setPositiveButton(resources.getString(R.string.symptom_activity_yes_button_hint)){
 			symptom.headache = true
 			oncoughswitchValueChanged()
 			dialogVerifyEmail.dismiss()
@@ -155,16 +191,16 @@ class SymptomsSecondActivity: AppCompatActivity() {
 	
 	private fun oncoughswitchValueChanged() {
 		val dialogVerifyEmail = CustomAlertDialog(this, CustomAlertDialog.DialogStyle.CURVE)
-		dialogVerifyEmail.setAlertTitle("Answer these questins")
-		dialogVerifyEmail.setAlertMessage("Have you feeling dry cough in past few weeks?")
+		dialogVerifyEmail.setAlertTitle(resources.getString(R.string.symptoms_q))
+		dialogVerifyEmail.setAlertMessage(resources.getString(R.string.cough_label))
 		dialogVerifyEmail.setDialogType(CustomAlertDialog.DialogType.SUCCESS)
 
-		dialogVerifyEmail.setNegativeButton("No") {
+		dialogVerifyEmail.setNegativeButton(resources.getString(R.string.symptom_activity_no_button_hint)) {
 			symptom.cough = false
 			onsorethroatswitchValueChanged()
 			dialogVerifyEmail.dismiss()
 		}
-		dialogVerifyEmail.setPositiveButton("Yes"){
+		dialogVerifyEmail.setPositiveButton(resources.getString(R.string.symptom_activity_yes_button_hint)){
 			symptom.cough= true
 			onsorethroatswitchValueChanged()
 			dialogVerifyEmail.dismiss()
@@ -176,18 +212,39 @@ class SymptomsSecondActivity: AppCompatActivity() {
 	
 	private fun onsorethroatswitchValueChanged() {
 		val dialogVerifyEmail = CustomAlertDialog(this, CustomAlertDialog.DialogStyle.CURVE)
-		dialogVerifyEmail.setAlertTitle("Answer these questins")
-		dialogVerifyEmail.setAlertMessage("Have you feeling sore throat in past few weeks?")
+		dialogVerifyEmail.setAlertTitle(resources.getString(R.string.symptoms_q))
+		dialogVerifyEmail.setAlertMessage(resources.getString(R.string.sorethroat_label))
 		dialogVerifyEmail.setDialogType(CustomAlertDialog.DialogType.SUCCESS)
 		//dialogVerifyEmail.setDialogImage(getDrawable(R.mipmap.ic_launcher_foreground),0);
-		dialogVerifyEmail.setNegativeButton("No") {
+		dialogVerifyEmail.setNegativeButton(resources.getString(R.string.symptom_activity_no_button_hint)) {
 			symptom.throat = false
 			onfeverswitchValueChanged()
 			dialogVerifyEmail.dismiss()
 		}
-		dialogVerifyEmail.setPositiveButton("Yes"){
+		dialogVerifyEmail.setPositiveButton(resources.getString(R.string.symptom_activity_yes_button_hint)){
 			symptom.throat= true
 			onfeverswitchValueChanged()
+			dialogVerifyEmail.dismiss()
+		}
+		dialogVerifyEmail.create();
+		dialogVerifyEmail.show();
+
+
+	}
+	private fun addSex() {
+		val dialogVerifyEmail = CustomAlertDialog(this, CustomAlertDialog.DialogStyle.CURVE)
+		dialogVerifyEmail.setAlertTitle(resources.getString(R.string.symptoms_q))
+		dialogVerifyEmail.setAlertMessage(resources.getString(R.string.gender_label))
+		dialogVerifyEmail.setDialogType(CustomAlertDialog.DialogType.SUCCESS)
+		//dialogVerifyEmail.setDialogImage(getDrawable(R.mipmap.ic_launcher_foreground),0);
+		dialogVerifyEmail.setNegativeButton(resources.getString(R.string.male)) {
+			symptom.sex = "male"
+			breathingDifficultiesDialog()
+			dialogVerifyEmail.dismiss()
+		}
+		dialogVerifyEmail.setPositiveButton(resources.getString(R.string.female)){
+			symptom.sex= "female"
+			breathingDifficultiesDialog()
 			dialogVerifyEmail.dismiss()
 		}
 		dialogVerifyEmail.create();
@@ -198,18 +255,18 @@ class SymptomsSecondActivity: AppCompatActivity() {
 	
 	private fun onfeverswitchValueChanged() {
 		val dialogVerifyEmail = CustomAlertDialog(this, CustomAlertDialog.DialogStyle.CURVE)
-		dialogVerifyEmail.setAlertTitle("Answer these questins")
-		dialogVerifyEmail.setAlertMessage("Have you feeling sore throat in past few weeks?")
+		dialogVerifyEmail.setAlertTitle(resources.getString(R.string.symptoms_q))
+		dialogVerifyEmail.setAlertMessage(resources.getString(R.string.fever_label))
 		dialogVerifyEmail.setDialogType(CustomAlertDialog.DialogType.SUCCESS)
 		//dialogVerifyEmail.setDialogImage(getDrawable(R.mipmap.ic_launcher_foreground),0);
-		dialogVerifyEmail.setNegativeButton("No") {
+		dialogVerifyEmail.setNegativeButton(resources.getString(R.string.symptom_activity_no_button_hint)) {
 			symptom.fever = false
-			this.onAddSymptomsPressed()
+
 			dialogVerifyEmail.dismiss()
 		}
-		dialogVerifyEmail.setPositiveButton("Yes"){
+		dialogVerifyEmail.setPositiveButton(resources.getString(R.string.symptom_activity_yes_button_hint)){
 			symptom.fever= true
-			this.onAddSymptomsPressed()
+
 			dialogVerifyEmail.dismiss()
 		}
 		dialogVerifyEmail.create();

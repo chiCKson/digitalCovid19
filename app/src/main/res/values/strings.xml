@@ -1,5 +1,51 @@
 <resources>
+    <!-- -->
+    <string name="symptoms_q">Answer these questions</string>
+    <string name="symptom_success">Symptom added Successfully.</string>
+    <string name="breathing_difficulties">Have you feeling any breathing difficulties in past few weeks?</string>
+    <string name="patient_history">Do you have any disease history or under treatment(diabetes,heart disease)?</string>
+    <string name="smelling">Have you feel any smelling difficulty in past few weeks?</string>
+    <string name="gender_label">You are</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="tamil_button">தமிழ்</string>
+    <string name="english">English</string>
+    <string name="headache_label">Have you feeling any headache in past few weeks?</string>
+    <string name="cough_label">Have you feeling dry cough in past few weeks?</string>
+    <string name="sorethroat_label">Have you feeling sore throat in past few weeks?</string>
+    <string name="fever_label">Have you feeling fever in past few weeks?</string>
+    <string name="updatedIn">These data updated on</string>
+    <string name="confirmed_cases">Confirmed Cases</string>
+    <string name="under_observation">Under observation</string>
+    <string name="recovered">Recovered</string>
+    <string name="deathes">Deathes</string>
+    <string name="traveling_Method">Traveled Method</string>
+    <string name="traveling_q">Please choose you used traveled method in last few weeks.</string>
+    <string name="public_label">Public</string>
+    <string name="public_traveling_method">Please choose your public traveling method in last few weeks.</string>
+    <string name="bus">Bus</string>
+    <string name="train">Train</string>
+    <string name="private_label">Private</string>
 
+    <!-- miscelnous-->
+    <string name="loading">Please Wait!</string>
+    <string name="error_db">Error occurred while reading database.</string>
+    <string name="error_email">Error sending verification email.Please try again later. </string>
+    <!-- Home -->
+    <string name="infect">(Please Seek Medical Advices)</string>
+    <string name="possible">(Please stay at home.)</string>
+    <string name="location_select">Please select the location.</string>
+    <string name="fill_all">All fileds should be filled.</string>
+    <string name="password_8">Password should be atleast 8 characters long.</string>
+    <!-- Menu -->
+    <string name="menu_home">Home</string>
+    <string name="menu_Profile">Profile</string>
+    <string name="menu_family">My Family</string>
+    <string name="menu_symptom">My Symptom</string>
+    <string name="menu_event">My Events</string>
+    <string name="menu_signout">SignOut</string>
+    <string name="menu_stat">Statistics</string>
+    <string name="language_menu">Language</string>
     <!-- Project level resources -->
     <string name="app_name">digitalCovid19</string>
     <string name="add_location_activity_menu_item_title">Item</string>
@@ -82,7 +128,7 @@
     <string name="activity_model_activity_transport_button_hint">Transport</string>
     <string name="activity_model_activity_my_transports_text_view_hint">Activities</string>
     <string name="activity_model_activity_transport_button_sheet_item_2_text">Private</string>
-    <string name="activity_model_activity_my_transports_text_view_text">Activities</string>
+    <string name="activity_model_activity_my_transports_text_view_text">Connections</string>
     <string name="activity_model_activity_transport_button_sheet_title">Transport Type</string>
     <string name="activity_model_activity_location_button_hint">Location</string>
     <string name="activity_model_activity_event_button_hint">Event</string>
@@ -97,7 +143,7 @@
     <string name="register_activity_password_edit_text_hint">Enter Your Password</string>
     <string name="register_activity_register_button_text">Continue</string>
     <string name="register_activity_please_let_us_know_ytext_view_text">Please let us know you</string>
-    <string name="register_activity_mobile_edit_text_hint">071 234 5678</string>
+    <string name="register_activity_mobile_edit_text_hint">Please enter your mobile number</string>
     <string name="register_activity_nic_number_text_view_text">NIC number</string>
     <string name="register_activity_password_text_view_text">Password</string>
     <string name="register_activity_email_text_view_hint">Email</string>
@@ -139,4 +185,48 @@
     <string name="title_activity_statistics">StatisticsActivity</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
+    <string name="enter_your_name">Enter your name</string>
+    <string name="enter_your_nic_number">Enter your nic number</string>
+    <string name="where_your_from">Where Your from?</string>
+    <string name="choose_location">Choose Location</string>
+    <string name="start_typing_country">Start typing country</string>
+    <string name="sinhala">සිංහල</string>
+    <string name="please_enter_the_recieved_code">Please enter the recieved Code.</string>
+    <string name="resend_code">Resend Code</string>
+    <string name="verify_code">verify code</string>
+    <string name="error_nic">Error in National Identity Card Number.</string>
+    <string name="error_valid_email">You did not enter a valid email address.</string>
+    <string name="code_sent_verify">Successfully send the verification code.</string>
+    <string name="went_wrong">Something is wrong, we will fix it soon...</string>
+    <string name="invalid_code">Invalid code entered...</string>
+    <string name="number_not_empty">Mobile number should not be empty.</string>
+    <string name="number_long_digit_check">Mobile number should be 10 characters long and should be digits only.</string>
+    <string name="age">Age</string>
+    <string name="gender">Gender</string>
+    <string name="symptom">Symptom</string>
+    <string name="disease_history">Disease History</string>
+    <string name="first_register">Please register yourself first.</string>
+    <string name="new_cases">New Cases</string>
+    <string name="no_events_yet">You haven\'t add any events yet.</string>
+    <string name="event_type">Event Type</string>
+    <string name="event_type_details">Please select event type. Public events are common events gathered by many peoples(weddings,birthdays etc).Private events are specific events that known people gathered.(Dinner,shoping etc) </string>
+
+
+    <string name="how_event_name"><![CDATA[Please be aware that to put more specific event name. Therefore others can identify the event easily. (ex: Erandra\'s Birthday Party,Anne & Gihan Wedding)]]></string>
+    <string name="update_title">You have a new update to download.</string>
+    <string name="update_app_label">Please download and install new version of our app it will fix bugs end errors you faced.</string>
+    <string name="update_download">Download</string>
+    <string name="cancel">Cancel</string>
+    <string name="medical_advices_menu">Seek Medical Advices</string>
+    <string name="type_a_message">Type a message.....</string>
+
+    <string name="keep_your_hands_clean">Keep your hands clean evertime. Help yourself and your family to be safe from COVID19.</string>
+    <string name="advices_2">Let\'s avoid touching our face,mouth,nose and eyes in public places.</string>
+    <string name="advice_3">Be more responsible when coughing and sneezing.</string>
+    <string name="direct_connections">Direct Connections</string>
+    <string name="username_exist_error">Entered username is using by someone else please try diferen username.</string>
+    <string name="add_connection">Add Connection</string>
+    <string name="connection_Added">Connection added Succesfully.</string>
+
+
 </resources>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.DoctorListActivity">
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/bar_layout_doctorlist"
+        android:layout_width="match_parent"
+        android:background="#4FAB5E"
+        android:layout_height="50dp">
+<androidx.appcompat.widget.Toolbar
+    android:id="@+id/toolbar_docterlist"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <Button
+        android:id="@+id/back_doctor_list"
+        android:background="@drawable/ic_back_white"
+        android:layout_marginTop="10dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+
+        android:layout_gravity="start|top"
+        />
+</androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:id="@+id/doctor_list_view" />
+</LinearLayout>
+</layout>

@@ -18,6 +18,39 @@
         android:theme="@style/AppTheme"
         tools:replace="android:label,android:theme">
         <activity
+            android:name=".DirectConnectionActivity"
+            android:theme="@style/SymptomActivityTheme" />
+        <activity
+            android:name=".activity.MySymptomActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.ChatDoctorActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.DoctorListActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.ProfileActivity"
+            android:theme="@style/SymptomActivityTheme" />
+        <activity
+            android:name=".activity.MyEventActivity"
+            android:theme="@style/SymptomActivityTheme" />
+        <activity
+            android:name=".activity.VerifyNumberActivity"
+            android:theme="@style/SymptomActivityTheme" />
+        <activity
+            android:name=".activity.LanguageActivity"
+            android:theme="@style/SymptomActivityTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.FamilyActivity"
+            android:theme="@style/SymptomActivityTheme" />
+        <activity
             android:name=".activity.StatisticActivity"
             android:theme="@style/SymptomActivityTheme" />
         <activity
@@ -45,13 +78,7 @@
         <activity
             android:name=".activity.WelcomeActivity"
             android:label="@string/app_name"
-            android:theme="@style/WelcomeActivityTheme">
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER" />
-
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/WelcomeActivityTheme" />
         <activity
             android:name=".activity.AddLocationActivity"
             android:label=""

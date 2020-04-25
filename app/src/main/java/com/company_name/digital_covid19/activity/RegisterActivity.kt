@@ -12,12 +12,14 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.location.Location
+import android.graphics.Color
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
+import cc.cloudist.acplibrary.ACProgressConstant
+import cc.cloudist.acplibrary.ACProgressPie
 import com.company_name.digital_covid19.R
 import com.company_name.digital_covid19.databinding.RegisterActivityBinding
 import com.company_name.digital_covid19.methods.Methods
@@ -32,8 +34,7 @@ import com.google.android.libraries.places.widget.Autocomplete
 import com.google.android.libraries.places.widget.AutocompleteActivity
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import com.sdsmdg.tastytoast.TastyToast
 import io.github.pierry.progress.Progress
 
@@ -57,13 +58,17 @@ class RegisterActivity: AppCompatActivity() {
     private lateinit var progressDialog: Progress
 	private lateinit var fusedLocationClient: FusedLocationProviderClient
 	private lateinit var latLng: LatLng
+	private  var userList:ArrayList<String> = ArrayList()
+	var ref = FirebaseDatabase.getInstance().getReference("users")
 	override fun onCreate(savedInstanceState: Bundle?) {
 	
 		super.onCreate(savedInstanceState)
 		mAuth = FirebaseAuth.getInstance()
+		getUsers()
 		Places.initialize(applicationContext, resources.getString(R.string.google_maps_key))
 		val placesClient = Places.createClient(this)
 		database = FirebaseDatabase.getInstance().reference
+
         methodObj= Methods()
         progressDialog=methodObj.progressDialog(this)
 		binding = DataBindingUtil.setContentView(this, R.layout.register_activity)
@@ -74,45 +79,47 @@ class RegisterActivity: AppCompatActivity() {
 		this.init()
 	}
 	private fun validateForm():Boolean{
+		if (binding.nameEditText.text.toString() in userList){
+			TastyToast.makeText(applicationContext, getString(R.string.username_exist_error),
+					TastyToast.LENGTH_LONG, TastyToast.ERROR)
+			return false
+		}
 		if (binding.selectLocationButton.text=="Choose Location"){
-			TastyToast.makeText(applicationContext, "Please select the location.",
+			TastyToast.makeText(applicationContext, resources.getString(R.string.location_select),
 					TastyToast.LENGTH_LONG, TastyToast.ERROR)
 			return false
 		}
 
-		if (binding.nicEditText.text.toString()=="" || binding.passwordEditText.text.toString()=="" || binding.emailEditText.text.toString()==""){
-			TastyToast.makeText(applicationContext, "All fileds should be filled.",
+		if (binding.nicEditText.text.toString()==""  || binding.mobileEditText.text.toString()==""){
+			TastyToast.makeText(applicationContext, resources.getString(R.string.fill_all),
 					TastyToast.LENGTH_LONG, TastyToast.ERROR)
 			return false
 		}
-		if (binding.passwordEditText.text.length<8){
-			TastyToast.makeText(applicationContext, "Password should be atleast 8 characters long.",
-					TastyToast.LENGTH_LONG, TastyToast.ERROR)
-			binding.passwordEditText.background=ContextCompat.getDrawable(this,R.drawable.error_edit_text)
-			return false
-		}
+
 		val regexNicOld = """\d{9}[vV]""".toRegex()
-		val regexNicNew = """\d{11}""".toRegex()
+		val regexNicNew = """\d{12}""".toRegex()
 		if (!regexNicOld.matches(binding.nicEditText.text.toString()))
 			if(!regexNicNew.matches(binding.nicEditText.text.toString())){
-				TastyToast.makeText(applicationContext, "Error in National Identity Card Number.",
+				TastyToast.makeText(applicationContext, getString(R.string.error_nic),
 						TastyToast.LENGTH_LONG, TastyToast.ERROR)
 				binding.nicEditText.background=ContextCompat.getDrawable(this,R.drawable.error_edit_text)
 				return false
 			}
-
-		if(binding.passwordEditText.text.toString()!=binding.confirmPasswordEditText.text.toString()){
-			TastyToast.makeText(applicationContext, "Entered passwords are not match.",
+		val regexMobile = """\d{10}""".toRegex()
+		if(!regexMobile.matches(binding.mobileEditText.text.toString())){
+			TastyToast.makeText(applicationContext, getString(R.string.number_long_digit_check),
 					TastyToast.LENGTH_LONG, TastyToast.ERROR)
-			binding.confirmPasswordEditText.background=ContextCompat.getDrawable(this,R.drawable.error_edit_text)
 			return false
 		}
+
 		val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+".toRegex()
-		if (!emailPattern.matches(binding.emailEditText.text.toString())){
-			TastyToast.makeText(applicationContext, "You did not enter a valid email address.",
-					TastyToast.LENGTH_LONG, TastyToast.ERROR)
-			binding.emailEditText.background=ContextCompat.getDrawable(this,R.drawable.error_edit_text)
-			return false
+		if (binding.emailEditText.text.toString()!="") {
+			if (!emailPattern.matches(binding.emailEditText.text.toString())) {
+				TastyToast.makeText(applicationContext, getString(R.string.error_valid_email),
+						TastyToast.LENGTH_LONG, TastyToast.ERROR)
+				binding.emailEditText.background = ContextCompat.getDrawable(this, R.drawable.error_edit_text)
+				return false
+			}
 		}
 		return true
 	}
@@ -122,7 +129,7 @@ class RegisterActivity: AppCompatActivity() {
         methodObj.addSharedPreference("currentUserName",name,sharedPreferences)
 		methodObj.addSharedPreference("secondUse","yes",sharedPreferences)
 		methodObj.deletePreference(sharedPreferences,"addSymptom")
-		val user = User(name, email,nic,mobile, latLng.latitude, latLng.longitude)
+		val user = User(name, email,nic,mobile,"safe", latLng.latitude, latLng.longitude)
 		database.child("users").child(nic).setValue(user)
 	}
 	private fun init() {
@@ -136,59 +143,33 @@ class RegisterActivity: AppCompatActivity() {
 			autoComplete()
 		}
 	}
-	private fun makeGreen(){
-		binding.emailEditText.background=ContextCompat.getDrawable(this,R.drawable.register_activity_password_edit_text_background)
-		binding.confirmPasswordEditText.background=ContextCompat.getDrawable(this,R.drawable.register_activity_password_edit_text_background)
-		binding.nicEditText.background=ContextCompat.getDrawable(this,R.drawable.register_activity_password_edit_text_background)
-		binding.passwordEditText.background=ContextCompat.getDrawable(this,R.drawable.register_activity_password_edit_text_background)
+	private fun makeGreen() {
+		binding.emailEditText.background = ContextCompat.getDrawable(this, R.drawable.register_activity_password_edit_text_background)
+
+		binding.nicEditText.background = ContextCompat.getDrawable(this, R.drawable.register_activity_password_edit_text_background)
 	}
 	
 	private fun onRegisterPressed() {
 		this.makeGreen()
 		if (this.validateForm()){
-			methodObj.progressDialogShow(progressDialog,"Please Wait!")
+			methodObj.progressDialogShow(progressDialog,resources.getString(R.string.loading))
 			this.registerUserOnDb()
 		}
 
 	}
 	private fun registerUserOnDb(){
 		val email=binding.emailEditText.text.toString()
-		val password=binding.passwordEditText.text.toString()
+
 		val name=binding.nameEditText.text.toString()
 		val mobile=binding.mobileEditText.text.toString()
 		val nic=binding.nicEditText.text.toString()
-		mAuth.createUserWithEmailAndPassword(email, password)
-				.addOnCompleteListener(this) { task ->
-					if (task.isSuccessful) {
-						val user = mAuth.currentUser
-						this.writeNewUser(nic,name,email,mobile)
-                        methodObj.progressDialogDismiss(progressDialog)
-						this.sendVerificationEmail()
+		var num=mobile.substring(1)
+		this.writeNewUser(nic,name,email,"+94$num")
 
-					} else {
-                        methodObj.progressDialogDismiss(progressDialog)
-						TastyToast.makeText(applicationContext, "Authentication failed.${task.exception}",
-								TastyToast.LENGTH_LONG, TastyToast.ERROR)
-
-					}
-
-
-				}
+		startVerifyActivity(num)
 	}
-	private fun sendVerificationEmail(){
-		val user = FirebaseAuth.getInstance().currentUser
-		user!!.sendEmailVerification()
-				.addOnCompleteListener { task ->
-					if (task.isSuccessful) {
-						signout()
-						startWelcomeActivity()
-						finish()
-					} else {
-						TastyToast.makeText(applicationContext, "Error sending verification email.Please try again later. ",
-								TastyToast.LENGTH_LONG, TastyToast.ERROR)
-					}
-				}
-	}
+
+
 
 	private fun signout() {
 		mAuth.signOut()
@@ -203,6 +184,44 @@ class RegisterActivity: AppCompatActivity() {
 	private fun startSymptomActivity() {
 	
 		this.startActivity(SymptomActivity.newIntent(this))
+	}
+	private fun getUsers(){
+		val dialog = ACProgressPie.Builder(this)
+				.ringColor(Color.WHITE)
+				.pieColor(Color.WHITE)
+				.updateType(ACProgressConstant.PIE_AUTO_UPDATE)
+				.build()
+		dialog.show()
+		val eventListener = object : ValueEventListener {
+			override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+				for (child in dataSnapshot.children) {
+					//Object object = child.getKey();
+					val user=child.getValue(User::class.java)
+					userList.add(user!!.username.toString())
+
+				}
+				dialog.dismiss()
+
+
+			}
+
+			override fun onCancelled(databaseError: DatabaseError) {
+				val e=databaseError.toException()
+				dialog.dismiss()
+				TastyToast.makeText(applicationContext, getString(R.string.error_db),
+						TastyToast.LENGTH_LONG, TastyToast.ERROR)
+			}
+		}
+		ref.addValueEventListener(eventListener)
+	}
+	private fun startVerifyActivity(mobile:String) {
+
+		val intent = Intent(this, VerifyNumberActivity::class.java)
+		intent.putExtra("mobile", mobile)
+		startActivity(intent)
+		finish()
+
 	}
 	private fun autoComplete(){
 		val fields = listOf(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG)
@@ -226,7 +245,7 @@ class RegisterActivity: AppCompatActivity() {
 
 
 				val status: Status = Autocomplete.getStatusFromIntent(data!!)
-				Toast.makeText(this,"error$status", Toast.LENGTH_LONG).show()
+				Toast.makeText(this,resources.getString(R.string.error_db), Toast.LENGTH_LONG).show()
 				//Log.i(FragmentActivity.TAG, status.getStatusMessage())
 			} else if (resultCode == Activity.RESULT_CANCELED) {
 				// The user canceled the operation.

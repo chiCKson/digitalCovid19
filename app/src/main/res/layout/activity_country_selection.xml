@@ -33,7 +33,7 @@
             android:background="@drawable/sign_in_activity_email_edit_text_background"
             android:fontFamily="@font/font_nunito_regular"
 
-            android:hint="Start typing country"
+            android:hint="@string/start_typing_country"
             android:inputType="textEmailAddress"
             android:maxLines="1"
             android:textColor="#FFFFFF"

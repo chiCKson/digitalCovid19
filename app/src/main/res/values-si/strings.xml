@@ -1,0 +1,228 @@
+<resources>
+    <string name="medical_advices_menu">වෛද්‍ය උපදෙස් ලබාගන්න</string>
+    <string name="age">වයස</string>
+
+    <string name="gender">ස්ත්‍ර/පුරුෂ භාවය‍</string>
+    <string name="symptom">රෝග ලක්ෂණ</string>
+    <string name="disease_history">රෝග අතීතය</string>
+    <string name="please_enter_the_recieved_code">ලැබුනු කේතය යොදන්න.</string>
+    <string name="resend_code">කේතය නැවත යවන්න</string>
+    <string name="verify_code">කේතය සත්යාපනය</string>
+    <string name="error_nic">ජාතික හැදුනුම්පත් අංකය වැරදියි.</string>
+    <string name="error_valid_email">විද්‍යුත් තැපෑල සත්‍යාපනය කිරීමේදී දෝෂ සහිතය.කරුණාකර නැවත උත්සාහ කරන්න.</string>
+    <string name="code_sent_verify">සත්යාපන කේතය සාර්ථකව යවන ලදී.</string>
+    <string name="went_wrong">දෝෂ සහිතයි.කරුණාකර නැවත උත්සාහ කරන්න. </string>
+    <string name="invalid_code">යෙදු කේතය වැරදියි.කරුණාකර නැවත උත්සාහ කරන්න.</string>
+    <string name="number_not_empty">දුරකථන අංකය අවශයයිඤ</string>
+    <string name="number_long_digit_check">දුරකථන අංකය දෝෂ සහිතය.අංක 10කින් සමන්විය යුතුය. </string>
+    <string name="first_register">පලමුව ලියාපදිංචි වන්න.</string>
+    <string name="new_cases">නව රෝගින්</string>
+    <string name="no_events_yet">තවම ක්‍රියාකාරකම් යොදා නැත.</string>
+    <string name="symptoms_q">මෙම ප්‍රශ්න සදහා පිලිතුරු සපයන්න.</string>
+    <string name="symptom_success">රෝග ලක්ෂණ ඇතුලත් කිරීම සාර්ථකයි</string>
+    <string name="breathing_difficulties">ඔබට පසුගිය සති කිහිපය තුල හුස්ම ගැනීමේ අපහසුතා තිබුනේද?</string>
+    <string name="patient_history">ඔබට වෙනත් කිසියම් රෝග ඉතිහාසයක්(දියවැඩියාව,හෘද රෝග)හෝ වෙනයම් ඔෟශධ ලබාගන්නෙද?</string>
+    <string name="smelling"> ඔබට පසුගිය සති කිහිපය තුල ගඳ සුවඳ දැනීමේ අපහසුතා තිබුනේද? </string>
+    <string name="gender_label">ඔබ</string>
+    <string name="male">පුරුෂ</string>
+    <string name="female">ස්ත්‍රී</string>
+    <string name="tamil_button">தமிழ்</string>
+    <string name="english">English</string>
+    <string name="headache_label"> ඔබට පසුගිය සති කිහිපය තුල හිස කැක්කුම් තිබුනේද?</string>
+    <string name="cough_label"> ඔබට පසුගිය සති කිහිපය තුල වියළි කැස්ස තිබුනේද?</string>
+    <string name="sorethroat_label"> ඔබට පසුගිය සති කිහිපය තුල උගුරේ අපහසුතා තිබුනේද?</string>
+    <string name="fever_label"> ඔබට පසුගිය සති කිහිපය තුල උණ තිබුනේද?</string>
+    <string name="updatedIn">මෙම දත්ත යාවත්කාලීන කෙරේ</string>
+    <string name="confirmed_cases">තහවුරු කරන ලද රෝගීන් ගණන</string>
+    <string name="under_observation"> නිරීක්ෂණය යටතේ සිටින ගණන</string>
+    <string name="recovered">සුව වූවන් ගණන</string>
+    <string name="deathes">මරණ සංඛ්‍යාව</string>
+    <string name="traveling_Method">ගමනාගමන ක්‍රමය</string>
+    <string name="traveling_q">කරුණාකර පසුගිය සති කිහිපය තුළ ඔබ ගමනාගමනය සිදුකල ක්‍රම තෝරන්න.</string>
+    <string name="public_label">පොදු</string>
+    <string name="public_traveling_method"> කරුණාකර පසුගිය සති කිහිපය තුළ ඔබ භාවිතා කල පොදු ගමනාගමන ආකාරය තෝරන්න. </string>
+    <string name="bus">බසය</string>
+    <string name="train">දුම්රිය</string>
+    <string name="private_label">පෞද්ගලික</string>
+    <string name="event_type_details">කරුණාකර ක්‍රියාකාරකම සිදුකරන ආකාරය තෝරන්න.පොදු ක්‍රියාකාරකම් ලෙස පුද්ගලයන් රාශියක් එකට එක් වී සිදුකරන ක්‍රියාකාරකම් (මංගල උත්සව,උපන්දින සාද...යනාදිය).පෞද්ගලික ක්‍රියාකාරකම් ලෙස ඔබගේ ලගින් ඇසුරුකරන නෑදෑයන් හා හිතමිත්‍රාදීන් එක්ව හෝ තනිව සිදුකරන ක්‍රියාකාරකම් (භෝජන සංග්‍රහයන්,සාප්පු සවාරි ...යනාදිය)</string>
+    <string name="event_type">ක්‍රියාකාරකම් වර්ගය තෝරන්න.</string>
+    <string name="how_event_name">කරුණාකර ඔබ ඔබගේ ක්‍රියාකාරකම් නාමය ඇතුලත් කිරීමේදී එම ක්‍රියාකාරකම පිලිබඳව වඩාත් සුපරික්ෂාකාරී වන්න.එසේ කිරීමෙන් එම ක්‍රියාකාරකම අනෙක් පරිශීලකයන්ට පහසුවෙන් හදුනාගැනීමට හැකිවේ.(උදා: ගයාන්ගේ උපන්දිනසාදය,ඈන් සහ ගිහාන්ගේ මංගල උත්සවය)</string>
+
+    <!-- miscelnous-->
+    <string name="loading">මදක් රැදීසිටින්න </string>
+    <string name="error_db">දත්ත සමුදාය කියවීමේදී දෝෂ සහිතය. කරුණාකර නැවත උත්සාහ කරන්න. </string>
+    <string name="error_email">විද්‍යුත් තැපෑල සත්‍යාපනය කිරීමේදී දෝෂ සහිතය.කරුණාකර නැවත උත්සාහ කරන්න. </string>
+    <!-- Home -->
+    <string name="infect">(වෛද්‍ය උපදෙස් ලබාගන්න.)</string>
+    <string name="possible">(නිවසේම රැදීසිටින්න .)</string>
+    <string name="location_select">කරුණාකර ඔබගේ ස්ථානය තෝරන්න.</string>
+    <string name="fill_all">සියලුම දත්ත පිරවිය යුතුය.</string>
+    <string name="password_8">මුරපදය අවම වශයෙන් අක්ෂර හෝ සංකේත 8ක් වත් තිබිය යුතුය.</string>
+    <!-- Menu -->
+    <string name="menu_home">මුල් පිටුව</string>
+    <string name="menu_Profile">මගේ ගිණුම</string>
+    <string name="menu_family">මගේ පවුල</string>
+    <string name="menu_symptom">මගේ රෝග ලක්ෂණ</string>
+    <string name="menu_event">මගේ ක්‍රියාකාරකම් </string>
+    <string name="menu_signout">ඉවත්වන්න</string>
+    <string name="menu_stat">සංඛ්‍යාලේඛන</string>
+    <string name="language_menu">භාෂාව</string>
+    <!-- Project level resources -->
+    <string name="app_name">ඩිජිටල්කෝවිඩ්19</string>
+    <string name="add_location_activity_menu_item_title">අයිතම</string>
+    <string name="symptom_activity_menu_item_title">අයිතම</string>
+    <string name="sinhala">සිංහල</string>
+    <!-- Resources for SymptomActivity -->
+    <string name="symptom_activity_yes_button_hint">ඔව්</string>
+    <string name="symptom_activity_are_you_been_abroad_text_view_text">ඔබ පසුගිය සති කිහිපය තුල විදේශගතව සිටියේද ?</string>
+    <string name="symptom_activity_no_button_hint">නැත</string>
+    <string name="symptom_activity_no_button_text">නැත</string>
+    <string name="symptom_activity_are_you_been_abroad_text_view_hint"> ඔබ පසුගිය සති කිහිපය තුල විදේශගතව සිටියේද ?</string>
+    <string name="symptom_activity_yes_button_text">ඔව්</string>
+
+    <!-- Resources for SymptomsSecondActivity -->
+    <string name="symptoms_second_activity_cough_text_view_text">කැස්ස</string>
+    <string name="symptoms_second_activity_addsymptoms_button_hint">රෝග ලක්ෂණ එකතු කරන්න </string>
+    <string name="symptoms_second_activity_addsymptoms_button_text"> රෝග ලක්ෂණ එකතු කරන්න </string>
+    <string name="symptoms_second_activity_breathing_difficulti_text_view_text">ස්වසන අපහසුතා </string>
+    <string name="symptoms_second_activity_fever_text_view_hint">උණ</string>
+    <string name="symptoms_second_activity_sore_throat_text_view_hint">උගුරේ අපහසුතා</string>
+    <string name="symptoms_second_activity_my_symptoms_text_view_hint">මගේ රෝගලක්ෂණ </string>
+    <string name="symptoms_second_activity_my_symptoms_text_view_text"> මගේ රෝගලක්ෂණ </string>
+    <string name="symptoms_second_activity_breathing_difficulti_text_view_hint"> ස්වසන අපහසුතා </string>
+    <string name="symptoms_second_activity_sore_throat_text_view_text"> උගුරේ අපහසුතා </string>
+    <string name="symptoms_second_activity_headache_text_view_text">හිසේ කැක්කුම්</string>
+    <string name="symptoms_second_activity_cough_text_view_hint">කැස්ස</string>
+    <string name="symptoms_second_activity_fever_text_view_text">උණ</string>
+    <string name="symptoms_second_activity_headache_text_view_hint"> හිසේ කැක්කුම්</string>
+
+    <!-- Resources for AddEventModalActivity -->
+    <string name="add_event_modal_activity_location_edit_text_hint">ස්ථානය තෝරන්න</string>
+    <string name="add_event_modal_activity_login_two_button_text">දිනය ඇතුලත් කරන්න</string>
+    <string name="add_event_modal_activity_eventname_edit_text_hint">සජීවී සංගීත සංදර්ශනය නැරඹීම </string>
+    <string name="add_event_modal_activity_date_text_view_text">දිනය</string>
+    <string name="add_event_modal_activity_login_button_text">ක්‍රියාකාරකම එක් කරන්න </string>
+    <string name="add_event_modal_activity_attending_an_event_text_view_hint">ක්‍රියාකාරකමක යෙදීම</string>
+    <string name="add_event_modal_activity_location_text_view_text">ස්ථානය</string>
+    <string name="add_event_modal_activity_location_text_view_hint">ස්ථානය</string>
+    <string name="add_event_modal_activity_login_button_hint"> ක්‍රියාකාරකම එක් කරන්න </string>
+    <string name="add_event_modal_activity_attending_an_event_text_view_text">ක්‍රියාකාරකමක යෙදීම</string>
+    <string name="add_event_modal_activity_event_name_text_view_text">ක්‍රියාකාරම</string>
+    <string name="add_event_modal_activity_event_name_text_view_hint"> ක්‍රියාකාරම</string>
+    <string name="add_event_modal_activity_date_text_view_hint">දිනය</string>
+    <string name="add_event_modal_activity_login_two_button_hint">දිනය ඇතුලත් කරන්න</string>
+
+    <!-- Resources for WelcomeActivity -->
+    <string name="welcome_activity_digital_covid19_text_view_text"> ඩිජිටල්කෝවිඩ්19 </string>
+    <string name="welcome_activity_digital_covid19_text_view_hint"> ඩිජිටල්කෝවිඩ්19 </string>
+    <string name="welcome_activity_keeping_you_safer_text_view_text"> ඔබව ආරක්ෂිතව තබයි</string>
+    <string name="welcome_activity_login_button_text">ඇතුල්වීම</string>
+    <string name="welcome_activity_register_button_text">ලියාපදිංචි වීම</string>
+    <string name="welcome_activity_keeping_you_safer_text_view_hint"> ඔබව ආරක්ෂිතව තබයි</string>
+    <string name="welcome_activity_register_button_hint"> ලියාපදිංචි වීම</string>
+    <string name="welcome_activity_login_button_hint"> ඇතුල්වීම</string>
+
+    <!-- Resources for AddTransportModalActivity -->
+    <string name="add_transport_modal_activity_my_transports_text_view_hint">මගේ ගමන්බිමන්</string>
+    <string name="add_transport_modal_activity_busnumber_edit_text_hint">ඔබ සතු වේ නම්,</string>
+    <string name="add_transport_modal_activity_bus_number_text_view_text">බස් අංකය</string>
+    <string name="add_transport_modal_activity_route_text_view_text">මාර්ගය</string>
+    <string name="add_transport_modal_activity_addtransport_button_text">ප්‍රවාහන දත්ත ඇතුලත් කිරීම</string>
+    <string name="add_transport_modal_activity_route_edit_text_hint">මාර්ග අංකය</string>
+    <string name="add_transport_modal_activity_date_button_text"> දිනය ඇතුලත් කරන්න</string>
+    <string name="add_transport_modal_activity_date_text_view_text">දිනය</string>
+    <string name="add_transport_modal_activity_date_button_hint"> දිනය ඇතුලත් කරන්න</string>
+    <string name="add_transport_modal_activity_bus_number_text_view_hint">බස් අංකය</string>
+    <string name="add_transport_modal_activity_date_text_view_hint">දිනය</string>
+    <string name="add_transport_modal_activity_route_text_view_hint">මාර්ගය</string>
+    <string name="add_transport_modal_activity_my_transports_text_view_text">මගේ ගමන්බිමන්</string>
+    <string name="add_transport_modal_activity_addtransport_button_hint"> ප්‍රවාහන දත්ත ඇතුලත් කිරීම</string>
+
+    <!-- Resources for HomeActivity -->
+    <string name="home_activity_john_smith_text_view_hint">ගයාන් බණ්ඩාර</string>
+    <string name="home_activity_safe_text_view_text">(ඔබ ආරක්ෂිතයි)</string>
+    <string name="home_activity_safe_text_view_hint">ආරක්ෂිතයි</string>
+    <string name="home_activity_john_smith_text_view_text"> ගයාන් බණ්ඩාර</string>
+
+    <!-- Resources for ActivityModelActivity -->
+    <string name="activity_model_activity_transport_button_text">ප්‍රවාහනය</string>
+    <string name="activity_model_activity_transport_button_hint"> ප්‍රවාහනය</string>
+    <string name="activity_model_activity_my_transports_text_view_hint">ක්‍රියාකාරකම්</string>
+    <string name="activity_model_activity_transport_button_sheet_item_2_text">පෞද්ගලික</string>
+    <string name="activity_model_activity_my_transports_text_view_text"> සබදතා</string>
+    <string name="activity_model_activity_transport_button_sheet_title">ප්‍රවාහන ක්‍රමය</string>
+    <string name="activity_model_activity_location_button_hint">ස්ථානය</string>
+    <string name="activity_model_activity_event_button_hint"> ක්‍රියාකාරකම</string>
+    <string name="activity_model_activity_event_button_text"> ක්‍රියාකාරකම</string>
+    <string name="activity_model_activity_transport_button_sheet_item_1_text">පොදු</string>
+    <string name="activity_model_activity_location_button_text">ස්ථානය</string>
+
+    <!-- Resources for RegisterActivity -->
+    <string name="register_activity_name_edit_text_hint"> ගයාන් බණ්ඩාර</string>
+    <string name="register_activity_nic_number_text_view_hint">ජාතික හැදුනුම්පත් අංකය</string>
+    <string name="register_activity_name_text_view_hint">නම</string>
+    <string name="register_activity_password_edit_text_hint">ඔබගේ මුරපදය ඇතුලත් කරන්න</string>
+    <string name="register_activity_register_button_text">දිගටම කරන්න</string>
+    <string name="register_activity_please_let_us_know_ytext_view_text"> කරුණාකර අපට ඔබව දන්වන්න</string>
+    <string name="register_activity_mobile_edit_text_hint">කරුණාකර ඔබගේ ජංගම දුරකථන අංකය ඇතුලත් කරන්න</string>
+    <string name="register_activity_nic_number_text_view_text">ජාතික හැදුනුම්පත් අංකය</string>
+    <string name="register_activity_password_text_view_text">මුරපදය</string>
+    <string name="register_activity_email_text_view_hint">විද්‍යුත් තැපෑල</string>
+    <string name="register_activity_please_let_us_know_ytext_view_hint"> කරුණාකර අපට ඔබව දන්වන්න</string>
+    <string name="register_activity_email_text_view_text"> විද්‍යුත් තැපෑල</string>
+    <string name="register_activity_name_text_view_text">නම</string>
+    <string name="register_activity_password_text_view_hint">මුරපදය</string>
+    <string name="register_activity_email_edit_text_hint">ඔබගේ විද්‍යුත් තැපෑල ඇතුලත් කරන්න</string>
+    <string name="register_activity_nic_edit_text_hint">961234567v</string>
+    <string name="register_activity_mobile_text_view_hint">ජංගම දුරකථනය</string>
+    <string name="register_activity_mobile_text_view_text"> ජංගම දුරකථනය</string>
+    <string name="register_activity_register_button_hint"> දිගටම කරන්න</string>
+
+    <!-- Resources for AddLocationActivity -->
+    <string name="add_location_activity_my_transports_text_view_text">ස්ථානය ඇතුලත් කරන්න</string>
+    <string name="add_location_activity_login_button_text"> ස්ථානය ඇතුලත් කරන්න</string>
+    <string name="add_location_activity_bus_number_text_view_hint">කොහෙද?</string>
+    <string name="add_location_activity_location_edit_text_hint">ස්ථානය තෝරන්න</string>
+    <string name="add_location_activity_datepicklocation_button_text">දිනය ඇතුලත් කරන්න</string>
+    <string name="add_location_activity_login_button_hint"> ස්ථානය ඇතුලත් කරන්න</string>
+    <string name="add_location_activity_route_text_view_hint">කවදාද?</string>
+    <string name="add_location_activity_bus_number_text_view_text">කොහෙද?</string>
+    <string name="add_location_activity_route_text_view_text">කවදාද?</string>
+    <string name="add_location_activity_datepicklocation_button_hint"> දිනය ඇතුලත් කරන්න</string>
+    <string name="add_location_activity_my_transports_text_view_hint"> ස්ථානය ඇතුලත් කරන්න</string>
+
+    <!-- Resources for SignInActivity -->
+    <string name="sign_in_activity_login_button_text">ඇතුල්වීම</string>
+    <string name="sign_in_activity_forgot_password_text_view_hint">මුරපදය අමතකද?</string>
+    <string name="sign_in_activity_login_button_hint">ඇතුල්වීම</string>
+    <string name="sign_in_activity_password_edit_text_hint">මුරපදය</string>
+    <string name="sign_in_activity_register_button_hint">ලියාපදිංචි වීම</string>
+    <string name="sign_in_activity_email_edit_text_hint">විද්‍යුත් තැපෑල ඇතුලත් කරන්න</string>
+    <string name="sign_in_activity_forgot_password_text_view_text">මුරපදය අමතකද?</string>
+    <string name="sign_in_activity_register_button_text"> ලියාපදිංචි වීම</string>
+    <string name="title_activity_maps">සිතියම</string>
+    <string name="then_which_country_you_have_been">එසේනම් ඔබ කුමන රටක සිටියේද?</string>
+    <string name="confrim_password_register">මුරපදය තහවුරු කිරීම</string>
+    <string name="title_activity_statistics"> ක්‍රියාකාරකම් සංඛ්‍යාලේඛන </string>
+    <string name="tab_text_1">යොමු 1</string>
+    <string name="tab_text_2">යොමු 2</string>
+    <string name="enter_your_name">ඔබගේ නම ඇතුලත් කරන්න</string>
+    <string name="enter_your_nic_number">ඔබගේ ජාතික හැදුනුම්පත් අංකය ඇතුලත් කරන්න</string>
+    <string name="where_your_from">ඔබගේ පදිංචිය කොහේද?</string>
+    <string name="choose_location">ස්ථානය තෝරන්න</string>
+    <string name="start_typing_country">රට ටයිප් කිරීම අරඹන්න</string>
+    <string name="direct_connections">සෘජු සබදතා</string>
+    <string name="update_title">ඔබට නව යාවත්කාලීන කිරීමක් බාගත කරගැනීමට හැක.</string>
+    <string name="update_app_label">කරුණාකර අපගේ නව යාවත්කාලීන කිරීම බාගත කරගන්න.එය ඔබට මුහුණදීමට සිදු වූ දෝෂ හා අනෙකුත් අකර්මණ්‍යතා සකසා ඇත.</string>
+    <string name="update_download">බාගත කරගන්න</string>
+    <string name="cancel">අවලංගු කරන්න</string>
+
+    <string name="type_a_message">පණිවිඩය සටහන් කරන්න.....</string>
+
+    <string name="keep_your_hands_clean">සැමවිටම ඔබගේ දෑත් පිරිසිදුව තබාගන්න. COVID19 වලින් ආරක්ෂා වීමට ඔබට සහ ඔබේ පවුලේ අයට උදව් කරන්න.</string>
+    <string name="advices_2"> පොදු ස්ථානවල ඔබේ මුහුණ, මුඛය, නාසය සහ ඇස් ස්පර්ශ කිරීමෙන් වළකින්න.</string>
+    <string name="advice_3"> කැස්ස සහ කිවිසුම් යාමේදී වඩාත් වගකීමෙන් කටයුතු කරන්න.</string>
+    <string name="add_connection">සබදතාව අැතිකරන්න</string>
+    <string name="connection_Added">සබදතාව සාර්ථකව එකතුකෙරිණි.</string>
+    <string name="username_exist_error"> ඇතුළත් කළ පරිශීලක නාමය වෙනත් අයෙකු විසින් භාවිතා කරයි.කරුණාකර වෙනත් පරිශීලක නාමයක් උත්සාහ කරන්න.</string>
+</resources>

@@ -9,6 +9,16 @@
         android:orientation="vertical"
         android:background="@color/add_location_activity_location_edit_text_border_color"
         tools:context=".activity.StatisticActivity">
+
+        <Button
+            android:id="@+id/menu"
+            android:background="@drawable/ic_back_white"
+            android:layout_marginTop="10dp"
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+
+            android:layout_gravity="start|top"
+            />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -18,18 +28,7 @@
     android:orientation="vertical"
 
    >
-    <TextView
-        android:id="@+id/updated_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/font_nunito_regular"
-        android:layout_gravity="center_horizontal"
-        android:text="Time"
-        android:textColor="#FFFFFF"
-        android:textSize="20dp"
 
-        tools:layout_editor_absoluteX="38dp"
-        tools:layout_editor_absoluteY="51dp"/>
     <TextView
     android:id="@+id/local_new_cases_textview"
     android:layout_width="wrap_content"
@@ -49,7 +48,8 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/font_nunito_regular"
         android:layout_gravity="center_horizontal"
-        android:text="Local New Cases"
+        android:text="@string/new_cases"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="30dp"
 
@@ -74,7 +74,8 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/font_nunito_regular"
         android:layout_gravity="center_horizontal"
-        android:text="Local Total Cases"
+        android:text="@string/confirmed_cases"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="30dp"
 
@@ -93,18 +94,20 @@
 
         tools:layout_editor_absoluteX="38dp"
         tools:layout_editor_absoluteY="51dp"/>
+
     <TextView
         android:id="@+id/local_hospital_cases_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/font_nunito_regular"
         android:layout_gravity="center_horizontal"
-        android:text="Total number in hospitals"
+        android:fontFamily="@font/font_nunito_regular"
+        android:textAlignment="center"
+        android:text="@string/under_observation"
         android:textColor="#FFFFFF"
         android:textSize="30dp"
 
         tools:layout_editor_absoluteX="38dp"
-        tools:layout_editor_absoluteY="51dp"/>
+        tools:layout_editor_absoluteY="51dp" />
     <TextView
         android:id="@+id/local_recovered_textview"
         android:layout_width="wrap_content"
@@ -124,7 +127,8 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/font_nunito_regular"
         android:layout_gravity="center_horizontal"
-        android:text="Total Recovered"
+        android:text="@string/recovered"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="30dp"
 
@@ -149,10 +153,22 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/font_nunito_regular"
         android:layout_gravity="center_horizontal"
-        android:text="Local Deathes"
+        android:text="@string/deathes"
         android:textColor="#FFFFFF"
         android:textSize="30dp"
-
+        android:textAlignment="center"
+        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteY="51dp"/>
+    <TextView
+        android:id="@+id/updated_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/font_nunito_regular"
+        android:layout_gravity="center_horizontal"
+        android:text="Time"
+        android:textColor="#FFFFFF"
+        android:textSize="15dp"
+        android:textAlignment="center"
         tools:layout_editor_absoluteX="38dp"
         tools:layout_editor_absoluteY="51dp"/>
 

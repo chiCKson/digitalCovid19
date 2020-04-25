@@ -1,7 +1,14 @@
 <resources>
 
-
-
-
+    <style name="Autocomplete">
+        <item name="colorControlNormal">@color/green_transparent</item>
+        <item name="colorControlActivated">@color/color_green_text</item>
+    </style>
+    <style name="AutoCompleteTextViewLight" parent="@android:style/Widget.AutoCompleteTextView">
+        <item name="android:textColor">@android:color/primary_text_light</item>
+    </style>
+    <style name="Widget.DropDownItemLight" parent="@android:style/Widget.DropDownItem">
+        <item name="android:textColor">@android:color/primary_text_light</item>
+    </style>
     <!-- Base application theme. -->
   </resources>

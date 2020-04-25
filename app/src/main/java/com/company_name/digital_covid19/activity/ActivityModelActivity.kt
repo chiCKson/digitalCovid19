@@ -15,6 +15,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.company_name.digital_covid19.DirectConnectionActivity
 import com.company_name.digital_covid19.R
 import com.company_name.digital_covid19.databinding.ActivityModelActivityBinding
 import com.yeyint.customalertdialog.CustomAlertDialog
@@ -48,9 +49,7 @@ class ActivityModelActivity: AppCompatActivity() {
 		}
 
 		// Configure Location component
-		binding.locationButton.setOnClickListener {
-			this.onLocationPressed()
-		}
+
 
 		// Configure Event component
 		binding.eventButton.setOnClickListener {
@@ -61,6 +60,9 @@ class ActivityModelActivity: AppCompatActivity() {
 		binding.transportButton.setOnClickListener {
 			this.onTransportPressed()
 		}
+		binding.connectionButton.setOnClickListener {
+			onConnectionPressed()
+		}
 	}
 	
 	private fun onClosePressed() {
@@ -68,31 +70,51 @@ class ActivityModelActivity: AppCompatActivity() {
 		this.finish()
 	}
 	
-	private fun onLocationPressed() {
+	private fun onConnectionPressed() {
 	
 		this.startAddLocationActivity()
 	}
 	
 	private fun onEventPressed() {
 	
-		this.startAddEventModalActivity()
+		this.addEvent()
 	}
-	
+	private fun addEvent() {
+		val dialogVerifyEmail = CustomAlertDialog(this, CustomAlertDialog.DialogStyle.CURVE)
+		dialogVerifyEmail.setAlertTitle(getString(R.string.event_type))
+		dialogVerifyEmail.setAlertMessage(getString(R.string.event_type_details))
+		dialogVerifyEmail.setDialogType(CustomAlertDialog.DialogType.SUCCESS)
+		//dialogVerifyEmail.setDialogImage(getDrawable(R.mipmap.ic_launcher_foreground),0);
+		dialogVerifyEmail.setNegativeButton(resources.getString(R.string.public_label)) {
+			this.startAddEventModalActivity()
+
+			dialogVerifyEmail.dismiss()
+		}
+		dialogVerifyEmail.setPositiveButton(resources.getString(R.string.private_label)){
+
+			this.startAddLocationActivity()
+			dialogVerifyEmail.dismiss()
+		}
+		dialogVerifyEmail.create();
+		dialogVerifyEmail.show();
+
+
+	}
 	private fun onTransportPressed() {
 		val dialog = CustomAlertDialog(this, CustomAlertDialog.DialogStyle.CURVE)
-		dialog.setAlertTitle("Transport Method")
-		dialog.setAlertMessage("Please choose you used transportation method in last few weeks.")
+		dialog.setAlertTitle(resources.getString(R.string.traveling_Method))
+		dialog.setAlertMessage(resources.getString(R.string.traveling_q))
 		dialog.setDialogType(CustomAlertDialog.DialogType.SUCCESS)
-		dialog.setPositiveButton("Public") {
+		dialog.setPositiveButton(resources.getString(R.string.public_label) ){
 			val dialogBusTrain = CustomAlertDialog(this, CustomAlertDialog.DialogStyle.CURVE)
-			dialogBusTrain.setAlertTitle("Transport Method")
-			dialogBusTrain.setAlertMessage("Please choose you used transportation method in last few weeks.")
+			dialogBusTrain.setAlertTitle(resources.getString(R.string.traveling_Method))
+			dialogBusTrain.setAlertMessage(resources.getString(R.string.public_traveling_method))
 			dialogBusTrain.setDialogType(CustomAlertDialog.DialogType.SUCCESS)
-			dialogBusTrain.setPositiveButton("Bus") {
+			dialogBusTrain.setPositiveButton(resources.getString(R.string.bus)) {
 				Toast.makeText(applicationContext, "Bus Button Clicked", Toast.LENGTH_SHORT).show()
 				dialogBusTrain.dismiss()
 			}
-			dialogBusTrain.setNegativeButton("Train") {
+			dialogBusTrain.setNegativeButton(resources.getString(R.string.train)) {
 				Toast.makeText(applicationContext, "Train Button Clicked", Toast.LENGTH_SHORT).show()
 				dialogBusTrain.cancel()
 			}
@@ -100,7 +122,7 @@ class ActivityModelActivity: AppCompatActivity() {
 			dialogBusTrain.show();
 			dialog.dismiss()
 		}
-		dialog.setNegativeButton("Private") {
+		dialog.setNegativeButton(resources.getString(R.string.private_label)) {
 			Toast.makeText(applicationContext, "Private Button Clicked", Toast.LENGTH_SHORT).show()
 			dialog.cancel()
 		}
@@ -110,7 +132,7 @@ class ActivityModelActivity: AppCompatActivity() {
 	
 	private fun startAddLocationActivity() {
 	
-		this.startActivity(AddLocationActivity.newIntent(this))
+		this.startActivity(DirectConnectionActivity.newIntent(this))
 		finish()
 	}
 	
